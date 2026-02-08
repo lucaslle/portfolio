@@ -1,4 +1,4 @@
-import {Card, CardContent, Box} from '@mui/material';
+import {Card, CardContent} from '@mui/material';
 import {type ReactNode, useRef} from "react";
 // import GitHubIcon from '@mui/icons-material/GitHub';
 // import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -7,15 +7,15 @@ import {type ReactNode, useRef} from "react";
 
 interface SpotlightCardProps {
     spotlightColor?: string;
-    name?: string;
-    role?: string;
-    description?: string;
-    avatarUrl?: string;
     children?: ReactNode;
+    width?: string | number;
+    height?: string | number;
 }
 
 const SpotlightCard = ({
                            children,
+                           width = '50vw',
+    height = '80%',
                            spotlightColor = 'rgba(160, 32, 240, 0.3)',
                        }: SpotlightCardProps) => {
     const divRef = useRef<HTMLDivElement>(null);
@@ -37,12 +37,14 @@ const SpotlightCard = ({
             ref={divRef}
             onMouseMove={handleMouseMove}
             sx={{
+                height: {height},
+                width: {width},
                 position: 'relative',
                 overflow: 'hidden',
-                background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
+                background: 'rgba(26, 26, 46, 0.3)',
+                backdropFilter: 'blur(10px)',
                 borderRadius: '24px',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                backdropFilter: 'blur(10px)',
                 '&::before': {
                     content: '""',
                     position: 'absolute',
@@ -63,14 +65,8 @@ const SpotlightCard = ({
                 },
             }}
         >
-            <CardContent sx={{ p: 4, position: 'relative', zIndex: 1 }}>
-
-
-                {children && (
-                    <Box sx={{ mt: 4 }}>
+            <CardContent sx={{ position: 'relative', zIndex: 1 }}>
                         {children}
-                    </Box>
-                )}
             </CardContent>
         </Card>
     );

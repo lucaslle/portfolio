@@ -4,6 +4,7 @@ import { theme } from './theme';
 import {Box} from "@mui/material";
 import LightPillar from "./component_react_bits/light_pilar/LightPillar.tsx";
 import ProfileCard from "./Component/Specific/profileCard/ProfileCard.tsx";
+import ProjectsSection from "./Component/Specific/ProjectCard/project.tsx";
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
                 width: '100%',
                 height: '100%',
                 zIndex: 0,
-                pointerEvents: 'none' // Permet de cliquer à travers
+                pointerEvents: 'none'
             }}>
                 <LightPillar
                     topColor="#A1209D"
@@ -33,8 +34,9 @@ function App() {
                     mixBlendMode="normal"
                 />
             </Box>
-            <Box sx={{ position: 'relative', zIndex: 1 }}>
+            <Box sx={{ position: 'relative'}}>
                 <ProfileCard/>
+                <ProjectsSection/>
             </Box>
     </Box>
     </ThemeProvider>
