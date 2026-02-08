@@ -16,7 +16,7 @@ function ProfileCard() {
                 variant="standard"
                 aria-label="secondary tabs example"
             >
-                <Tab label="Home" value="Home" />
+                <Tab label="Home" value="Home" />Tab label="Home" value="Home" />
                 <Tab label="Project" value="Project" />
                 <Tab label="Skills" value="Skills" />
                 <Tab label="About Me" value="AboutMe" />
