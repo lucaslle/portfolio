@@ -66,7 +66,6 @@ const ProjectsSection = () => {
             spotlightColor="rgba(139, 92, 246, 0.2)"
         >
             <Box>
-                {/* Header */}
                 <Typography
                     variant="h4"
                     sx={{
@@ -78,8 +77,6 @@ const ProjectsSection = () => {
                 >
                     PROJECTS
                 </Typography>
-
-                {/* Projects Grid with Horizontal Scroll */}
                 <Box
                     sx={{
                         display: 'flex',
@@ -140,7 +137,6 @@ const ProjectsSection = () => {
                                     overflow: 'hidden',
                                 }}
                             >
-                                {/* Code snippet visual effect */}
                                 <Box
                                     sx={{
                                         fontSize: '0.7rem',
@@ -157,7 +153,6 @@ const ProjectsSection = () => {
                                 </Box>
                             </Box>
 
-                            {/* Project Title */}
                             <Typography
                                 variant="h6"
                                 sx={{
@@ -169,7 +164,6 @@ const ProjectsSection = () => {
                                 {project.title}
                             </Typography>
 
-                            {/* Project Description */}
                             <Typography
                                 variant="body2"
                                 sx={{
@@ -181,7 +175,6 @@ const ProjectsSection = () => {
                                 {project.description}
                             </Typography>
 
-                            {/* Tags */}
                             <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                                 {project.tags.map((tag, index) => (
                                     <Chip
