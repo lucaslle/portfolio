@@ -12,7 +12,7 @@ type ScrollSpy = {
   velocity: number
 }
 
-export const useScrollSpy = (sectionIds: SectionId[]): ScrollSpy => {
+export const useScrollSpy = (sectionIds: readonly SectionId[]): ScrollSpy => {
   const [section, setSection] = useState<SectionId>('home')
   const [scrollY, setScrollY] = useState(0)
   const [velocity, setVelocity] = useState(0)

@@ -1,7 +1,11 @@
 import { useState } from 'react'
-import { ABOUT_STORY, JOBS, STATS } from '../data/portfolio'
+import { JOBS } from '../data/portfolio'
+import { useContent } from '../i18n/useContent'
+import { useTranslation } from '../i18n/useTranslation'
 
 export const About = () => {
+  const { t } = useTranslation()
+  const { jobs, stats } = useContent()
   const [openJobId, setOpenJobId] = useState<string | null>(JOBS[0].id)
 
   const toggleJob = (id: string) => setOpenJobId((current) => (current === id ? null : id))
@@ -9,19 +13,19 @@ export const About = () => {
   return (
     <section id="about" className="panel about">
       <h2 className="section-title" style={{ marginBottom: 20 }}>
-        About
+        {t.about.title}
       </h2>
-      <h3 className="about__story-title">My story</h3>
-      <p className="about__story">{ABOUT_STORY}</p>
+      <h3 className="about__story-title">{t.about.storyTitle}</h3>
+      <p className="about__story">{t.about.story}</p>
 
       <div className="about__subhead">
-        <h3>Parcours pro</h3>
-        <span className="about__hint">clique pour déplier</span>
+        <h3>{t.about.careerTitle}</h3>
+        <span className="about__hint">{t.about.hint}</span>
       </div>
 
       <div className="timeline">
         <span className="timeline__line" />
-        {JOBS.map((job) => {
+        {jobs.map((job) => {
           const open = openJobId === job.id
 
           return (
@@ -66,13 +70,13 @@ export const About = () => {
                 <div className="job__detail">
                   <p className="job__summary">{job.summary}</p>
                   <ul className="job__bullets">
-                    {job.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
+                    {job.bullets.map((bullet, index) => (
+                      <li key={`${bullet}-${index}`}>{bullet}</li>
                     ))}
                   </ul>
                   <div className="tag-row">
-                    {job.stack.map((item) => (
-                      <span key={item} className="tag">
+                    {job.stack.map((item, index) => (
+                      <span key={`${item}-${index}`} className="tag">
                         {item}
                       </span>
                     ))}
@@ -85,7 +89,7 @@ export const About = () => {
       </div>
 
       <div className="stats">
-        {STATS.map((stat) => (
+        {stats.map((stat) => (
           <div key={stat.label} className="stat">
             <div className="stat__value">{stat.value}</div>
             <div className="stat__label">{stat.label}</div>

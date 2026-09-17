@@ -38,8 +38,8 @@ export const ProjectCard = ({ project, onOpen }: ProjectCardProps) => (
       <h3 className="project-card__title">{project.title}</h3>
       <p className="project-card__blurb">{project.blurb}</p>
       <div className="tag-row">
-        {project.tags.map((tag) => (
-          <span key={tag} className="tag">
+        {project.tags.map((tag, index) => (
+          <span key={`${tag}-${index}`} className="tag">
             {tag}
           </span>
         ))}

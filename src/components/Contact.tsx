@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { CONTACT_EMAIL } from '../data/portfolio'
+import { useTranslation } from '../i18n/useTranslation'
 import type { ContactForm, SendingState } from '../types'
 
 const SENT_DELAY = 700
@@ -8,16 +9,17 @@ const RESET_DELAY = 3200
 
 const EMPTY_FORM: ContactForm = { name: '', email: '', msg: '' }
 
-const SEND_LABELS: Record<SendingState, string> = {
-  idle: 'Send',
-  sending: 'Envoi…',
-  sent: 'Envoyé ✓',
-}
-
 export const Contact = () => {
+  const { t } = useTranslation()
   const [form, setForm] = useState<ContactForm>(EMPTY_FORM)
   const [sending, setSending] = useState<SendingState>('idle')
   const timeouts = useRef<number[]>([])
+
+  const sendLabels: Record<SendingState, string> = {
+    idle: t.contact.send,
+    sending: t.contact.sending,
+    sent: t.contact.sent,
+  }
 
   useEffect(() => {
     const pending = timeouts.current
@@ -46,35 +48,35 @@ export const Contact = () => {
   return (
     <section id="contact" className="panel contact">
       <h2 className="section-title" style={{ marginBottom: 20 }}>
-        Contact
+        {t.contact.title}
       </h2>
 
       <form className="contact__form" onSubmit={handleSubmit} noValidate>
         <label className="field">
-          Name
+          {t.contact.name}
           <input
             type="text"
-            placeholder="Prénom Nom"
+            placeholder={t.contact.namePlaceholder}
             value={form.name}
             onChange={(event) => updateField('name', event.target.value)}
           />
         </label>
 
         <label className="field">
-          Email
+          {t.contact.email}
           <input
             type="email"
-            placeholder="you@studio.dev"
+            placeholder={t.contact.emailPlaceholder}
             value={form.email}
             onChange={(event) => updateField('email', event.target.value)}
           />
         </label>
 
         <label className="field">
-          Message
+          {t.contact.message}
           <textarea
             rows={4}
-            placeholder="Parlons de votre projet…"
+            placeholder={t.contact.messagePlaceholder}
             value={form.msg}
             onChange={(event) => updateField('msg', event.target.value)}
           />
@@ -82,15 +84,15 @@ export const Contact = () => {
 
         <div className="contact__actions">
           <button type="submit" className="btn-send" disabled={sending !== 'idle'}>
-            {SEND_LABELS[sending]}
+            {sendLabels[sending]}
           </button>
           <span className="contact__note" role="status">
-            {sending === 'sent' ? 'Merci ! Réponse sous 24h.' : ''}
+            {sending === 'sent' ? t.contact.thanks : ''}
           </span>
         </div>
 
         <div className="contact__mail">
-          Email · <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          {t.contact.emailLabel} · <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
         </div>
       </form>
     </section>
