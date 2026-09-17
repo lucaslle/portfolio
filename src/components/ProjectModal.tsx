@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import type { MouseEvent } from 'react'
+import { useTranslation } from '../i18n/useTranslation'
 import type { Project } from '../types'
 
 type ProjectModalProps = {
@@ -8,6 +9,8 @@ type ProjectModalProps = {
 }
 
 export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
+  const { t } = useTranslation()
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose()
@@ -38,7 +41,7 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             <div className="modal__kind">{project.kind}</div>
             <h3 className="modal__title">{project.title}</h3>
           </div>
-          <button type="button" className="modal__close" aria-label="Fermer" onClick={onClose}>
+          <button type="button" className="modal__close" aria-label={t.modal.close} onClick={onClose}>
             ✕
           </button>
         </div>
@@ -46,8 +49,8 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
         <p className="modal__detail">{project.detail}</p>
 
         <div className="modal__tags">
-          {project.tags.map((tag) => (
-            <span key={tag} className="tag">
+          {project.tags.map((tag, index) => (
+            <span key={`${tag}-${index}`} className="tag">
               {tag}
             </span>
           ))}
@@ -55,10 +58,10 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
 
         <div className="modal__links">
           <a href="#projects" className="modal__link--solid" onClick={onClose}>
-            Live demo
+            {t.modal.liveDemo}
           </a>
           <a href="#projects" className="modal__link--ghost" onClick={onClose}>
-            Source
+            {t.modal.source}
           </a>
         </div>
       </div>

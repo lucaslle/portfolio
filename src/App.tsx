@@ -10,14 +10,12 @@ import { Marquee } from './components/Marquee'
 import { ProjectModal } from './components/ProjectModal'
 import { Projects } from './components/Projects'
 import { Skills } from './components/Skills'
-import { NAV_ITEMS } from './data/portfolio'
+import { SECTION_IDS } from './data/portfolio'
 import { usePointer } from './hooks/usePointer'
 import { useScrollSpy } from './hooks/useScrollSpy'
 import { useSparks } from './hooks/useSparks'
 import type { Project } from './types'
 import { scrollToSection } from './utils/scrollToSection'
-
-const SECTION_IDS = NAV_ITEMS.map((item) => item.id)
 
 export const App = () => {
   const { section, scrollY, velocity } = useScrollSpy(SECTION_IDS)

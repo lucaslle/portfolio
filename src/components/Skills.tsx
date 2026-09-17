@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react'
-import { SKILLS, SKILL_TONES, SOFT_SKILLS } from '../data/portfolio'
+import { SKILL_TONES } from '../data/portfolio'
+import { useContent } from '../i18n/useContent'
+import { useTranslation } from '../i18n/useTranslation'
 
 const MOUNT_DELAY = 200
 const PIP_COUNT = 5
 
 export const Skills = () => {
+  const { t } = useTranslation()
+  const { skills } = useContent()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -16,13 +20,13 @@ export const Skills = () => {
   return (
     <section id="skills" className="panel skills">
       <div className="skills__head">
-        <h2 className="section-title">Skills</h2>
-        <span className="section-note">niveau · usage quotidien → exploratoire</span>
+        <h2 className="section-title">{t.skills.title}</h2>
+        <span className="section-note">{t.skills.note}</span>
       </div>
 
       <div className="skills__grid">
-        {SKILLS.map((skill, skillIndex) => (
-          <div key={skill.name} className="skill-card">
+        {skills.map((skill, skillIndex) => (
+          <div key={skill.id} className="skill-card">
             <div className="skill-card__head">
               <span className="skill-card__name">{skill.name}</span>
               <span className="skill-card__level" style={{ color: SKILL_TONES[skill.lvl] }}>
@@ -57,7 +61,7 @@ export const Skills = () => {
       <div className="skills__divider" />
 
       <div className="soft-row">
-        {SOFT_SKILLS.map((soft) => (
+        {t.skills.soft.map((soft) => (
           <span key={soft} className="soft-chip">
             {soft}
           </span>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { MouseEvent } from 'react'
-import { BADGE, HEADLINE, HERO_GREETING, HERO_LEAD, SOCIALS } from '../data/portfolio'
+import { SOCIALS } from '../data/portfolio'
+import { useTranslation } from '../i18n/useTranslation'
 
 const TILT_X = 22
 const TILT_Y = 16
@@ -14,6 +15,7 @@ type HeroProps = {
 }
 
 export const Hero = ({ pointerRatio, onViewWork, onContact }: HeroProps) => {
+  const { t } = useTranslation()
   const [magnet, setMagnet] = useState({ x: 0, y: 0 })
 
   const tiltX = (pointerRatio.x - 0.5) * TILT_X
@@ -41,7 +43,7 @@ export const Hero = ({ pointerRatio, onViewWork, onContact }: HeroProps) => {
           <div className="hero__frame">
             <div className="hero__frame-label">
               <span>
-                portrait
+                {t.hero.portraitLabel}
                 <br />
                 1:1
               </span>
@@ -53,17 +55,17 @@ export const Hero = ({ pointerRatio, onViewWork, onContact }: HeroProps) => {
         <div className="hero__body">
           <div className="badge">
             <span className="badge__dot" />
-            {BADGE}
+            {t.hero.badge}
           </div>
 
           <h1 className="hero__headline">
-            {HERO_GREETING}
+            {t.hero.greeting}
             <br />
-            <span className="hero__gradient-text">{HEADLINE}</span>
+            <span className="hero__gradient-text">{t.hero.headline}</span>
             <span className="hero__caret" />
           </h1>
 
-          <p className="hero__lead">{HERO_LEAD}</p>
+          <p className="hero__lead">{t.hero.lead}</p>
 
           <div className="hero__actions">
             <button
@@ -74,10 +76,10 @@ export const Hero = ({ pointerRatio, onViewWork, onContact }: HeroProps) => {
               onMouseLeave={resetMagnet}
               style={{ transform: `translate3d(${magnet.x}px, ${magnet.y}px, 0)` }}
             >
-              View my work
+              {t.hero.viewWork}
             </button>
             <button type="button" className="btn-ghost" onClick={onContact}>
-              Me contacter
+              {t.hero.contact}
             </button>
           </div>
 

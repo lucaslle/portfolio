@@ -1,16 +1,42 @@
 export type SectionId = 'home' | 'projects' | 'skills' | 'about' | 'contact'
 
+export type Locale = 'fr' | 'en'
+
+/* ------------------------------------------------------------------ *
+ * Données indépendantes de la langue (src/data/portfolio.ts)
+ * ------------------------------------------------------------------ */
+
+export type ProjectBase = {
+  id: string
+  tags: readonly string[]
+}
+
+export type SkillBase = {
+  id: string
+  lvl: number
+}
+
+export type JobBase = {
+  id: string
+  stack: readonly string[]
+}
+
+/* ------------------------------------------------------------------ *
+ * Formes assemblées (données + traduction) consommées par les composants
+ * ------------------------------------------------------------------ */
+
 export type Project = {
   id: string
   kind: string
   title: string
   blurb: string
-  tags: string[]
+  tags: readonly string[]
   cat: string
   detail: string
 }
 
 export type Skill = {
+  id: string
   name: string
   lvl: number
   level: string
@@ -24,8 +50,8 @@ export type Job = {
   place: string
   period: string
   summary: string
-  bullets: string[]
-  stack: string[]
+  bullets: readonly string[]
+  stack: readonly string[]
 }
 
 export type Social = {
