@@ -1,62 +1,52 @@
-import { useState } from 'react'
-import type { MouseEvent } from 'react'
+import { useCallback, useState } from 'react'
 import { About } from './components/About'
-import { Backdrop } from './components/Backdrop'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
+import { GridBackdrop } from './components/GridBackdrop'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
-import { Marquee } from './components/Marquee'
+import { Loader } from './components/Loader'
+import { Portfolio } from './components/Portfolio'
 import { ProjectModal } from './components/ProjectModal'
-import { Projects } from './components/Projects'
-import { Skills } from './components/Skills'
+import ClickSpark from './components/reactbits/ClickSpark/ClickSpark'
 import { NAV_ITEMS } from './data/portfolio'
-import { usePointer } from './hooks/usePointer'
 import { useScrollSpy } from './hooks/useScrollSpy'
-import { useSparks } from './hooks/useSparks'
 import type { Project } from './types'
 import { scrollToSection } from './utils/scrollToSection'
 
 const SECTION_IDS = NAV_ITEMS.map((item) => item.id)
 
 export const App = () => {
-  const { section, scrollY, velocity } = useScrollSpy(SECTION_IDS)
-  const pointer = usePointer()
-  const { sparks, burst } = useSparks()
+  const { section } = useScrollSpy(SECTION_IDS)
   const [activeProject, setActiveProject] = useState<Project | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
-  const handlePageClick = (event: MouseEvent<HTMLDivElement>) => burst(event.clientX, event.clientY)
+  const finishLoading = useCallback(() => setIsLoading(false), [])
 
   return (
-    <div className="page" onClick={handlePageClick}>
-      <Backdrop scrollY={scrollY} cursor={pointer.position} sparks={sparks} />
+    <ClickSpark sparkColor={['#8b5cf6', '#c4a6ff', '#7dd3fc']} sparkCount={9} sparkRadius={22}>
+      <div className="page">
+        <GridBackdrop />
+        <div className="page__halo page__halo--left" aria-hidden="true" />
+        <div className="page__halo page__halo--right" aria-hidden="true" />
 
-      <div className="shell">
         <Header activeSection={section} onNavigate={scrollToSection} />
 
-        <Hero
-          pointerRatio={pointer.ratio}
-          onViewWork={() => scrollToSection('projects')}
-          onContact={() => scrollToSection('contact')}
-        />
-
-        <Marquee velocity={velocity} />
-
-        <Projects onOpenProject={setActiveProject} />
-
-        <Skills />
-
-        <div className="duo">
+        <main className="shell">
+          <Hero />
           <About />
+          <Portfolio onOpenProject={setActiveProject} />
           <Contact />
-        </div>
+        </main>
 
         <Footer />
+
+        {activeProject ? (
+          <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
+        ) : null}
       </div>
 
-      {activeProject ? (
-        <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
-      ) : null}
-    </div>
+      {isLoading ? <Loader onDone={finishLoading} /> : null}
+    </ClickSpark>
   )
 }

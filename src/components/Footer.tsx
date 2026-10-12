@@ -5,6 +5,6 @@ export const Footer = () => (
     <span>
       © {FOOTER_YEAR} {FULL_NAME}
     </span>
-    <span>Space Grotesk · JetBrains Mono</span>
+    <span>Built with React Bits</span>
   </footer>
 )
