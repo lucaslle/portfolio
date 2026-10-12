@@ -54,10 +54,10 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
         </div>
 
         <div className="modal__links">
-          <a href="#projects" className="modal__link--solid" onClick={onClose}>
+          <a href="#portfolio" className="modal__link--solid" onClick={onClose}>
             Live demo
           </a>
-          <a href="#projects" className="modal__link--ghost" onClick={onClose}>
+          <a href="#portfolio" className="modal__link--ghost" onClick={onClose}>
             Source
           </a>
         </div>

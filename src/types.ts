@@ -1,4 +1,6 @@
-export type SectionId = 'home' | 'projects' | 'skills' | 'about' | 'contact'
+export type SectionId = 'home' | 'about' | 'portfolio' | 'contact'
+
+export type PortfolioTab = 'projects' | 'skills' | 'journey'
 
 export type Project = {
   id: string
@@ -31,6 +33,7 @@ export type Job = {
 export type Social = {
   tag: string
   label: string
+  handle: string
   href: string
 }
 
@@ -39,16 +42,12 @@ export type NavItem = {
   label: string
 }
 
-export type Stat = {
-  value: string
-  label: string
-}
+export type StatIcon = 'clock' | 'briefcase' | 'spark'
 
-export type Spark = {
-  id: number
-  angle: number
-  x: number
-  y: number
+export type Stat = {
+  to: number
+  label: string
+  icon: StatIcon
 }
 
 export type ContactForm = {

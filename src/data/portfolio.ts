@@ -7,8 +7,11 @@ import type { Job, NavItem, Project, Skill, Social, Stat } from '../types'
 export const FULL_NAME = 'Lucas Laliche'
 export const INITIALS = 'LL'
 export const ROLE = 'Architecte IA · Chef de projet'
-export const HERO_GREETING = "Hi, I'm Lucas,"
-export const HEADLINE = 'Architecte IA.'
+export const HERO_HEADLINE = ['Architecte', 'IA.'] as const
+export const HERO_ROLES = ['Chef de projet qui code', 'Développeur front React', 'Architecte IA']
+export const HERO_HINTS = ['↓ découvrez mes projets plus bas', '↗ ouvert aux échanges et aux collaborations']
+export const HERO_TECHS = ['React', 'TypeScript', 'Python']
+export const ABOUT_QUOTE = 'Faire le pont entre le besoin et le code.'
 export const BADGE = '2 ans d’expérience · Front & IA'
 export const CONTACT_EMAIL = 'lucas.laliche@gmail.com'
 export const FOOTER_YEAR = 2026
@@ -21,16 +24,15 @@ export const ABOUT_STORY =
 
 export const NAV_ITEMS: NavItem[] = [
   { id: 'home', label: 'Home' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'skills', label: 'Skills' },
   { id: 'about', label: 'About' },
+  { id: 'portfolio', label: 'Portfolio' },
   { id: 'contact', label: 'Contact' },
 ]
 
 /* TODO Lucas : remplace les "#" par tes vraies URLs (ou supprime la ligne). */
 export const SOCIALS: Social[] = [
-  { tag: 'IN', label: 'LinkedIn', href: '#' },
-  { tag: 'GH', label: 'GitHub', href: '#' },
+  { tag: 'IN', label: 'LinkedIn', handle: 'linkedin.com/in/…', href: '#' },
+  { tag: 'GH', label: 'GitHub', handle: 'github.com/…', href: '#' },
 ]
 
 /* ------------------------------------------------------------------ *
@@ -97,14 +99,6 @@ export const SKILLS: Skill[] = [
   { name: 'Git / CI', lvl: 3, level: 'Solide', note: 'Branches, revues, déploiements' },
 ]
 
-export const SKILL_TONES: Record<number, string> = {
-  5: '#a5f3d0',
-  4: '#c4a6ff',
-  3: '#c4a6ff',
-  2: '#7dd3fc',
-  1: '#7dd3fc',
-}
-
 /* ------------------------------------------------------------------ *
  * Parcours
  * TODO Lucas : remplace [Entreprise] / [Ville] et vérifie les dates.
@@ -156,21 +150,6 @@ export const JOBS: Job[] = [
   },
 ]
 
-const RIBBON_BASE = [
-  'React',
-  'TypeScript',
-  'Python',
-  'IA',
-  'LLM',
-  'Git',
-  'HTML',
-  'CSS',
-  'Gestion de projet',
-  'Démos',
-]
-
-export const RIBBON = [...RIBBON_BASE, ...RIBBON_BASE]
-
 export const SOFT_SKILLS = [
   'Cadrage du besoin',
   'Démos client',
@@ -180,10 +159,8 @@ export const SOFT_SKILLS = [
   'Veille IA',
 ]
 
-/* TODO Lucas : remplace les [N] par tes vrais chiffres, ou dis-moi de
-   retirer la tuile si tu préfères ne rien afficher. */
 export const STATS: Stat[] = [
-  { value: '2 ans', label: 'd’expérience' },
-  { value: '[N]', label: 'features livrées' },
-  { value: '[N]', label: 'démos menées' },
+  { to: 2, label: 'ans d’expérience', icon: 'clock' },
+  { to: JOBS.length, label: 'rôles occupés', icon: 'briefcase' },
+  { to: SKILLS.length, label: 'compétences clés', icon: 'spark' },
 ]
