@@ -1,4 +1,4 @@
-import { FULL_NAME, INITIALS, NAV_ITEMS, ROLE } from '../data/portfolio'
+import { FULL_NAME, NAV_ITEMS } from '../data/portfolio'
 import type { SectionId } from '../types'
 
 type HeaderProps = {
@@ -8,12 +8,9 @@ type HeaderProps = {
 
 export const Header = ({ activeSection, onNavigate }: HeaderProps) => (
   <header className="header">
-    <div className="header__brand">
-      <div className="header__mark">{INITIALS}</div>
-      <div className="header__title">
-        {FULL_NAME} <span style={{ color: '#a78bfa' }}>//</span> {ROLE}
-      </div>
-    </div>
+    <button type="button" className="header__brand" aria-label={FULL_NAME} onClick={() => onNavigate('home')}>
+      lucas.dev
+    </button>
 
     <nav className="header__nav" aria-label="Navigation principale">
       {NAV_ITEMS.map((item) => (

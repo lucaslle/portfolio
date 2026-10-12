@@ -1,29 +1,25 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { CONTACT_EMAIL } from '../data/portfolio'
-import type { ContactForm, SendingState } from '../types'
+import { CONTACT_EMAIL, SOCIALS } from '../data/portfolio'
+import type { ContactForm } from '../types'
+import BlurText from './reactbits/BlurText/BlurText'
+import Magnet from './reactbits/Magnet/Magnet'
+import SpotlightCard from './reactbits/SpotlightCard/SpotlightCard'
+import StarBorder from './reactbits/StarBorder/StarBorder'
 
-const SENT_DELAY = 700
-const RESET_DELAY = 3200
+const SPOTLIGHT_COLOR = 'rgba(139, 92, 246, 0.28)'
 
 const EMPTY_FORM: ContactForm = { name: '', email: '', msg: '' }
 
-const SEND_LABELS: Record<SendingState, string> = {
-  idle: 'Send',
-  sending: 'Envoi…',
-  sent: 'Envoyé ✓',
+const buildMailto = (form: ContactForm): string => {
+  const subject = encodeURIComponent(`Contact portfolio — ${form.name}`)
+  const body = encodeURIComponent(`${form.msg}\n\n${form.name} · ${form.email}`)
+
+  return `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
 }
 
 export const Contact = () => {
   const [form, setForm] = useState<ContactForm>(EMPTY_FORM)
-  const [sending, setSending] = useState<SendingState>('idle')
-  const timeouts = useRef<number[]>([])
-
-  useEffect(() => {
-    const pending = timeouts.current
-
-    return () => pending.forEach((id) => window.clearTimeout(id))
-  }, [])
 
   const updateField = (field: keyof ContactForm, value: string) => {
     setForm((current) => ({ ...current, [field]: value }))
@@ -31,68 +27,103 @@ export const Contact = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if (sending !== 'idle') return
-
-    setSending('sending')
-    timeouts.current.push(window.setTimeout(() => setSending('sent'), SENT_DELAY))
-    timeouts.current.push(
-      window.setTimeout(() => {
-        setSending('idle')
-        setForm(EMPTY_FORM)
-      }, RESET_DELAY),
-    )
+    window.location.href = buildMailto(form)
   }
 
   return (
-    <section id="contact" className="panel contact">
-      <h2 className="section-title" style={{ marginBottom: 20 }}>
-        Contact
-      </h2>
+    <section id="contact" className="contact">
+      <div className="contact__head">
+        <h2 className="section-title">
+          <BlurText text="Contact" delay={100} animateBy="letters" direction="top" />
+        </h2>
+        <p className="section-lead">Une idée en tête ? Écrivez-moi et discutons-en.</p>
+      </div>
 
-      <form className="contact__form" onSubmit={handleSubmit} noValidate>
-        <label className="field">
-          Name
-          <input
-            type="text"
-            placeholder="Prénom Nom"
-            value={form.name}
-            onChange={(event) => updateField('name', event.target.value)}
-          />
-        </label>
+      <div className="contact__grid">
+        <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="panel">
+          <form className="contact__form" onSubmit={handleSubmit}>
+            <label className="field">
+              Nom
+              <input
+                type="text"
+                name="name"
+                autoComplete="name"
+                required
+                placeholder="Prénom Nom"
+                value={form.name}
+                onChange={(event) => updateField('name', event.target.value)}
+              />
+            </label>
 
-        <label className="field">
-          Email
-          <input
-            type="email"
-            placeholder="you@studio.dev"
-            value={form.email}
-            onChange={(event) => updateField('email', event.target.value)}
-          />
-        </label>
+            <label className="field">
+              Email
+              <input
+                type="email"
+                name="email"
+                autoComplete="email"
+                required
+                placeholder="vous@exemple.fr"
+                value={form.email}
+                onChange={(event) => updateField('email', event.target.value)}
+              />
+            </label>
 
-        <label className="field">
-          Message
-          <textarea
-            rows={4}
-            placeholder="Parlons de votre projet…"
-            value={form.msg}
-            onChange={(event) => updateField('msg', event.target.value)}
-          />
-        </label>
+            <label className="field">
+              Message
+              <textarea
+                name="message"
+                rows={5}
+                required
+                placeholder="Parlons de votre projet…"
+                value={form.msg}
+                onChange={(event) => updateField('msg', event.target.value)}
+              />
+            </label>
 
-        <div className="contact__actions">
-          <button type="submit" className="btn-send" disabled={sending !== 'idle'}>
-            {SEND_LABELS[sending]}
-          </button>
-          <span className="contact__note" role="status">
-            {sending === 'sent' ? 'Merci ! Réponse sous 24h.' : ''}
-          </span>
-        </div>
+            <StarBorder
+              as="button"
+              type="submit"
+              color="#8b5cf6"
+              trailColor="#7dd3fc"
+              backgroundColor="#e9dcff"
+              textColor="#07040e"
+              radius={10}
+            >
+              Envoyer par e-mail
+            </StarBorder>
+          </form>
+        </SpotlightCard>
 
-        <div className="contact__mail">
-          Email · <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-        </div>
-      </form>
+        <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="panel">
+          <h3 className="contact__subtitle">Me retrouver</h3>
+          <p className="contact__text">
+            Je réponds directement par e-mail, ou retrouvez-moi sur les réseaux.
+          </p>
+
+          <ul className="socials">
+            {SOCIALS.map((social) => (
+              <li key={social.label}>
+                <Magnet magnetStrength={4} padding={40}>
+                  <a className="social" href={social.href} target="_blank" rel="noreferrer">
+                    <span className="social__tag">{social.tag}</span>
+                    <span className="social__text">
+                      <span className="social__label">{social.label}</span>
+                      <span className="social__handle">{social.handle}</span>
+                    </span>
+                    <span className="social__arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </a>
+                </Magnet>
+              </li>
+            ))}
+          </ul>
+
+          <p className="contact__mail">
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          </p>
+        </SpotlightCard>
+      </div>
     </section>
   )
 }

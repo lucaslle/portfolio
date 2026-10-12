@@ -12,14 +12,18 @@
   "dependencies": {
     "@mui/material": "^7.0.2",
     "@mui/styled-engine-sc": "^7.0.2",
+    "gsap": "^3.13.0",
+    "motion": "^12.23.12",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "styled-components": "^6.1.17"
+    "styled-components": "^6.1.17",
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "@types/three": "^0.180.0",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.22.0",
     "eslint-plugin-react-hooks": "^5.2.0",
