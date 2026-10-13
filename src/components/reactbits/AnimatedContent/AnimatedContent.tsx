@@ -3,6 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { prefersReducedMotion } from '../../../utils/prefersReducedMotion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,6 +54,11 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    if (prefersReducedMotion()) {
+      el.style.visibility = 'visible';
+      return;
+    }
 
     let scrollerTarget: Element | string | null = container || document.getElementById('snap-main-container') || null;
 
