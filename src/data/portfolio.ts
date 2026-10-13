@@ -1,4 +1,4 @@
-import type { Job, NavItem, Project, Skill, Social, Stat } from '../types'
+import type { Education, Job, NavItem, Project, Skill, Social, Stat } from '../types'
 
 /* ------------------------------------------------------------------ *
  * Identité
@@ -23,8 +23,8 @@ export const ABOUT_STORY =
   'Je fais le pont entre le besoin et le code. Concrètement : je cadre, je développe les features moi-même, puis je les présente en démo. Un an d’alternance, un an de développement front avec un peu de Python, et je démarre maintenant sur l’architecture IA.'
 
 export const NAV_ITEMS: NavItem[] = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
+  { id: 'home', label: 'Accueil' },
+  { id: 'about', label: 'À propos' },
   { id: 'portfolio', label: 'Portfolio' },
   { id: 'contact', label: 'Contact' },
 ]
@@ -101,52 +101,73 @@ export const SKILLS: Skill[] = [
 
 /* ------------------------------------------------------------------ *
  * Parcours
- * TODO Lucas : remplace [Entreprise] / [Ville] et vérifie les dates.
- * Les puces sont des amorces à réécrire avec tes vraies réalisations.
+ * Source : CV (Développeur React & référent projet, XEFI).
  * ------------------------------------------------------------------ */
 
 export const JOBS: Job[] = [
   {
     id: 'j1',
-    role: 'Architecte IA',
-    company: '[Entreprise]',
-    place: '[Ville] · CDI',
-    period: '2026 — auj.',
+    role: 'Développeur React & Gestion de projet',
+    company: 'XEFI',
+    place: 'Rillieux-la-Pape · CDI',
+    period: 'Oct. 2025 — auj.',
     summary:
-      'Poste en cours de prise de fonction : je conçois les briques IA et je continue à développer et démontrer les features.',
+      'Je pilote des projets de bout en bout : du recueil du besoin jusqu’à la mise en production, en restant sur le code.',
     bullets: [
-      '[À compléter : le périmètre du poste]',
-      '[À compléter : une première réalisation ou un objectif]',
+      'Pilotage de projet de A à Z : analyse du besoin, estimation et engagement sur les délais, maquettes, développement, démo client puis déploiement.',
+      'GED interne en React : plateforme de gestion électronique de documents (recherche, prévisualisation, droits et autorisations fins), utilisée par plus de 700 utilisateurs.',
+      'Architecture frontend : interfaces réactives, modulaires et maintenables (architecture composants, intégration d’API, gestion d’état).',
+      'Scrum Master : animation des cérémonies agiles et levée des blocages pour une équipe de 14 personnes.',
+      'Travail étroit avec le Product Owner, les designers et les développeurs backend, avec une force de proposition sur les choix techniques et UX.',
     ],
-    stack: ['[Techno]', '[Techno]'],
+    stack: ['React', 'TypeScript', 'Scrum'],
   },
   {
     id: 'j2',
-    role: 'Développeur Front-End',
-    company: '[Entreprise]',
-    place: '[Ville] · CDI',
-    period: '2025 — 2026',
+    role: 'Développeur React — alternance',
+    company: 'XEFI',
+    place: 'Rillieux-la-Pape · Alternance',
+    period: 'Août 2024 — Oct. 2025',
     summary:
-      'Un an de développement front, avec du Python en appui, en lien direct avec les utilisateurs métier.',
+      'Une année en alternance (CDA, Bac+3) au sein de la même équipe, avant le passage en CDI.',
     bullets: [
-      '[À compléter : une feature que tu as développée de bout en bout]',
-      '[À compléter : un chiffre ou un résultat concret]',
-      '[À compléter : les démos / la relation métier]',
+      'Conception et développement de la GED interne en React.',
+      'Participation au cadrage, aux démos client et aux mises en production.',
     ],
-    stack: ['React', 'TypeScript', 'Python'],
+    stack: ['React', 'TypeScript'],
   },
   {
     id: 'j3',
-    role: 'Alternance — Développeur',
-    company: '[Entreprise]',
-    place: '[Ville]',
-    period: '2024 — 2025',
-    summary: 'Première année en entreprise : montée en compétence sur le développement web.',
+    role: 'Stagiaire développeur',
+    company: 'Hospices Civils de Lyon (HCL)',
+    place: 'Direction des Services Numériques',
+    period: 'Mai — juil. 2023',
+    summary: 'Stage de BTS au sein de la Direction des Services Numériques.',
     bullets: [
-      '[À compléter : ce que tu as appris / livré]',
-      '[À compléter : les technos pratiquées]',
+      'Participation au développement d’Easily, le logiciel de dossier patient utilisé par le personnel médical et paramédical des HCL.',
     ],
-    stack: ['[Techno]', '[Techno]'],
+    stack: [],
+  },
+]
+
+export const EDUCATION: Education[] = [
+  {
+    id: 'e1',
+    title: 'Concepteur Développeur d’Applications (CDA) — Bac+3, en alternance',
+    school: 'EPSI Lyon',
+    period: '2024 — 2025',
+  },
+  {
+    id: 'e2',
+    title: 'BTS SNIR — Systèmes Numériques, Informatique et Réseaux',
+    school: 'Lycée ORT Lyon 8',
+    period: '2022 — 2024',
+  },
+  {
+    id: 'e3',
+    title: 'Baccalauréat STI2D — mention assez bien',
+    school: 'Lycée ORT Lyon 8',
+    period: '2020 — 2022',
   },
 ]
 
