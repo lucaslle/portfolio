@@ -2,6 +2,7 @@
 
 import { motion, type Transition } from 'motion/react';
 import { useEffect, useRef, useState, useMemo } from 'react';
+import { prefersReducedMotion } from '../../../utils/prefersReducedMotion';
 
 type BlurTextProps = {
   text?: string;
@@ -82,8 +83,9 @@ const BlurText: React.FC<BlurTextProps> = ({
     [direction]
   );
 
-  const fromSnapshot = animationFrom ?? defaultFrom;
   const toSnapshots = animationTo ?? defaultTo;
+  const [reduceMotion] = useState(prefersReducedMotion);
+  const fromSnapshot = reduceMotion ? toSnapshots[toSnapshots.length - 1] : (animationFrom ?? defaultFrom);
 
   const stepCount = toSnapshots.length + 1;
   const totalDuration = stepDuration * (stepCount - 1);

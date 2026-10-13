@@ -2,6 +2,7 @@
 
 import { useInView, useMotionValue, useSpring } from 'motion/react';
 import { useCallback, useEffect, useRef } from 'react';
+import { prefersReducedMotion } from '../../../utils/prefersReducedMotion';
 
 interface CountUpProps {
   to: number;
@@ -53,6 +54,7 @@ export default function CountUp({
   };
 
   const maxDecimals = Math.max(getDecimalPlaces(from), getDecimalPlaces(to));
+  const reduceMotion = useRef(prefersReducedMotion()).current;
 
   const formatValue = useCallback(
     (latest: number) => {
@@ -73,12 +75,14 @@ export default function CountUp({
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.textContent = formatValue(direction === 'down' ? to : from);
+      const startValue = direction === 'down' ? to : from;
+      const endValue = direction === 'down' ? from : to;
+      ref.current.textContent = formatValue(reduceMotion ? endValue : startValue);
     }
-  }, [from, to, direction, formatValue]);
+  }, [from, to, direction, formatValue, reduceMotion]);
 
   useEffect(() => {
-    if (isInView && startWhen) {
+    if (isInView && startWhen && !reduceMotion) {
       if (typeof onStart === 'function') {
         onStart();
       }
@@ -101,7 +105,7 @@ export default function CountUp({
         clearTimeout(durationTimeoutId);
       };
     }
-  }, [isInView, startWhen, motionValue, direction, from, to, delay, onStart, onEnd, duration]);
+  }, [isInView, startWhen, reduceMotion, motionValue, direction, from, to, delay, onStart, onEnd, duration]);
 
   useEffect(() => {
     const unsubscribe = springValue.on('change', (latest: number) => {
