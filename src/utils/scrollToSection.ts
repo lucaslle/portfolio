@@ -1,3 +1,5 @@
+import { prefersReducedMotion } from './prefersReducedMotion'
+
 const HEADER_OFFSET = 90
 
 export const scrollToSection = (id: string): void => {
@@ -6,6 +8,6 @@ export const scrollToSection = (id: string): void => {
 
   window.scrollTo({
     top: element.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET,
-    behavior: 'smooth',
+    behavior: prefersReducedMotion() ? 'auto' : 'smooth',
   })
 }

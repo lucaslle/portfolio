@@ -10,6 +10,8 @@ export type Project = {
   tags: string[]
   cat: string
   detail: string
+  demoUrl?: string
+  sourceUrl?: string
 }
 
 export type Skill = {
@@ -28,6 +30,13 @@ export type Job = {
   summary: string
   bullets: string[]
   stack: string[]
+}
+
+export type Education = {
+  id: string
+  title: string
+  school: string
+  period: string
 }
 
 export type Social = {

@@ -1,22 +1,23 @@
-import { useMemo, useState } from 'react'
+import { lazy, Suspense, useMemo } from 'react'
 import { BADGE, HERO_HEADLINE, HERO_HINTS, HERO_LEAD, HERO_ROLES, HERO_TECHS } from '../data/portfolio'
+import { useIsCompact } from '../hooks/useIsCompact'
 import { buildBadgeImage } from '../utils/badgeImage'
-import Lanyard from './reactbits/Lanyard/Lanyard'
 import ShinyText from './reactbits/ShinyText/ShinyText'
 import TextType from './reactbits/TextType/TextType'
 
+const Lanyard = lazy(() => import('./reactbits/Lanyard/Lanyard'))
+
 const [HEADLINE_FIRST, HEADLINE_SECOND] = HERO_HEADLINE
 
-const COMPACT_BREAKPOINT = 960
 const BADGE_SIZE_DESKTOP = 0.48
 const BADGE_SIZE_COMPACT = 0.36
 
 export const Hero = () => {
   const frontImage = useMemo(() => buildBadgeImage('front'), [])
   const backImage = useMemo(() => buildBadgeImage('back'), [])
-  const [badgeSize] = useState(() =>
-    window.innerWidth < COMPACT_BREAKPOINT ? BADGE_SIZE_COMPACT : BADGE_SIZE_DESKTOP,
-  )
+  const isCompact = useIsCompact()
+  const badgeSize = isCompact ? BADGE_SIZE_COMPACT : BADGE_SIZE_DESKTOP
+  const anchor = isCompact ? 'center' : 'right'
 
   return (
     <section id="home" className="hero">
@@ -59,15 +60,18 @@ export const Hero = () => {
       </div>
 
       <div className="hero__lanyard" aria-hidden="true">
-        <Lanyard
-          frontImage={frontImage}
-          backImage={backImage}
-          cardColor="#0d0818"
-          metal="silver"
-          strapColor="#4c2a9e"
-          anchor="center"
-          size={badgeSize}
-        />
+        <Suspense fallback={null}>
+          <Lanyard
+            frontImage={frontImage}
+            backImage={backImage}
+            cardColor="#0d0818"
+            metal="silver"
+            strapColor="#4c2a9e"
+            anchor={anchor}
+            interactionScope="window"
+            size={badgeSize}
+          />
+        </Suspense>
       </div>
 
       <div className="hero__scroll" aria-hidden="true">

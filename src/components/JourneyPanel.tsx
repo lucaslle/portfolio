@@ -1,40 +1,72 @@
-import { JOBS } from '../data/portfolio'
+import { EDUCATION, JOBS } from '../data/portfolio'
 import SpotlightCard from './reactbits/SpotlightCard/SpotlightCard'
 
 const SPOTLIGHT_COLOR = 'rgba(196, 166, 255, 0.25)'
 
 export const JourneyPanel = () => (
-  <ol className="journey">
-    {JOBS.map((job) => (
-      <li key={job.id}>
-        <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="job">
-          <div className="job__head">
-            <div>
-              <h3 className="job__role">{job.role}</h3>
-              <p className="job__company">
-                {job.company} · {job.place}
-              </p>
-            </div>
-            <span className="job__period">{job.period}</span>
-          </div>
+  <div className="journey">
+    <section aria-labelledby="journey-experience">
+      <h3 id="journey-experience" className="journey__title">
+        Expérience
+      </h3>
 
-          <p className="job__summary">{job.summary}</p>
+      <ol className="journey__list">
+        {JOBS.map((job) => (
+          <li key={job.id}>
+            <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="job">
+              <div className="job__head">
+                <div>
+                  <h4 className="job__role">{job.role}</h4>
+                  <p className="job__company">
+                    {job.company} · {job.place}
+                  </p>
+                </div>
+                <span className="job__period">{job.period}</span>
+              </div>
 
-          <ul className="job__bullets">
-            {job.bullets.map((bullet) => (
-              <li key={bullet}>{bullet}</li>
-            ))}
-          </ul>
+              <p className="job__summary">{job.summary}</p>
 
-          <ul className="project__tags">
-            {job.stack.map((tech, index) => (
-              <li key={`${tech}-${index}`} className="chip">
-                {tech}
-              </li>
-            ))}
-          </ul>
-        </SpotlightCard>
-      </li>
-    ))}
-  </ol>
+              <ul className="job__bullets">
+                {job.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+
+              {job.stack.length > 0 ? (
+                <ul className="project__tags">
+                  {job.stack.map((tech) => (
+                    <li key={tech} className="chip">
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </SpotlightCard>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section aria-labelledby="journey-education">
+      <h3 id="journey-education" className="journey__title">
+        Formation
+      </h3>
+
+      <ol className="journey__list">
+        {EDUCATION.map((diploma) => (
+          <li key={diploma.id}>
+            <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="job">
+              <div className="job__head">
+                <div>
+                  <h4 className="job__role job__role--small">{diploma.title}</h4>
+                  <p className="job__company">{diploma.school}</p>
+                </div>
+                <span className="job__period">{diploma.period}</span>
+              </div>
+            </SpotlightCard>
+          </li>
+        ))}
+      </ol>
+    </section>
+  </div>
 )
