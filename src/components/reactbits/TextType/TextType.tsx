@@ -2,6 +2,7 @@
 
 import { type ElementType, useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
+import { prefersReducedMotion } from '../../../utils/prefersReducedMotion';
 import './TextType.css';
 
 interface TextTypeProps {
@@ -51,6 +52,7 @@ const TextType = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(!startOnVisible);
+  const [reduceMotion] = useState(prefersReducedMotion);
   const cursorRef = useRef<HTMLSpanElement>(null);
   const containerRef = useRef<HTMLElement>(null);
 
@@ -86,7 +88,7 @@ const TextType = ({
   }, [startOnVisible]);
 
   useEffect(() => {
-    if (showCursor && cursorRef.current) {
+    if (showCursor && cursorRef.current && !reduceMotion) {
       gsap.set(cursorRef.current, { opacity: 1 });
       gsap.to(cursorRef.current, {
         opacity: 0,
@@ -96,10 +98,10 @@ const TextType = ({
         ease: 'power2.inOut'
       });
     }
-  }, [showCursor, cursorBlinkDuration]);
+  }, [showCursor, cursorBlinkDuration, reduceMotion]);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || reduceMotion) return;
 
     let timeout: ReturnType<typeof setTimeout>;
 
@@ -163,8 +165,10 @@ const TextType = ({
     loop,
     initialDelay,
     isVisible,
+    reduceMotion,
     reverseMode,
     variableSpeed,
+    getRandomSpeed,
     onSentenceComplete
   ]);
 
@@ -179,7 +183,7 @@ const TextType = ({
       ...props
     },
     <span className="text-type__content" style={{ color: getCurrentTextColor() || 'inherit' }}>
-      {displayedText}
+      {reduceMotion ? textArray[0] : displayedText}
     </span>,
     showCursor && (
       <span

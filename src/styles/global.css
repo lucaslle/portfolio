@@ -9,7 +9,7 @@
   --cyan: #7dd3fc;
   --text: #f4efff;
   --muted: #9a8db8;
-  --faint: #6b5f87;
+  --faint: #8578a8;
   --display: 'Syne', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --mono: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   color-scheme: dark;
@@ -187,11 +187,11 @@ button {
 }
 
 .nav-link:hover,
-.nav-link[aria-current='true'] {
+.nav-link[aria-current='location'] {
   color: var(--ice);
 }
 
-.nav-link[aria-current='true'] {
+.nav-link[aria-current='location'] {
   font-weight: 500;
 }
 
@@ -311,10 +311,12 @@ button {
 .hero__lanyard {
   position: absolute;
   top: 0;
-  right: 0;
   bottom: 0;
+  left: 50%;
   z-index: 1;
-  width: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .hero__scroll {
@@ -609,9 +611,22 @@ button {
 
 .journey {
   display: grid;
-  gap: 22px;
+  gap: 48px;
   max-width: 860px;
   margin: 0 auto;
+}
+
+.journey__title {
+  margin-bottom: 18px;
+  font: 400 11px/1 var(--mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--violet);
+}
+
+.journey__list {
+  display: grid;
+  gap: 22px;
 }
 
 .job {
@@ -628,6 +643,10 @@ button {
 
 .job__role {
   font: 700 21px/1.2 var(--display);
+}
+
+.job__role--small {
+  font-size: 16px;
 }
 
 .job__company {
@@ -815,12 +834,23 @@ button {
   position: fixed;
   inset: 0;
   z-index: 90;
-  display: grid;
-  place-items: center;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
   padding: 24px;
+  border: 0;
   background: rgba(5, 2, 12, 0.78);
   backdrop-filter: blur(8px);
+  color: inherit;
+  overflow-y: auto;
   animation: rise 0.2s ease both;
+}
+
+.modal-overlay[open] {
+  display: grid;
+  place-items: center;
 }
 
 .modal {
@@ -928,6 +958,7 @@ button {
   .hero__lanyard {
     position: relative;
     inset: auto;
+    transform: none;
     width: calc(100% + 2 * clamp(20px, 5vw, 64px));
     margin-inline: calc(-1 * clamp(20px, 5vw, 64px));
     height: 520px;
