@@ -1,6 +1,9 @@
 import type { MouseEvent } from 'react'
-import { FULL_NAME, NAV_ITEMS } from '../data/portfolio'
+import { FULL_NAME } from '../data/portfolio'
+import { useContent } from '../i18n/useContent'
+import { useTranslation } from '../i18n/useTranslation'
 import type { SectionId } from '../types'
+import { LanguageSwitch } from './LanguageSwitch'
 
 type HeaderProps = {
   activeSection: SectionId
@@ -8,6 +11,9 @@ type HeaderProps = {
 }
 
 export const Header = ({ activeSection, onNavigate }: HeaderProps) => {
+  const { t } = useTranslation()
+  const { navItems } = useContent()
+
   const handleNavigate = (event: MouseEvent<HTMLAnchorElement>, id: SectionId) => {
     event.preventDefault()
     onNavigate(id)
@@ -20,8 +26,8 @@ export const Header = ({ activeSection, onNavigate }: HeaderProps) => {
         lucas.dev
       </a>
 
-      <nav className="header__nav" aria-label="Navigation principale">
-        {NAV_ITEMS.map((item) => (
+      <nav className="header__nav" aria-label={t.a11y.mainNav}>
+        {navItems.map((item) => (
           <a
             key={item.id}
             href={`#${item.id}`}
@@ -34,6 +40,8 @@ export const Header = ({ activeSection, onNavigate }: HeaderProps) => {
           </a>
         ))}
       </nav>
+
+      <LanguageSwitch />
     </header>
   )
 }

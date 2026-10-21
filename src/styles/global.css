@@ -204,6 +204,45 @@ button {
   background: var(--lilac);
 }
 
+/* ---------- Language switch ---------- */
+
+.lang-switch {
+  display: flex;
+  flex: none;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+}
+
+.lang-switch__option {
+  padding: 5px 9px;
+  border: 0;
+  border-radius: 7px;
+  background: none;
+  cursor: pointer;
+  font: 500 11px/1 var(--mono);
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.lang-switch__option:hover {
+  color: var(--ice);
+}
+
+.lang-switch__option:focus-visible {
+  outline: 2px solid var(--lilac);
+  outline-offset: 2px;
+}
+
+.lang-switch__option[aria-pressed='true'] {
+  color: var(--bg);
+  background: var(--ice);
+}
+
 /* ---------- Shared ---------- */
 
 .eyebrow {
@@ -994,7 +1033,7 @@ button {
   }
 
   .header__nav {
-    width: 100%;
+    flex: 1;
     justify-content: space-between;
   }
 

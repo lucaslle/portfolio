@@ -9,13 +9,11 @@ import { Loader } from './components/Loader'
 import { Portfolio } from './components/Portfolio'
 import { ProjectModal } from './components/ProjectModal'
 import ClickSpark from './components/reactbits/ClickSpark/ClickSpark'
-import { NAV_ITEMS } from './data/portfolio'
+import { SECTION_IDS } from './data/portfolio'
 import { useScrollSpy } from './hooks/useScrollSpy'
 import type { Project } from './types'
 import { markIntroSeen, shouldPlayIntro } from './utils/introSeen'
 import { scrollToSection } from './utils/scrollToSection'
-
-const SECTION_IDS = NAV_ITEMS.map((item) => item.id)
 
 export const App = () => {
   const section = useScrollSpy(SECTION_IDS)

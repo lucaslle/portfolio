@@ -1,4 +1,6 @@
-import { ABOUT_QUOTE, ABOUT_STORY, FULL_NAME, INITIALS, STATS } from '../data/portfolio'
+import { FULL_NAME, INITIALS } from '../data/portfolio'
+import { useContent } from '../i18n/useContent'
+import { useTranslation } from '../i18n/useTranslation'
 import { scrollToSection } from '../utils/scrollToSection'
 import AnimatedContent from './reactbits/AnimatedContent/AnimatedContent'
 import BlurText from './reactbits/BlurText/BlurText'
@@ -9,67 +11,72 @@ import { StatIconGlyph } from './StatIconGlyph'
 
 const SPOTLIGHT_COLOR = 'rgba(139, 92, 246, 0.35)'
 
-export const About = () => (
-  <section id="about" className="about">
-    <div className="about__grid">
-      <div className="about__body">
-        <span className="eyebrow">À propos</span>
+export const About = () => {
+  const { t } = useTranslation()
+  const { stats } = useContent()
 
-        <h2 className="about__name">
-          <BlurText text={FULL_NAME} delay={120} animateBy="words" direction="top" />
-        </h2>
+  return (
+    <section id="about" className="about">
+      <div className="about__grid">
+        <div className="about__body">
+          <span className="eyebrow">{t.about.eyebrow}</span>
 
-        <p className="about__story">{ABOUT_STORY}</p>
+          <h2 className="about__name">
+            <BlurText text={FULL_NAME} delay={120} animateBy="words" direction="top" />
+          </h2>
 
-        <blockquote className="about__quote">“{ABOUT_QUOTE}”</blockquote>
+          <p className="about__story">{t.about.story}</p>
 
-        <div className="about__actions">
-          <StarBorder
-            as="button"
-            type="button"
-            color="#8b5cf6"
-            trailColor="#7dd3fc"
-            backgroundColor="#e9dcff"
-            textColor="#07040e"
-            radius={10}
-            onClick={() => scrollToSection('portfolio')}
-          >
-            Voir les projets
-          </StarBorder>
+          <blockquote className="about__quote">“{t.about.quote}”</blockquote>
 
-          <StarBorder
-            as="button"
-            type="button"
-            color="#8b5cf6"
-            backgroundColor="#0d0818"
-            textColor="#e9dcff"
-            radius={10}
-            onClick={() => scrollToSection('contact')}
-          >
-            Me contacter
-          </StarBorder>
+          <div className="about__actions">
+            <StarBorder
+              as="button"
+              type="button"
+              color="#8b5cf6"
+              trailColor="#7dd3fc"
+              backgroundColor="#e9dcff"
+              textColor="#07040e"
+              radius={10}
+              onClick={() => scrollToSection('portfolio')}
+            >
+              {t.about.viewProjects}
+            </StarBorder>
+
+            <StarBorder
+              as="button"
+              type="button"
+              color="#8b5cf6"
+              backgroundColor="#0d0818"
+              textColor="#e9dcff"
+              radius={10}
+              onClick={() => scrollToSection('contact')}
+            >
+              {t.about.contact}
+            </StarBorder>
+          </div>
+        </div>
+
+        <div className="about__portrait" aria-hidden="true">
+          <div className="about__monogram">{INITIALS}</div>
         </div>
       </div>
 
-      <div className="about__portrait" aria-hidden="true">
-        <div className="about__monogram">{INITIALS}</div>
-      </div>
-    </div>
-
-    <ul className="about__stats">
-      {STATS.map((stat, index) => (
-        <li key={stat.label}>
-          <AnimatedContent distance={40} delay={index * 0.12}>
-            <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="stat">
-              <span className="stat__icon">
-                <StatIconGlyph icon={stat.icon} />
-              </span>
-              <CountUp to={stat.to} duration={2} className="stat__value" />
-              <span className="stat__label">{stat.label}</span>
-            </SpotlightCard>
-          </AnimatedContent>
-        </li>
-      ))}
-    </ul>
-  </section>
-)
+      <ul className="about__stats">
+        {stats.map((stat, index) => (
+          <li key={stat.icon}>
+            <AnimatedContent distance={40} delay={index * 0.12}>
+              <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="stat">
+                <span className="stat__icon">
+                  <StatIconGlyph icon={stat.icon} />
+                </span>
+                <CountUp to={stat.to} duration={2} className="stat__value" />
+                <span className="stat__label">{stat.label}</span>
+              </SpotlightCard>
+            </AnimatedContent>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}

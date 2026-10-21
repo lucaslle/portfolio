@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import type { MouseEvent, SyntheticEvent } from 'react'
+import { useTranslation } from '../i18n/useTranslation'
 import type { Project } from '../types'
 
 type ProjectModalProps = {
@@ -8,6 +9,7 @@ type ProjectModalProps = {
 }
 
 export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
+  const { t } = useTranslation()
   const dialogRef = useRef<HTMLDialogElement>(null)
 
   useEffect(() => {
@@ -50,7 +52,7 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
               {project.title}
             </h3>
           </div>
-          <button type="button" className="modal__close" aria-label="Fermer" onClick={onClose}>
+          <button type="button" className="modal__close" aria-label={t.modal.close} onClick={onClose}>
             ✕
           </button>
         </div>
@@ -69,12 +71,12 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
           <div className="modal__links">
             {project.demoUrl ? (
               <a href={project.demoUrl} className="modal__link--solid" target="_blank" rel="noreferrer">
-                Live demo
+                {t.modal.liveDemo}
               </a>
             ) : null}
             {project.sourceUrl ? (
               <a href={project.sourceUrl} className="modal__link--ghost" target="_blank" rel="noreferrer">
-                Source
+                {t.modal.source}
               </a>
             ) : null}
           </div>

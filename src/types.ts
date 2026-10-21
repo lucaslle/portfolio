@@ -2,12 +2,14 @@ export type SectionId = 'home' | 'about' | 'portfolio' | 'contact'
 
 export type PortfolioTab = 'projects' | 'skills' | 'journey'
 
+export type Locale = 'fr' | 'en'
+
 export type Project = {
   id: string
   kind: string
   title: string
   blurb: string
-  tags: string[]
+  tags: readonly string[]
   cat: string
   detail: string
   demoUrl?: string
@@ -15,6 +17,7 @@ export type Project = {
 }
 
 export type Skill = {
+  id: string
   name: string
   lvl: number
   level: string
@@ -28,8 +31,8 @@ export type Job = {
   place: string
   period: string
   summary: string
-  bullets: string[]
-  stack: string[]
+  bullets: readonly string[]
+  stack: readonly string[]
 }
 
 export type Education = {
