@@ -109,5 +109,7 @@ export type Translation = {
   a11y: {
     mainNav: string
     languageSwitch: string
+    background: string
+    resetBackground: string
   }
 }

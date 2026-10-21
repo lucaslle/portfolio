@@ -1,9 +1,9 @@
 import { useContent } from '../i18n/useContent'
 import { useTranslation } from '../i18n/useTranslation'
+import { withAlpha } from '../theme/palette'
+import { useTheme } from '../theme/useTheme'
 import type { Project } from '../types'
 import SpotlightCard from './reactbits/SpotlightCard/SpotlightCard'
-
-const SPOTLIGHT_COLOR = 'rgba(139, 92, 246, 0.3)'
 
 type ProjectsPanelProps = {
   onOpenProject: (project: Project) => void
@@ -12,12 +12,14 @@ type ProjectsPanelProps = {
 export const ProjectsPanel = ({ onOpenProject }: ProjectsPanelProps) => {
   const { t } = useTranslation()
   const { projects } = useContent()
+  const { palette } = useTheme()
+  const spotlightColor = withAlpha(palette.violet, 0.3)
 
   return (
     <ul className="cards">
       {projects.map((project) => (
         <li key={project.id}>
-          <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="project">
+          <SpotlightCard spotlightColor={spotlightColor} className="project">
             <span className="project__kind">{project.kind}</span>
             <h3 className="project__title">{project.title}</h3>
             <p className="project__blurb">{project.blurb}</p>

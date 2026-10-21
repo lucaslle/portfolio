@@ -184,5 +184,7 @@ export const en: Translation = {
   a11y: {
     mainNav: 'Main navigation',
     languageSwitch: 'Language',
+    background: 'Background colour',
+    resetBackground: 'Restore the original background colour',
   },
 }

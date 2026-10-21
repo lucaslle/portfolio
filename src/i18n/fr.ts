@@ -184,5 +184,7 @@ export const fr: Translation = {
   a11y: {
     mainNav: 'Navigation principale',
     languageSwitch: 'Choix de la langue',
+    background: 'Couleur de fond',
+    resetBackground: 'Revenir à la couleur de fond d’origine',
   },
 }

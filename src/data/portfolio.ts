@@ -14,10 +14,14 @@ export const FOOTER_YEAR = 2026
 
 export const SECTION_IDS: SectionId[] = ['home', 'about', 'portfolio', 'contact']
 
-/* TODO Lucas : remplace les "#" par tes vraies URLs (ou supprime la ligne). */
 export const SOCIALS: Social[] = [
-  { tag: 'IN', label: 'LinkedIn', handle: 'linkedin.com/in/…', href: '#' },
-  { tag: 'GH', label: 'GitHub', handle: 'github.com/…', href: '#' },
+  {
+    tag: 'IN',
+    label: 'LinkedIn',
+    handle: 'linkedin.com/in/lucas-laliche',
+    href: 'https://www.linkedin.com/in/lucas-laliche-995767251',
+  },
+  { tag: 'GH', label: 'GitHub', handle: 'github.com/lucaslle', href: 'https://github.com/lucaslle/' },
 ]
 
 /* ------------------------------------------------------------------ *

@@ -1,12 +1,14 @@
 import { useContent } from '../i18n/useContent'
 import { useTranslation } from '../i18n/useTranslation'
+import { withAlpha } from '../theme/palette'
+import { useTheme } from '../theme/useTheme'
 import SpotlightCard from './reactbits/SpotlightCard/SpotlightCard'
-
-const SPOTLIGHT_COLOR = 'rgba(196, 166, 255, 0.25)'
 
 export const JourneyPanel = () => {
   const { t } = useTranslation()
   const { jobs, education } = useContent()
+  const { palette } = useTheme()
+  const spotlightColor = withAlpha(palette.lilac, 0.25)
 
   return (
     <div className="journey">
@@ -18,7 +20,7 @@ export const JourneyPanel = () => {
         <ol className="journey__list">
           {jobs.map((job) => (
             <li key={job.id}>
-              <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="job">
+              <SpotlightCard spotlightColor={spotlightColor} className="job">
                 <div className="job__head">
                   <div>
                     <h4 className="job__role">{job.role}</h4>
@@ -60,7 +62,7 @@ export const JourneyPanel = () => {
         <ol className="journey__list">
           {education.map((diploma) => (
             <li key={diploma.id}>
-              <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="job">
+              <SpotlightCard spotlightColor={spotlightColor} className="job">
                 <div className="job__head">
                   <div>
                     <h4 className="job__role job__role--small">{diploma.title}</h4>

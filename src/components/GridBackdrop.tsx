@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react'
+import { useTheme } from '../theme/useTheme'
 import CursorGrid from './reactbits/CursorGrid/CursorGrid'
 
 const FORWARDED_EVENTS = ['pointermove', 'pointerdown'] as const
 
 export const GridBackdrop = () => {
   const containerRef = useRef<HTMLDivElement>(null)
+  const { palette } = useTheme()
 
   useEffect(() => {
     const container = containerRef.current
@@ -28,7 +30,7 @@ export const GridBackdrop = () => {
 
   return (
     <div ref={containerRef} className="page__grid" aria-hidden="true">
-      <CursorGrid color="#8b5cf6" cellSize={44} radius={170} maxOpacity={0.55} gridOpacity={0.09} />
+      <CursorGrid color={palette.violet} cellSize={44} radius={170} maxOpacity={0.55} gridOpacity={0.09} />
     </div>
   )
 }
