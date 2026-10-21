@@ -1,4 +1,5 @@
-import { FULL_NAME, INITIALS } from '../data/portfolio'
+import type { MouseEvent } from 'react'
+import { FULL_NAME } from '../data/portfolio'
 import { useContent } from '../i18n/useContent'
 import { useTranslation } from '../i18n/useTranslation'
 import type { SectionId } from '../types'
@@ -13,33 +14,34 @@ export const Header = ({ activeSection, onNavigate }: HeaderProps) => {
   const { t } = useTranslation()
   const { navItems } = useContent()
 
+  const handleNavigate = (event: MouseEvent<HTMLAnchorElement>, id: SectionId) => {
+    event.preventDefault()
+    onNavigate(id)
+    window.history.replaceState(null, '', `#${id}`)
+  }
+
   return (
     <header className="header">
-      <div className="header__brand">
-        <div className="header__mark">{INITIALS}</div>
-        <div className="header__title">
-          {FULL_NAME} <span style={{ color: '#a78bfa' }}>//</span> {t.role}
-        </div>
-      </div>
+      <a href="#home" className="header__brand" aria-label={FULL_NAME} onClick={(event) => handleNavigate(event, 'home')}>
+        lucas.dev
+      </a>
 
-      <div className="header__end">
-        <nav className="header__nav" aria-label={t.a11y.mainNav}>
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              className="nav-link"
-              aria-current={activeSection === item.id ? 'true' : undefined}
-              onClick={() => onNavigate(item.id)}
-            >
-              {item.label}
-              {activeSection === item.id ? <span className="nav-link__underline" /> : null}
-            </button>
-          ))}
-        </nav>
+      <nav className="header__nav" aria-label={t.a11y.mainNav}>
+        {navItems.map((item) => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            className="nav-link"
+            aria-current={activeSection === item.id ? 'location' : undefined}
+            onClick={(event) => handleNavigate(event, item.id)}
+          >
+            {item.label}
+            {activeSection === item.id ? <span className="nav-link__underline" /> : null}
+          </a>
+        ))}
+      </nav>
 
-        <LanguageSwitch />
-      </div>
+      <LanguageSwitch />
     </header>
   )
 }

@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import type { MouseEvent } from 'react'
+import { useEffect, useRef } from 'react'
+import type { MouseEvent, SyntheticEvent } from 'react'
 import { useTranslation } from '../i18n/useTranslation'
 import type { Project } from '../types'
 
@@ -10,36 +10,47 @@ type ProjectModalProps = {
 
 export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
   const { t } = useTranslation()
+  const dialogRef = useRef<HTMLDialogElement>(null)
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose()
+    const dialog = dialogRef.current
+    if (!dialog) return undefined
+
+    dialog.showModal()
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      dialog.close()
     }
+  }, [])
 
-    document.addEventListener('keydown', handleKeyDown)
+  const handleClose = (event: SyntheticEvent<HTMLDialogElement>) => {
+    event.preventDefault()
+    onClose()
+  }
 
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [onClose])
-
-  const stopPropagation = (event: MouseEvent<HTMLDivElement>) => event.stopPropagation()
+  const handleOverlayClick = (event: MouseEvent<HTMLDialogElement>) => {
+    if (event.target === event.currentTarget) onClose()
+  }
 
   return (
-    <div
+    <dialog
+      ref={dialogRef}
       className="modal-overlay"
-      role="presentation"
-      onClick={onClose}
+      aria-labelledby="project-modal-title"
+      onCancel={handleClose}
+      onClick={handleOverlayClick}
     >
-      <div
-        className="modal"
-        role="dialog"
-        aria-modal="true"
-        aria-label={project.title}
-        onClick={stopPropagation}
-      >
+      <div className="modal">
         <div className="modal__head">
           <div>
             <div className="modal__kind">{project.kind}</div>
-            <h3 className="modal__title">{project.title}</h3>
+            <h3 id="project-modal-title" className="modal__title">
+              {project.title}
+            </h3>
           </div>
           <button type="button" className="modal__close" aria-label={t.modal.close} onClick={onClose}>
             ✕
@@ -56,15 +67,21 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
           ))}
         </div>
 
-        <div className="modal__links">
-          <a href="#projects" className="modal__link--solid" onClick={onClose}>
-            {t.modal.liveDemo}
-          </a>
-          <a href="#projects" className="modal__link--ghost" onClick={onClose}>
-            {t.modal.source}
-          </a>
-        </div>
+        {project.demoUrl || project.sourceUrl ? (
+          <div className="modal__links">
+            {project.demoUrl ? (
+              <a href={project.demoUrl} className="modal__link--solid" target="_blank" rel="noreferrer">
+                {t.modal.liveDemo}
+              </a>
+            ) : null}
+            {project.sourceUrl ? (
+              <a href={project.sourceUrl} className="modal__link--ghost" target="_blank" rel="noreferrer">
+                {t.modal.source}
+              </a>
+            ) : null}
+          </div>
+        ) : null}
       </div>
-    </div>
+    </dialog>
   )
 }

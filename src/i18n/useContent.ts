@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { JOBS, PROJECTS, SECTION_IDS, SKILLS } from '../data/portfolio'
-import type { Job, NavItem, Project, Skill, Stat } from '../types'
+import { EDUCATION, JOBS, PROJECTS, SECTION_IDS, SKILLS, STATS } from '../data/portfolio'
+import type { Education, Job, NavItem, Project, Skill, Stat } from '../types'
 import { useTranslation } from './useTranslation'
 
 type Content = {
@@ -8,6 +8,7 @@ type Content = {
   projects: Project[]
   skills: Skill[]
   jobs: Job[]
+  education: Education[]
   stats: Stat[]
 }
 
@@ -22,10 +23,11 @@ export const useContent = (): Content => {
   return useMemo(
     () => ({
       navItems: SECTION_IDS.map((id) => ({ id, label: t.nav[id] })),
-      projects: PROJECTS.map(({ id, tags }) => ({ id, tags, ...t.projects.items[id] })),
-      skills: SKILLS.map(({ id, lvl }) => ({ id, lvl, ...t.skills.items[id] })),
-      jobs: JOBS.map(({ id, stack }) => ({ id, stack, ...t.about.jobs[id] })),
-      stats: [...t.about.stats],
+      projects: PROJECTS.map((project) => ({ ...project, ...t.projects[project.id] })),
+      skills: SKILLS.map((skill) => ({ ...skill, ...t.skills[skill.id] })),
+      jobs: JOBS.map((job) => ({ ...job, ...t.jobs[job.id] })),
+      education: EDUCATION.map((diploma) => ({ ...diploma, ...t.education[diploma.id] })),
+      stats: STATS.map(({ id, to, icon }) => ({ to, icon, label: t.about.stats[id] })),
     }),
     [t],
   )

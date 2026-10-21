@@ -1,5 +1,5 @@
-import type { JobId, ProjectId, SkillId } from '../data/portfolio'
-import type { SectionId } from '../types'
+import type { EducationId, JobId, ProjectId, SkillId, StatId } from '../data/portfolio'
+import type { PortfolioTab, SectionId } from '../types'
 
 export type ProjectCopy = {
   kind: string
@@ -17,16 +17,14 @@ export type SkillCopy = {
 
 export type JobCopy = {
   role: string
-  company: string
   place: string
   period: string
   summary: string
   bullets: readonly string[]
 }
 
-export type StatCopy = {
-  value: string
-  label: string
+export type EducationCopy = {
+  title: string
 }
 
 /**
@@ -37,8 +35,6 @@ export type StatCopy = {
 export type Translation = {
   /** Code court affiché dans le sélecteur. */
   tag: string
-  /** Nom de la langue dans cette langue. */
-  name: string
   /** Libellé accessible du bouton qui active cette langue. */
   switchTo: string
 
@@ -46,28 +42,47 @@ export type Translation = {
   documentTitle: string
   documentDescription: string
 
+  /** Imprimé sur la carte du badge. */
   role: string
   nav: Record<SectionId, string>
 
+  loader: string
+
   hero: {
-    greeting: string
-    headline: string
     badge: string
+    headline: readonly [string, string]
+    roles: string[]
     lead: string
-    portraitLabel: string
-    viewWork: string
+    techs: string
+    hints: readonly string[]
+  }
+
+  about: {
+    eyebrow: string
+    story: string
+    quote: string
+    viewProjects: string
     contact: string
+    stats: Record<StatId, string>
   }
 
-  ribbon: readonly string[]
-
-  projects: {
+  portfolio: {
     title: string
-    previous: string
-    next: string
-    goToGroup: (index: number) => string
-    items: Record<ProjectId, ProjectCopy>
+    lead: string
+    tabsLabel: string
+    tabs: Record<PortfolioTab, string>
+    details: string
+    skillLevel: (level: number, max: number) => string
+    softSkillsLabel: string
+    experience: string
+    education: string
   }
+
+  projects: Record<ProjectId, ProjectCopy>
+  skills: Record<SkillId, SkillCopy>
+  softSkills: readonly string[]
+  jobs: Record<JobId, JobCopy>
+  education: Record<EducationId, EducationCopy>
 
   modal: {
     close: string
@@ -75,25 +90,8 @@ export type Translation = {
     source: string
   }
 
-  skills: {
-    title: string
-    note: string
-    items: Record<SkillId, SkillCopy>
-    soft: readonly string[]
-  }
-
-  about: {
-    title: string
-    storyTitle: string
-    story: string
-    careerTitle: string
-    hint: string
-    jobs: Record<JobId, JobCopy>
-    stats: readonly StatCopy[]
-  }
-
   contact: {
-    title: string
+    lead: string
     name: string
     namePlaceholder: string
     email: string
@@ -101,11 +99,12 @@ export type Translation = {
     message: string
     messagePlaceholder: string
     send: string
-    sending: string
-    sent: string
-    thanks: string
-    emailLabel: string
+    findMe: string
+    findMeText: string
+    mailSubject: string
   }
+
+  footer: string
 
   a11y: {
     mainNav: string

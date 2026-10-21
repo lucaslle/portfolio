@@ -1,29 +1,8 @@
-export type SectionId = 'home' | 'projects' | 'skills' | 'about' | 'contact'
+export type SectionId = 'home' | 'about' | 'portfolio' | 'contact'
+
+export type PortfolioTab = 'projects' | 'skills' | 'journey'
 
 export type Locale = 'fr' | 'en'
-
-/* ------------------------------------------------------------------ *
- * Données indépendantes de la langue (src/data/portfolio.ts)
- * ------------------------------------------------------------------ */
-
-export type ProjectBase = {
-  id: string
-  tags: readonly string[]
-}
-
-export type SkillBase = {
-  id: string
-  lvl: number
-}
-
-export type JobBase = {
-  id: string
-  stack: readonly string[]
-}
-
-/* ------------------------------------------------------------------ *
- * Formes assemblées (données + traduction) consommées par les composants
- * ------------------------------------------------------------------ */
 
 export type Project = {
   id: string
@@ -33,6 +12,8 @@ export type Project = {
   tags: readonly string[]
   cat: string
   detail: string
+  demoUrl?: string
+  sourceUrl?: string
 }
 
 export type Skill = {
@@ -54,9 +35,17 @@ export type Job = {
   stack: readonly string[]
 }
 
+export type Education = {
+  id: string
+  title: string
+  school: string
+  period: string
+}
+
 export type Social = {
   tag: string
   label: string
+  handle: string
   href: string
 }
 
@@ -65,16 +54,12 @@ export type NavItem = {
   label: string
 }
 
-export type Stat = {
-  value: string
-  label: string
-}
+export type StatIcon = 'clock' | 'briefcase' | 'spark'
 
-export type Spark = {
-  id: number
-  angle: number
-  x: number
-  y: number
+export type Stat = {
+  to: number
+  label: string
+  icon: StatIcon
 }
 
 export type ContactForm = {

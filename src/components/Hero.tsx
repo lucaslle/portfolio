@@ -1,103 +1,84 @@
-import { useState } from 'react'
-import type { MouseEvent } from 'react'
-import { SOCIALS } from '../data/portfolio'
+import { lazy, Suspense, useMemo } from 'react'
+import { HERO_TECHS } from '../data/portfolio'
+import { useIsCompact } from '../hooks/useIsCompact'
 import { useTranslation } from '../i18n/useTranslation'
+import { buildBadgeImage } from '../utils/badgeImage'
+import ShinyText from './reactbits/ShinyText/ShinyText'
+import TextType from './reactbits/TextType/TextType'
 
-const TILT_X = 22
-const TILT_Y = 16
-const MAGNET_X = 0.28
-const MAGNET_Y = 0.4
+const Lanyard = lazy(() => import('./reactbits/Lanyard/Lanyard'))
 
-type HeroProps = {
-  pointerRatio: { x: number; y: number }
-  onViewWork: () => void
-  onContact: () => void
-}
+const BADGE_SIZE_DESKTOP = 0.48
+const BADGE_SIZE_COMPACT = 0.36
 
-export const Hero = ({ pointerRatio, onViewWork, onContact }: HeroProps) => {
+export const Hero = () => {
   const { t } = useTranslation()
-  const [magnet, setMagnet] = useState({ x: 0, y: 0 })
-
-  const tiltX = (pointerRatio.x - 0.5) * TILT_X
-  const tiltY = (pointerRatio.y - 0.5) * TILT_Y
-
-  const handleMagnetMove = (event: MouseEvent<HTMLButtonElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect()
-    setMagnet({
-      x: (event.clientX - rect.left - rect.width / 2) * MAGNET_X,
-      y: (event.clientY - rect.top - rect.height / 2) * MAGNET_Y,
-    })
-  }
-
-  const resetMagnet = () => setMagnet({ x: 0, y: 0 })
+  const [headlineFirst, headlineSecond] = t.hero.headline
+  const frontImage = useMemo(() => buildBadgeImage('front', t.role), [t.role])
+  const backImage = useMemo(() => buildBadgeImage('back', t.role), [t.role])
+  const isCompact = useIsCompact()
+  const badgeSize = isCompact ? BADGE_SIZE_COMPACT : BADGE_SIZE_DESKTOP
+  const anchor = isCompact ? 'center' : 'right'
 
   return (
     <section id="home" className="hero">
-      <div className="hero__halo" />
-
-      <div className="hero__inner">
-        <div
-          className="hero__portrait"
-          style={{ transform: `translate3d(${tiltX}px, ${tiltY}px, 0)` }}
-        >
-          <div className="hero__frame">
-            <div className="hero__frame-label">
-              <span>
-                {t.hero.portraitLabel}
-                <br />
-                1:1
-              </span>
-            </div>
-            <div className="hero__scan" />
-          </div>
+      <div className="hero__body">
+        <div className="hero__badge">
+          <ShinyText text={`✦ ${t.hero.badge}`} color="#8b7aa8" shineColor="#e9dcff" speed={3} />
         </div>
 
-        <div className="hero__body">
-          <div className="badge">
-            <span className="badge__dot" />
-            {t.hero.badge}
-          </div>
+        <h1 className="hero__headline">
+          <span className="hero__headline-line">{headlineFirst}</span>
+          <span className="hero__headline-line hero__headline-line--accent">{headlineSecond}</span>
+        </h1>
 
-          <h1 className="hero__headline">
-            {t.hero.greeting}
-            <br />
-            <span className="hero__gradient-text">{t.hero.headline}</span>
-            <span className="hero__caret" />
-          </h1>
-
-          <p className="hero__lead">{t.hero.lead}</p>
-
-          <div className="hero__actions">
-            <button
-              type="button"
-              className="btn-primary"
-              onClick={onViewWork}
-              onMouseMove={handleMagnetMove}
-              onMouseLeave={resetMagnet}
-              style={{ transform: `translate3d(${magnet.x}px, ${magnet.y}px, 0)` }}
-            >
-              {t.hero.viewWork}
-            </button>
-            <button type="button" className="btn-ghost" onClick={onContact}>
-              {t.hero.contact}
-            </button>
-          </div>
-
-          <div className="hero__socials">
-            {SOCIALS.map((social) => (
-              <a
-                key={social.tag}
-                className="social"
-                href={social.href}
-                title={social.label}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {social.tag}
-              </a>
-            ))}
-          </div>
+        <div className="hero__role">
+          {/* key : repart de zéro au changement de langue plutôt que de finir le mot en cours. */}
+          <TextType
+            key={t.tag}
+            as="span"
+            text={t.hero.roles}
+            typingSpeed={70}
+            deletingSpeed={40}
+            pauseDuration={1800}
+            cursorCharacter="_"
+          />
         </div>
+
+        <p className="hero__lead">{t.hero.lead}</p>
+
+        <ul className="hero__techs" aria-label={t.hero.techs}>
+          {HERO_TECHS.map((tech) => (
+            <li key={tech} className="chip">
+              {tech}
+            </li>
+          ))}
+        </ul>
+
+        <ul className="hero__hints">
+          {t.hero.hints.map((hint) => (
+            <li key={hint}>{hint}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="hero__lanyard" aria-hidden="true">
+        <Suspense fallback={null}>
+          <Lanyard
+            frontImage={frontImage}
+            backImage={backImage}
+            cardColor="#0d0818"
+            metal="silver"
+            strapColor="#4c2a9e"
+            anchor={anchor}
+            interactionScope="window"
+            size={badgeSize}
+          />
+        </Suspense>
+      </div>
+
+      <div className="hero__scroll" aria-hidden="true">
+        SCROLL ↓
       </div>
     </section>
   )

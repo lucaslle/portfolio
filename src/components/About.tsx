@@ -1,101 +1,82 @@
-import { useState } from 'react'
-import { JOBS } from '../data/portfolio'
+import { FULL_NAME, INITIALS } from '../data/portfolio'
 import { useContent } from '../i18n/useContent'
 import { useTranslation } from '../i18n/useTranslation'
+import { scrollToSection } from '../utils/scrollToSection'
+import AnimatedContent from './reactbits/AnimatedContent/AnimatedContent'
+import BlurText from './reactbits/BlurText/BlurText'
+import CountUp from './reactbits/CountUp/CountUp'
+import SpotlightCard from './reactbits/SpotlightCard/SpotlightCard'
+import StarBorder from './reactbits/StarBorder/StarBorder'
+import { StatIconGlyph } from './StatIconGlyph'
+
+const SPOTLIGHT_COLOR = 'rgba(139, 92, 246, 0.35)'
 
 export const About = () => {
   const { t } = useTranslation()
-  const { jobs, stats } = useContent()
-  const [openJobId, setOpenJobId] = useState<string | null>(JOBS[0].id)
-
-  const toggleJob = (id: string) => setOpenJobId((current) => (current === id ? null : id))
+  const { stats } = useContent()
 
   return (
-    <section id="about" className="panel about">
-      <h2 className="section-title" style={{ marginBottom: 20 }}>
-        {t.about.title}
-      </h2>
-      <h3 className="about__story-title">{t.about.storyTitle}</h3>
-      <p className="about__story">{t.about.story}</p>
+    <section id="about" className="about">
+      <div className="about__grid">
+        <div className="about__body">
+          <span className="eyebrow">{t.about.eyebrow}</span>
 
-      <div className="about__subhead">
-        <h3>{t.about.careerTitle}</h3>
-        <span className="about__hint">{t.about.hint}</span>
-      </div>
+          <h2 className="about__name">
+            <BlurText text={FULL_NAME} delay={120} animateBy="words" direction="top" />
+          </h2>
 
-      <div className="timeline">
-        <span className="timeline__line" />
-        {jobs.map((job) => {
-          const open = openJobId === job.id
+          <p className="about__story">{t.about.story}</p>
 
-          return (
-            <button
-              key={job.id}
+          <blockquote className="about__quote">“{t.about.quote}”</blockquote>
+
+          <div className="about__actions">
+            <StarBorder
+              as="button"
               type="button"
-              className="job"
-              aria-expanded={open}
-              onClick={() => toggleJob(job.id)}
-              style={{
-                borderColor: open ? 'rgba(167,139,250,.5)' : 'rgba(168,133,255,.14)',
-                background: open ? 'rgba(139,92,246,.12)' : 'rgba(139,92,246,.04)',
-              }}
+              color="#8b5cf6"
+              trailColor="#7dd3fc"
+              backgroundColor="#e9dcff"
+              textColor="#07040e"
+              radius={10}
+              onClick={() => scrollToSection('portfolio')}
             >
-              <span
-                className="job__dot"
-                style={{
-                  background: open ? 'linear-gradient(120deg,#a78bfa,#38bdf8)' : 'rgba(168,133,255,.35)',
-                  boxShadow: open ? '0 0 14px rgba(167,139,250,.9)' : 'none',
-                }}
-              />
+              {t.about.viewProjects}
+            </StarBorder>
 
-              <div className="job__head">
-                <div style={{ minWidth: 0 }}>
-                  <div className="job__role">{job.role}</div>
-                  <div className="job__company">
-                    {job.company} <span>· {job.place}</span>
-                  </div>
-                </div>
-                <div className="job__meta">
-                  <span className="job__period">{job.period}</span>
-                  <span
-                    className="job__caret"
-                    style={{ transform: `rotate(${open ? 180 : 0}deg)`, display: 'inline-block' }}
-                  >
-                    ▾
-                  </span>
-                </div>
-              </div>
-
-              {open ? (
-                <div className="job__detail">
-                  <p className="job__summary">{job.summary}</p>
-                  <ul className="job__bullets">
-                    {job.bullets.map((bullet, index) => (
-                      <li key={`${bullet}-${index}`}>{bullet}</li>
-                    ))}
-                  </ul>
-                  <div className="tag-row">
-                    {job.stack.map((item, index) => (
-                      <span key={`${item}-${index}`} className="tag">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-            </button>
-          )
-        })}
-      </div>
-
-      <div className="stats">
-        {stats.map((stat) => (
-          <div key={stat.label} className="stat">
-            <div className="stat__value">{stat.value}</div>
-            <div className="stat__label">{stat.label}</div>
+            <StarBorder
+              as="button"
+              type="button"
+              color="#8b5cf6"
+              backgroundColor="#0d0818"
+              textColor="#e9dcff"
+              radius={10}
+              onClick={() => scrollToSection('contact')}
+            >
+              {t.about.contact}
+            </StarBorder>
           </div>
-        ))}
+        </div>
+
+        <div className="about__portrait" aria-hidden="true">
+          <div className="about__monogram">{INITIALS}</div>
+        </div>
       </div>
+
+      <ul className="about__stats">
+        {stats.map((stat, index) => (
+          <li key={stat.icon}>
+            <AnimatedContent distance={40} delay={index * 0.12}>
+              <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="stat">
+                <span className="stat__icon">
+                  <StatIconGlyph icon={stat.icon} />
+                </span>
+                <CountUp to={stat.to} duration={2} className="stat__value" />
+                <span className="stat__label">{stat.label}</span>
+              </SpotlightCard>
+            </AnimatedContent>
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }
