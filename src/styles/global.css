@@ -218,6 +218,88 @@ button {
 
 /* ---------- Header tools ---------- */
 
+.header__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 30px;
+  height: 30px;
+  padding: 0 7px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+}
+
+.header__burger-bar {
+  height: 1.5px;
+  border-radius: 1px;
+  background: var(--ice);
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* les trois barres deviennent une croix à l'ouverture */
+.header--open .header__burger-bar:nth-child(1) {
+  transform: translateY(5.5px) rotate(45deg);
+}
+
+.header--open .header__burger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.header--open .header__burger-bar:nth-child(3) {
+  transform: translateY(-5.5px) rotate(-45deg);
+}
+
+.header__burger:focus-visible {
+  outline: 2px solid var(--lilac);
+  outline-offset: 2px;
+}
+
+@media (max-width: 720px) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .header__burger {
+    display: flex;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  /* la pilule déformerait le panneau ouvert : coins fixes et fond plus opaque */
+  .header--open {
+    border-radius: 20px;
+    background: color-mix(in srgb, var(--card-surface) 96%, transparent);
+  }
+
+  .header--open .header__nav {
+    display: flex;
+    order: 1;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+  }
+
+  .header--open .nav-link {
+    padding: 14px 0;
+    font-size: 13px;
+  }
+
+  .header--open .nav-link__underline {
+    bottom: 8px;
+    right: auto;
+    width: 24px;
+  }
+}
+
 .header__tools {
   display: flex;
   flex: none;
@@ -1092,17 +1174,8 @@ button {
 }
 
 @media (max-width: 560px) {
-  /* deux lignes : marque + réglages en haut, navigation en dessous */
   .header {
-    flex-wrap: wrap;
-    row-gap: 10px;
     padding: 10px 16px;
-  }
-
-  .header__nav {
-    order: 1;
-    width: 100%;
-    justify-content: space-between;
   }
 
   .tabs {

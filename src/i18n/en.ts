@@ -186,5 +186,7 @@ export const en: Translation = {
     languageSwitch: 'Language',
     background: 'Background colour',
     resetBackground: 'Restore the original background colour',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
   },
 }

@@ -111,5 +111,7 @@ export type Translation = {
     languageSwitch: string
     background: string
     resetBackground: string
+    openMenu: string
+    closeMenu: string
   }
 }

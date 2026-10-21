@@ -186,5 +186,7 @@ export const fr: Translation = {
     languageSwitch: 'Choix de la langue',
     background: 'Couleur de fond',
     resetBackground: 'Revenir à la couleur de fond d’origine',
+    openMenu: 'Ouvrir le menu',
+    closeMenu: 'Fermer le menu',
   },
 }
