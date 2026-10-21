@@ -187,6 +187,7 @@ button {
 
 .nav-link {
   position: relative;
+  white-space: nowrap;
   padding: 4px 0;
   border: 0;
   background: none;
@@ -1091,16 +1092,16 @@ button {
 }
 
 @media (max-width: 560px) {
+  /* deux lignes : marque + réglages en haut, navigation en dessous */
   .header {
+    flex-wrap: wrap;
+    row-gap: 10px;
     padding: 10px 16px;
   }
 
-  .header__brand {
-    display: none;
-  }
-
   .header__nav {
-    flex: 1;
+    order: 1;
+    width: 100%;
     justify-content: space-between;
   }
 
