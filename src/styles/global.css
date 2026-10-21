@@ -204,6 +204,62 @@ button {
   background: var(--lilac);
 }
 
+/* ---------- Header tools ---------- */
+
+.header__tools {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.bg-picker {
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+}
+
+.bg-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+/* séparés : un pseudo-élément inconnu invaliderait toute la règle */
+.bg-picker::-webkit-color-swatch {
+  border: 0;
+  border-radius: 6px;
+}
+
+.bg-picker::-moz-color-swatch {
+  border: 0;
+  border-radius: 6px;
+}
+
+.bg-picker:focus-visible,
+.bg-picker__reset:focus-visible {
+  outline: 2px solid var(--lilac);
+  outline-offset: 2px;
+}
+
+.bg-picker__reset {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+  font: 500 15px/1 var(--mono);
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.bg-picker__reset:hover {
+  color: var(--ice);
+}
+
 /* ---------- Language switch ---------- */
 
 .lang-switch {
@@ -238,8 +294,9 @@ button {
   outline-offset: 2px;
 }
 
+/* fixe : --bg est personnalisable et pourrait devenir clair */
 .lang-switch__option[aria-pressed='true'] {
-  color: var(--bg);
+  color: #07040e;
   background: var(--ice);
 }
 

@@ -3,6 +3,7 @@ import { FULL_NAME } from '../data/portfolio'
 import { useContent } from '../i18n/useContent'
 import { useTranslation } from '../i18n/useTranslation'
 import type { SectionId } from '../types'
+import { BackgroundPicker } from './BackgroundPicker'
 import { LanguageSwitch } from './LanguageSwitch'
 
 type HeaderProps = {
@@ -41,7 +42,10 @@ export const Header = ({ activeSection, onNavigate }: HeaderProps) => {
         ))}
       </nav>
 
-      <LanguageSwitch />
+      <div className="header__tools">
+        <BackgroundPicker />
+        <LanguageSwitch />
+      </div>
     </header>
   )
 }
