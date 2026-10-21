@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { MouseEvent } from 'react'
 import { flushSync } from 'react-dom'
 import { FULL_NAME } from '../data/portfolio'
@@ -17,6 +17,7 @@ export const Header = ({ activeSection, onNavigate }: HeaderProps) => {
   const { t } = useTranslation()
   const { navItems } = useContent()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     if (!isMenuOpen) return undefined
@@ -24,9 +25,16 @@ export const Header = ({ activeSection, onNavigate }: HeaderProps) => {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setIsMenuOpen(false)
     }
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) setIsMenuOpen(false)
+    }
     window.addEventListener('keydown', closeOnEscape)
+    window.addEventListener('pointerdown', closeOnOutsidePointer)
 
-    return () => window.removeEventListener('keydown', closeOnEscape)
+    return () => {
+      window.removeEventListener('keydown', closeOnEscape)
+      window.removeEventListener('pointerdown', closeOnOutsidePointer)
+    }
   }, [isMenuOpen])
 
   const handleNavigate = (event: MouseEvent<HTMLAnchorElement>, id: SectionId) => {
@@ -38,7 +46,7 @@ export const Header = ({ activeSection, onNavigate }: HeaderProps) => {
   }
 
   return (
-    <header className={isMenuOpen ? 'header header--open' : 'header'}>
+    <header ref={headerRef} className={isMenuOpen ? 'header header--open' : 'header'}>
       <a href="#home" className="header__brand" aria-label={FULL_NAME} onClick={(event) => handleNavigate(event, 'home')}>
         lucas.dev
       </a>
