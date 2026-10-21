@@ -1,6 +1,8 @@
 import { FULL_NAME, INITIALS } from '../data/portfolio'
 import { useContent } from '../i18n/useContent'
 import { useTranslation } from '../i18n/useTranslation'
+import { withAlpha } from '../theme/palette'
+import { useTheme } from '../theme/useTheme'
 import { scrollToSection } from '../utils/scrollToSection'
 import AnimatedContent from './reactbits/AnimatedContent/AnimatedContent'
 import BlurText from './reactbits/BlurText/BlurText'
@@ -9,11 +11,11 @@ import SpotlightCard from './reactbits/SpotlightCard/SpotlightCard'
 import StarBorder from './reactbits/StarBorder/StarBorder'
 import { StatIconGlyph } from './StatIconGlyph'
 
-const SPOTLIGHT_COLOR = 'rgba(139, 92, 246, 0.35)'
-
 export const About = () => {
   const { t } = useTranslation()
   const { stats } = useContent()
+  const { palette } = useTheme()
+  const spotlightColor = withAlpha(palette.violet, 0.35)
 
   return (
     <section id="about" className="about">
@@ -33,10 +35,10 @@ export const About = () => {
             <StarBorder
               as="button"
               type="button"
-              color="#8b5cf6"
-              trailColor="#7dd3fc"
-              backgroundColor="#e9dcff"
-              textColor="#07040e"
+              color={palette.violet}
+              trailColor={palette.cyan}
+              backgroundColor={palette.ice}
+              textColor={palette.ink}
               radius={10}
               onClick={() => scrollToSection('portfolio')}
             >
@@ -46,9 +48,9 @@ export const About = () => {
             <StarBorder
               as="button"
               type="button"
-              color="#8b5cf6"
-              backgroundColor="#0d0818"
-              textColor="#e9dcff"
+              color={palette.violet}
+              backgroundColor={palette.cardSurface}
+              textColor={palette.ice}
               radius={10}
               onClick={() => scrollToSection('contact')}
             >
@@ -66,7 +68,7 @@ export const About = () => {
         {stats.map((stat, index) => (
           <li key={stat.icon}>
             <AnimatedContent distance={40} delay={index * 0.12}>
-              <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="stat">
+              <SpotlightCard spotlightColor={spotlightColor} className="stat">
                 <span className="stat__icon">
                   <StatIconGlyph icon={stat.icon} />
                 </span>

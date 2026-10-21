@@ -1,16 +1,10 @@
-import { useState } from 'react'
 import { useTranslation } from '../i18n/useTranslation'
-import { applyBackground, DEFAULT_BACKGROUND, readBackground, storeBackground } from '../utils/backgroundColor'
+import { DEFAULT_BACKGROUND } from '../theme/palette'
+import { useTheme } from '../theme/useTheme'
 
 export const BackgroundPicker = () => {
   const { t } = useTranslation()
-  const [color, setColor] = useState(readBackground)
-
-  const changeColor = (next: string) => {
-    setColor(next)
-    applyBackground(next)
-    storeBackground(next)
-  }
+  const { background, setBackground } = useTheme()
 
   return (
     <>
@@ -19,17 +13,17 @@ export const BackgroundPicker = () => {
         className="bg-picker"
         aria-label={t.a11y.background}
         title={t.a11y.background}
-        value={color}
-        onChange={(event) => changeColor(event.target.value)}
+        value={background}
+        onChange={(event) => setBackground(event.target.value)}
       />
 
-      {color !== DEFAULT_BACKGROUND ? (
+      {background !== DEFAULT_BACKGROUND ? (
         <button
           type="button"
           className="bg-picker__reset"
           aria-label={t.a11y.resetBackground}
           title={t.a11y.resetBackground}
-          onClick={() => changeColor(DEFAULT_BACKGROUND)}
+          onClick={() => setBackground(DEFAULT_BACKGROUND)}
         >
           ↺
         </button>

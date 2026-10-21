@@ -1,6 +1,6 @@
-const BACKGROUND_KEY = 'portfolio:background'
+import { DEFAULT_BACKGROUND } from './palette'
 
-export const DEFAULT_BACKGROUND = '#07040e'
+const BACKGROUND_KEY = 'portfolio:background'
 
 const HEX_COLOR = /^#[0-9a-f]{6}$/i
 
@@ -12,10 +12,6 @@ export const readBackground = (): string => {
   } catch {
     return DEFAULT_BACKGROUND
   }
-}
-
-export const applyBackground = (color: string): void => {
-  document.documentElement.style.setProperty('--bg', color)
 }
 
 export const storeBackground = (color: string): void => {

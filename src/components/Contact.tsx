@@ -2,13 +2,13 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { CONTACT_EMAIL, SOCIALS } from '../data/portfolio'
 import { useTranslation } from '../i18n/useTranslation'
+import { withAlpha } from '../theme/palette'
+import { useTheme } from '../theme/useTheme'
 import type { ContactForm } from '../types'
 import BlurText from './reactbits/BlurText/BlurText'
 import Magnet from './reactbits/Magnet/Magnet'
 import SpotlightCard from './reactbits/SpotlightCard/SpotlightCard'
 import StarBorder from './reactbits/StarBorder/StarBorder'
-
-const SPOTLIGHT_COLOR = 'rgba(139, 92, 246, 0.28)'
 
 const EMPTY_FORM: ContactForm = { name: '', email: '', msg: '' }
 
@@ -21,6 +21,8 @@ const buildMailto = (form: ContactForm, subjectPrefix: string): string => {
 
 export const Contact = () => {
   const { t } = useTranslation()
+  const { palette } = useTheme()
+  const spotlightColor = withAlpha(palette.violet, 0.28)
   const [form, setForm] = useState<ContactForm>(EMPTY_FORM)
 
   const updateField = (field: keyof ContactForm, value: string) => {
@@ -42,7 +44,7 @@ export const Contact = () => {
       </div>
 
       <div className="contact__grid">
-        <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="panel">
+        <SpotlightCard spotlightColor={spotlightColor} className="panel">
           <form className="contact__form" onSubmit={handleSubmit}>
             <label className="field">
               {t.contact.name}
@@ -85,10 +87,10 @@ export const Contact = () => {
             <StarBorder
               as="button"
               type="submit"
-              color="#8b5cf6"
-              trailColor="#7dd3fc"
-              backgroundColor="#e9dcff"
-              textColor="#07040e"
+              color={palette.violet}
+              trailColor={palette.cyan}
+              backgroundColor={palette.ice}
+              textColor={palette.ink}
               radius={10}
             >
               {t.contact.send}
@@ -96,7 +98,7 @@ export const Contact = () => {
           </form>
         </SpotlightCard>
 
-        <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="panel">
+        <SpotlightCard spotlightColor={spotlightColor} className="panel">
           <h3 className="contact__subtitle">{t.contact.findMe}</h3>
           <p className="contact__text">
             {t.contact.findMeText}

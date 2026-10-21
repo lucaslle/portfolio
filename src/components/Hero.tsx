@@ -2,6 +2,7 @@ import { lazy, Suspense, useMemo } from 'react'
 import { HERO_TECHS } from '../data/portfolio'
 import { useIsCompact } from '../hooks/useIsCompact'
 import { useTranslation } from '../i18n/useTranslation'
+import { useTheme } from '../theme/useTheme'
 import { buildBadgeImage } from '../utils/badgeImage'
 import ShinyText from './reactbits/ShinyText/ShinyText'
 import TextType from './reactbits/TextType/TextType'
@@ -13,9 +14,10 @@ const BADGE_SIZE_COMPACT = 0.36
 
 export const Hero = () => {
   const { t } = useTranslation()
+  const { palette } = useTheme()
   const [headlineFirst, headlineSecond] = t.hero.headline
-  const frontImage = useMemo(() => buildBadgeImage('front', t.role), [t.role])
-  const backImage = useMemo(() => buildBadgeImage('back', t.role), [t.role])
+  const frontImage = useMemo(() => buildBadgeImage('front', t.role, palette), [t.role, palette])
+  const backImage = useMemo(() => buildBadgeImage('back', t.role, palette), [t.role, palette])
   const isCompact = useIsCompact()
   const badgeSize = isCompact ? BADGE_SIZE_COMPACT : BADGE_SIZE_DESKTOP
   const anchor = isCompact ? 'center' : 'right'
@@ -24,7 +26,7 @@ export const Hero = () => {
     <section id="home" className="hero">
       <div className="hero__body">
         <div className="hero__badge">
-          <ShinyText text={`✦ ${t.hero.badge}`} color="#8b7aa8" shineColor="#e9dcff" speed={3} />
+          <ShinyText text={`✦ ${t.hero.badge}`} color={palette.shiny} shineColor={palette.ice} speed={3} />
         </div>
 
         <h1 className="hero__headline">
@@ -67,9 +69,9 @@ export const Hero = () => {
           <Lanyard
             frontImage={frontImage}
             backImage={backImage}
-            cardColor="#0d0818"
+            cardColor={palette.cardSurface}
             metal="silver"
-            strapColor="#4c2a9e"
+            strapColor={palette.strap}
             anchor={anchor}
             interactionScope="window"
             size={badgeSize}

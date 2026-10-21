@@ -11,6 +11,7 @@ import { ProjectModal } from './components/ProjectModal'
 import ClickSpark from './components/reactbits/ClickSpark/ClickSpark'
 import { SECTION_IDS } from './data/portfolio'
 import { useScrollSpy } from './hooks/useScrollSpy'
+import { useTheme } from './theme/useTheme'
 import type { Project } from './types'
 import { markIntroSeen, shouldPlayIntro } from './utils/introSeen'
 import { scrollToSection } from './utils/scrollToSection'
@@ -19,6 +20,7 @@ export const App = () => {
   const section = useScrollSpy(SECTION_IDS)
   const [activeProject, setActiveProject] = useState<Project | null>(null)
   const [isLoading, setIsLoading] = useState(shouldPlayIntro)
+  const { palette } = useTheme()
 
   const finishLoading = useCallback(() => {
     markIntroSeen()
@@ -26,7 +28,7 @@ export const App = () => {
   }, [])
 
   return (
-    <ClickSpark sparkColor={['#8b5cf6', '#c4a6ff', '#7dd3fc']} sparkCount={9} sparkRadius={22}>
+    <ClickSpark sparkColor={[palette.violet, palette.lilac, palette.cyan]} sparkCount={9} sparkRadius={22}>
       <div className="page">
         <GridBackdrop />
         <div className="page__halo page__halo--left" aria-hidden="true" />

@@ -1,21 +1,24 @@
 import { useContent } from '../i18n/useContent'
 import { useTranslation } from '../i18n/useTranslation'
+import { withAlpha } from '../theme/palette'
+import { useTheme } from '../theme/useTheme'
 import SpotlightCard from './reactbits/SpotlightCard/SpotlightCard'
 
-const SPOTLIGHT_COLOR = 'rgba(125, 211, 252, 0.22)'
 const MAX_LEVEL = 5
 const LEVEL_STEPS = Array.from({ length: MAX_LEVEL }, (_, index) => index + 1)
 
 export const SkillsPanel = () => {
   const { t } = useTranslation()
   const { skills } = useContent()
+  const { palette } = useTheme()
+  const spotlightColor = withAlpha(palette.cyan, 0.22)
 
   return (
     <>
       <ul className="cards">
         {skills.map((skill) => (
           <li key={skill.id}>
-            <SpotlightCard spotlightColor={SPOTLIGHT_COLOR} className="skill">
+            <SpotlightCard spotlightColor={spotlightColor} className="skill">
               <div className="skill__head">
                 <h3 className="skill__name">{skill.name}</h3>
                 <span className="skill__level">{skill.level}</span>
