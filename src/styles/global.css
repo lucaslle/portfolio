@@ -259,6 +259,18 @@ button {
   outline-offset: 2px;
 }
 
+.header__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+}
+
+@media (min-width: 721px) {
+  .header__backdrop {
+    display: none;
+  }
+}
+
 @media (max-width: 720px) {
   .header {
     flex-wrap: wrap;
