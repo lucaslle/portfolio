@@ -58,31 +58,38 @@ export const fr: Translation = {
     education: 'Formation',
   },
 
-  /* TODO Lucas : remplace chaque champ entre crochets par un vrai projet. */
   projects: {
-    p1: {
-      kind: '[Type — ex. Web app]',
-      title: '[Titre du projet]',
-      blurb: '[Une phrase : ce que fait le projet et avec quoi.]',
-      cat: '[Catégorie]',
+    office: {
+      kind: 'Outil de suivi · 3D',
+      title: 'Claude Manage Office',
+      blurb: 'Un bureau en 3D où mes conversations Claude Code et mes merge requests GitLab se déplacent de pièce en pièce selon leur état.',
+      cat: 'Outil interne',
       detail:
-        '[Le détail affiché dans la fenêtre : le contexte, ton rôle exact, ce que tu as développé et le résultat.]',
+        'Un tableau de bord en 3D pour voir d’un coup d’œil quelles conversations Claude Code attendent une réponse et quelles merge requests GitLab sont à relire ou à merger. Chaque conversation ou MR est un personnage qui change de pièce quand son état change : accueil quand une réponse est attendue, atelier quand un pipeline échoue, salle de réunion quand plusieurs agents tournent. Des hooks Claude Code écrivent l’état des sessions, un serveur local interroge l’API GitLab et pousse les changements en direct (SSE) à une scène Three.js.',
     },
-    p2: {
-      kind: '[Type — ex. Outil interne]',
-      title: '[Titre du projet]',
-      blurb: '[Une phrase : ce que fait le projet et avec quoi.]',
-      cat: '[Catégorie]',
+    'arosaje-api': {
+      kind: 'API · Back-end',
+      title: 'A’rosa-je — API',
+      blurb: 'L’API d’une application où des particuliers confient leurs plantes à d’autres membres et demandent conseil à des botanistes.',
+      cat: 'Application web',
       detail:
-        '[Le détail affiché dans la fenêtre : le contexte, ton rôle exact, ce que tu as développé et le résultat.]',
+        'API FastAPI et PostgreSQL d’A’rosa-je : comptes, plantes, demandes de garde, offres, messagerie, journal de garde et conseils de botanistes. Les données personnelles sont chiffrées en base, les migrations s’appliquent au démarrage, et toute la pile tourne sous Docker Compose avec son observabilité (Grafana, Prometheus, Loki, Tempo).',
     },
-    p3: {
-      kind: '[Type — ex. Projet IA]',
-      title: '[Titre du projet]',
-      blurb: '[Une phrase : ce que fait le projet et avec quoi.]',
-      cat: '[Catégorie]',
+    'arosaje-front': {
+      kind: 'Application web · Front-end',
+      title: 'A’rosa-je — Front',
+      blurb: 'L’interface React d’A’rosa-je : gestion de ses plantes, demandes de garde, messagerie et conseils de botanistes.',
+      cat: 'Application web',
       detail:
-        '[Le détail affiché dans la fenêtre : le contexte, ton rôle exact, ce que tu as développé et le résultat.]',
+        'Interface React et TypeScript d’A’rosa-je : tableau de bord, gestion de ses plantes avec photos, parcours complet de garde (demande, offres, messagerie privée, journal avec photos, note du gardien), questions aux botanistes et espace d’administration. Disponible en six langues, en mode clair et sombre, avec Chakra UI, React Router, Zustand et des tests Vitest.',
+    },
+    momentum: {
+      kind: 'Application mobile',
+      title: 'Momentum',
+      blurb: 'Une to-do list gamifiée, 100 % locale : tâches, routines, série et XP stockés sur le téléphone.',
+      cat: 'Application mobile',
+      detail:
+        'Application Flutter de to-do gamifiée, sans compte ni serveur : tout vit dans une base SQLite sur le téléphone. Chaque tâche fermée rapporte de l’XP, les routines se réimpriment chaque jour, une série récompense la régularité, une quête du jour donne un bonus, et des statistiques comparent les 28 derniers jours aux précédents. Un rappel local est envoyé le soir s’il reste des tâches ouvertes.',
     },
   },
 

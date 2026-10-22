@@ -58,31 +58,38 @@ export const en: Translation = {
     education: 'Education',
   },
 
-  /* TODO Lucas: replace every bracketed field with a real project. */
   projects: {
-    p1: {
-      kind: '[Type — e.g. Web app]',
-      title: '[Project title]',
-      blurb: '[One sentence: what it does and what it is built with.]',
-      cat: '[Category]',
+    office: {
+      kind: 'Monitoring tool · 3D',
+      title: 'Claude Manage Office',
+      blurb: 'A 3D office where my Claude Code conversations and GitLab merge requests move from room to room as their status changes.',
+      cat: 'Internal tool',
       detail:
-        '[The detail shown in this window: the context, your exact role, what you built and the outcome.]',
+        'A 3D dashboard showing at a glance which Claude Code conversations are waiting for a reply and which GitLab merge requests need a review or a merge. Each conversation or MR is a character that changes room when its status changes: reception when a reply is needed, workshop when a pipeline fails, meeting room when several agents are running. Claude Code hooks record session status, a local server polls the GitLab API and streams changes live (SSE) to a Three.js scene.',
     },
-    p2: {
-      kind: '[Type — e.g. Internal tool]',
-      title: '[Project title]',
-      blurb: '[One sentence: what it does and what it is built with.]',
-      cat: '[Category]',
+    'arosaje-api': {
+      kind: 'API · Back-end',
+      title: 'A’rosa-je — API',
+      blurb: 'The API of an app where people entrust their plants to other members and ask botanists for advice.',
+      cat: 'Web app',
       detail:
-        '[The detail shown in this window: the context, your exact role, what you built and the outcome.]',
+        'FastAPI and PostgreSQL API for A’rosa-je: accounts, plants, plant-sitting requests, offers, messaging, sitting journal and botanist advice. Personal data is encrypted at rest, migrations run on startup, and the whole stack runs on Docker Compose with its observability tools (Grafana, Prometheus, Loki, Tempo).',
     },
-    p3: {
-      kind: '[Type — e.g. AI project]',
-      title: '[Project title]',
-      blurb: '[One sentence: what it does and what it is built with.]',
-      cat: '[Category]',
+    'arosaje-front': {
+      kind: 'Web app · Front-end',
+      title: 'A’rosa-je — Front',
+      blurb: 'The React interface of A’rosa-je: managing your plants, plant-sitting requests, messaging and botanist advice.',
+      cat: 'Web app',
       detail:
-        '[The detail shown in this window: the context, your exact role, what you built and the outcome.]',
+        'React and TypeScript interface for A’rosa-je: dashboard, plant management with photos, the full plant-sitting flow (request, offers, private messaging, photo journal, sitter rating), questions to botanists and an admin area. Available in six languages, in light and dark mode, built with Chakra UI, React Router, Zustand and tested with Vitest.',
+    },
+    momentum: {
+      kind: 'Mobile app',
+      title: 'Momentum',
+      blurb: 'A gamified to-do list that runs 100% on the device: tasks, routines, streaks and XP stored on the phone.',
+      cat: 'Mobile app',
+      detail:
+        'A gamified to-do app in Flutter, with no account and no server: everything lives in a SQLite database on the phone. Closing a task earns XP, routines reappear every day, a streak rewards consistency, a daily quest gives a bonus, and stats compare the last 28 days with the previous 28. A local reminder is sent in the evening if tasks are still open.',
     },
   },
 

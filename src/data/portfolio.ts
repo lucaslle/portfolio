@@ -38,9 +38,26 @@ type ProjectBase = {
 }
 
 export const PROJECTS = [
-  { id: 'p1', tags: ['[Techno]', '[Techno]'] },
-  { id: 'p2', tags: ['[Techno]', '[Techno]'] },
-  { id: 'p3', tags: ['[Techno]', '[Techno]'] },
+  {
+    id: 'office',
+    tags: ['Three.js', 'JavaScript', 'Node.js', 'API GitLab'],
+    sourceUrl: 'https://github.com/lucaslle/claude-manage-office',
+  },
+  {
+    id: 'arosaje-api',
+    tags: ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'Grafana'],
+    sourceUrl: 'https://github.com/lucaslle/Arosaje_Back',
+  },
+  {
+    id: 'arosaje-front',
+    tags: ['React', 'TypeScript', 'Chakra UI', 'Zustand', 'Vitest'],
+    sourceUrl: 'https://github.com/lucaslle/Arosaje_Front',
+  },
+  {
+    id: 'momentum',
+    tags: ['Flutter', 'Dart', 'SQLite'],
+    sourceUrl: 'https://github.com/lucaslle/TODOapp',
+  },
 ] as const satisfies readonly ProjectBase[]
 
 export type ProjectId = (typeof PROJECTS)[number]['id']
