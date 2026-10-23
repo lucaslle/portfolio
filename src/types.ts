@@ -2,19 +2,28 @@ export type SectionId = 'home' | 'about' | 'portfolio' | 'contact'
 
 export type PortfolioTab = 'projects' | 'skills' | 'journey'
 
+export type Locale = 'fr' | 'en'
+
 export type Project = {
   id: string
   kind: string
   title: string
   blurb: string
-  tags: string[]
+  tags: readonly string[]
   cat: string
   detail: string
   demoUrl?: string
-  sourceUrl?: string
+  sources: readonly ProjectSource[]
+}
+
+/** Un dépôt de code ; le libellé distingue les dépôts d'un même projet (Front, API). */
+export type ProjectSource = {
+  label: string
+  url: string
 }
 
 export type Skill = {
+  id: string
   name: string
   lvl: number
   level: string
@@ -28,8 +37,8 @@ export type Job = {
   place: string
   period: string
   summary: string
-  bullets: string[]
-  stack: string[]
+  bullets: readonly string[]
+  stack: readonly string[]
 }
 
 export type Education = {

@@ -1,20 +1,23 @@
 import { lazy, Suspense, useMemo } from 'react'
-import { BADGE, HERO_HEADLINE, HERO_HINTS, HERO_LEAD, HERO_ROLES, HERO_TECHS } from '../data/portfolio'
+import { HERO_TECHS } from '../data/portfolio'
 import { useIsCompact } from '../hooks/useIsCompact'
+import { useTranslation } from '../i18n/useTranslation'
+import { useTheme } from '../theme/useTheme'
 import { buildBadgeImage } from '../utils/badgeImage'
 import ShinyText from './reactbits/ShinyText/ShinyText'
 import TextType from './reactbits/TextType/TextType'
 
 const Lanyard = lazy(() => import('./reactbits/Lanyard/Lanyard'))
 
-const [HEADLINE_FIRST, HEADLINE_SECOND] = HERO_HEADLINE
-
 const BADGE_SIZE_DESKTOP = 0.48
 const BADGE_SIZE_COMPACT = 0.36
 
 export const Hero = () => {
-  const frontImage = useMemo(() => buildBadgeImage('front'), [])
-  const backImage = useMemo(() => buildBadgeImage('back'), [])
+  const { t } = useTranslation()
+  const { palette } = useTheme()
+  const [headlineFirst, headlineSecond] = t.hero.headline
+  const frontImage = useMemo(() => buildBadgeImage('front', t.role, palette), [t.role, palette])
+  const backImage = useMemo(() => buildBadgeImage('back', t.role, palette), [t.role, palette])
   const isCompact = useIsCompact()
   const badgeSize = isCompact ? BADGE_SIZE_COMPACT : BADGE_SIZE_DESKTOP
   const anchor = isCompact ? 'center' : 'right'
@@ -23,18 +26,20 @@ export const Hero = () => {
     <section id="home" className="hero">
       <div className="hero__body">
         <div className="hero__badge">
-          <ShinyText text={`✦ ${BADGE}`} color="#8b7aa8" shineColor="#e9dcff" speed={3} />
+          <ShinyText text={`✦ ${t.hero.badge}`} color={palette.shiny} shineColor={palette.ice} speed={3} />
         </div>
 
         <h1 className="hero__headline">
-          <span className="hero__headline-line">{HEADLINE_FIRST}</span>
-          <span className="hero__headline-line hero__headline-line--accent">{HEADLINE_SECOND}</span>
+          <span className="hero__headline-line">{headlineFirst}</span>
+          <span className="hero__headline-line hero__headline-line--accent">{headlineSecond}</span>
         </h1>
 
         <div className="hero__role">
+          {/* key : repart de zéro au changement de langue plutôt que de finir le mot en cours. */}
           <TextType
+            key={t.tag}
             as="span"
-            text={HERO_ROLES}
+            text={t.hero.roles}
             typingSpeed={70}
             deletingSpeed={40}
             pauseDuration={1800}
@@ -42,9 +47,9 @@ export const Hero = () => {
           />
         </div>
 
-        <p className="hero__lead">{HERO_LEAD}</p>
+        <p className="hero__lead">{t.hero.lead}</p>
 
-        <ul className="hero__techs" aria-label="Technologies">
+        <ul className="hero__techs" aria-label={t.hero.techs}>
           {HERO_TECHS.map((tech) => (
             <li key={tech} className="chip">
               {tech}
@@ -53,7 +58,7 @@ export const Hero = () => {
         </ul>
 
         <ul className="hero__hints">
-          {HERO_HINTS.map((hint) => (
+          {t.hero.hints.map((hint) => (
             <li key={hint}>{hint}</li>
           ))}
         </ul>
@@ -64,9 +69,9 @@ export const Hero = () => {
           <Lanyard
             frontImage={frontImage}
             backImage={backImage}
-            cardColor="#0d0818"
+            cardColor={palette.cardSurface}
             metal="silver"
-            strapColor="#4c2a9e"
+            strapColor={palette.strap}
             anchor={anchor}
             interactionScope="window"
             size={badgeSize}

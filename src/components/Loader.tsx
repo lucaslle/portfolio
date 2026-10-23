@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from '../i18n/useTranslation'
 import DecryptedText from './reactbits/DecryptedText/DecryptedText'
 
 const LEAVE_DELAY = 2200
@@ -9,6 +10,7 @@ type LoaderProps = {
 }
 
 export const Loader = ({ onDone }: LoaderProps) => {
+  const { t } = useTranslation()
   const [isLeaving, setIsLeaving] = useState(false)
 
   useEffect(() => {
@@ -22,7 +24,7 @@ export const Loader = ({ onDone }: LoaderProps) => {
   }, [onDone])
 
   return (
-    <div className={isLeaving ? 'loader loader--leaving' : 'loader'} role="status" aria-label="Chargement">
+    <div className={isLeaving ? 'loader loader--leaving' : 'loader'} role="status" aria-label={t.loader}>
       <DecryptedText
         text="Welcome"
         animateOn="view"

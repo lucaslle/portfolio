@@ -1,27 +1,20 @@
 import { useRef, useState } from 'react'
 import type { KeyboardEvent } from 'react'
+import { useTranslation } from '../i18n/useTranslation'
 import type { PortfolioTab, Project } from '../types'
 import { JourneyPanel } from './JourneyPanel'
 import { ProjectsPanel } from './ProjectsPanel'
 import BlurText from './reactbits/BlurText/BlurText'
 import { SkillsPanel } from './SkillsPanel'
 
-type TabItem = {
-  id: PortfolioTab
-  label: string
-}
-
-const TABS: TabItem[] = [
-  { id: 'projects', label: 'Projets' },
-  { id: 'skills', label: 'Compétences' },
-  { id: 'journey', label: 'Parcours' },
-]
+const TABS: PortfolioTab[] = ['projects', 'skills', 'journey']
 
 type PortfolioProps = {
   onOpenProject: (project: Project) => void
 }
 
 export const Portfolio = ({ onOpenProject }: PortfolioProps) => {
+  const { t } = useTranslation()
   const [activeTab, setActiveTab] = useState<PortfolioTab>('projects')
   const tabRefs = useRef<Record<PortfolioTab, HTMLButtonElement | null>>({
     projects: null,
@@ -31,8 +24,8 @@ export const Portfolio = ({ onOpenProject }: PortfolioProps) => {
 
   const selectTab = (index: number) => {
     const tab = TABS[(index + TABS.length) % TABS.length]
-    setActiveTab(tab.id)
-    tabRefs.current[tab.id]?.focus()
+    setActiveTab(tab)
+    tabRefs.current[tab]?.focus()
   }
 
   const handleTabKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
@@ -53,29 +46,29 @@ export const Portfolio = ({ onOpenProject }: PortfolioProps) => {
     <section id="portfolio" className="portfolio">
       <div className="portfolio__head">
         <h2 className="section-title">
-          <BlurText text="Portfolio Showcase" delay={100} animateBy="words" direction="top" />
+          <BlurText text={t.portfolio.title} delay={100} animateBy="words" direction="top" />
         </h2>
-        <p className="section-lead">Mes projets, mes compétences et mon parcours.</p>
+        <p className="section-lead">{t.portfolio.lead}</p>
       </div>
 
-      <div className="tabs" role="tablist" aria-label="Contenu du portfolio">
+      <div className="tabs" role="tablist" aria-label={t.portfolio.tabsLabel}>
         {TABS.map((tab, index) => (
           <button
-            key={tab.id}
+            key={tab}
             ref={(element) => {
-              tabRefs.current[tab.id] = element
+              tabRefs.current[tab] = element
             }}
             type="button"
             role="tab"
-            id={`tab-${tab.id}`}
-            aria-selected={activeTab === tab.id}
-            aria-controls={`panel-${tab.id}`}
-            tabIndex={activeTab === tab.id ? 0 : -1}
+            id={`tab-${tab}`}
+            aria-selected={activeTab === tab}
+            aria-controls={`panel-${tab}`}
+            tabIndex={activeTab === tab ? 0 : -1}
             className="tabs__tab"
-            onClick={() => setActiveTab(tab.id)}
+            onClick={() => setActiveTab(tab)}
             onKeyDown={(event) => handleTabKeyDown(event, index)}
           >
-            {tab.label}
+            {t.portfolio.tabs[tab]}
           </button>
         ))}
       </div>
