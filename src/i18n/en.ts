@@ -23,7 +23,7 @@ export const en: Translation = {
     badge: '2 years of experience · Front-end & AI',
     headline: ['AI', 'Architect.'],
     roles: ['A project lead who codes', 'React front-end developer', 'AI architect'],
-    lead: 'A project lead who codes: I scope the need, build the features myself, then run the demos. Two years in — one as an apprentice, one in front-end development — and now an AI architect role.',
+    lead: 'A project lead who codes: I scope the need, build the features myself, then run the demos. Two years of React front-end development, including one as an apprentice, and now an AI architect role.',
     techs: 'Technologies',
     hints: ['↓ my projects are further down', '↗ open to conversations and collaborations'],
   },
@@ -31,7 +31,7 @@ export const en: Translation = {
   about: {
     eyebrow: 'About',
     story:
-      'I bridge the gap between the need and the code. In practice: I scope the work, build the features myself, then present them in demos. One year as an apprentice, one year of front-end development with some Python, and I am now starting out in AI architecture.',
+      'I bridge the gap between the need and the code. In practice: I scope the work, build the features myself, then present them in demos. Two years of front-end development, including one as an apprentice, with some Python, and I am now starting out in AI architecture.',
     quote: 'Bridging the gap between the need and the code.',
     viewProjects: 'View projects',
     contact: 'Get in touch',
@@ -52,6 +52,7 @@ export const en: Translation = {
       journey: 'Journey',
     },
     details: 'Details ↗',
+    sourceLabel: (label) => `Source code (${label})`,
     skillLevel: (level, max) => `Level ${level} out of ${max}`,
     softSkillsLabel: 'Soft skills',
     experience: 'Experience',
@@ -67,21 +68,13 @@ export const en: Translation = {
       detail:
         'A 3D dashboard showing at a glance which Claude Code conversations are waiting for a reply and which GitLab merge requests need a review or a merge. Each conversation or MR is a character that changes room when its status changes: reception when a reply is needed, workshop when a pipeline fails, meeting room when several agents are running. Claude Code hooks record session status, a local server polls the GitLab API and streams changes live (SSE) to a Three.js scene.',
     },
-    'arosaje-api': {
-      kind: 'API · Back-end',
-      title: 'A’rosa-je — API',
-      blurb: 'The API of an app where people entrust their plants to other members and ask botanists for advice.',
+    arosaje: {
+      kind: 'Web app · Full-stack',
+      title: 'A’rosa-je',
+      blurb: 'An app where people entrust their plants to other members while they are away and ask botanists for advice.',
       cat: 'Web app',
       detail:
-        'FastAPI and PostgreSQL API for A’rosa-je: accounts, plants, plant-sitting requests, offers, messaging, sitting journal and botanist advice. Personal data is encrypted at rest, migrations run on startup, and the whole stack runs on Docker Compose with its observability tools (Grafana, Prometheus, Loki, Tempo).',
-    },
-    'arosaje-front': {
-      kind: 'Web app · Front-end',
-      title: 'A’rosa-je — Front',
-      blurb: 'The React interface of A’rosa-je: managing your plants, plant-sitting requests, messaging and botanist advice.',
-      cat: 'Web app',
-      detail:
-        'React and TypeScript interface for A’rosa-je: dashboard, plant management with photos, the full plant-sitting flow (request, offers, private messaging, photo journal, sitter rating), questions to botanists and an admin area. Available in six languages, in light and dark mode, built with Chakra UI, React Router, Zustand and tested with Vitest.',
+        'A full-stack app, front end and API. On the interface side (React, TypeScript, Chakra UI, Zustand): dashboard, plant management with photos, the full plant-sitting flow (request, offers, private messaging, photo journal, sitter rating), questions to botanists and an admin area, in six languages and in light or dark mode. On the API side (FastAPI, PostgreSQL): personal data encrypted at rest, migrations applied on startup, and the whole stack on Docker Compose with its observability tools (Grafana, Prometheus, Loki, Tempo).',
     },
     momentum: {
       kind: 'Mobile app',
@@ -102,7 +95,7 @@ export const en: Translation = {
     react: {
       name: 'React / TypeScript',
       level: 'Solid',
-      note: 'One year of front-end development in production',
+      note: 'Two years of front-end development in production',
     },
     'html-css': { name: 'HTML / CSS', level: 'Solid', note: 'Integration, responsive, accessibility' },
     'ai-architecture': {

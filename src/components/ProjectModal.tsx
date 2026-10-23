@@ -67,18 +67,18 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
           ))}
         </div>
 
-        {project.demoUrl || project.sourceUrl ? (
+        {project.demoUrl || project.sources.length > 0 ? (
           <div className="modal__links">
             {project.demoUrl ? (
               <a href={project.demoUrl} className="modal__link--solid" target="_blank" rel="noreferrer">
                 {t.modal.liveDemo}
               </a>
             ) : null}
-            {project.sourceUrl ? (
-              <a href={project.sourceUrl} className="modal__link--ghost" target="_blank" rel="noreferrer">
-                {t.modal.source}
+            {project.sources.map((source) => (
+              <a key={source.url} href={source.url} className="modal__link--ghost" target="_blank" rel="noreferrer">
+                {project.sources.length > 1 ? `${t.modal.source} · ${source.label}` : t.modal.source}
               </a>
-            ) : null}
+            ))}
           </div>
         ) : null}
       </div>

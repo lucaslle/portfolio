@@ -23,7 +23,7 @@ export const fr: Translation = {
     badge: '2 ans d’expérience · Front & IA',
     headline: ['Architecte', 'IA.'],
     roles: ['Chef de projet qui code', 'Développeur front React', 'Architecte IA'],
-    lead: 'Chef de projet qui code : je cadre les besoins, je développe les features et je présente les démos. Deux ans d’expérience — un an en alternance, un an en développement front — et aujourd’hui un poste d’architecte IA.',
+    lead: 'Chef de projet qui code : je cadre les besoins, je développe les features et je présente les démos. Deux ans de développement front en React, dont un an en alternance, et aujourd’hui un poste d’architecte IA.',
     techs: 'Technologies',
     hints: ['↓ découvrez mes projets plus bas', '↗ ouvert aux échanges et aux collaborations'],
   },
@@ -31,7 +31,7 @@ export const fr: Translation = {
   about: {
     eyebrow: 'À propos',
     story:
-      'Je fais le pont entre le besoin et le code. Concrètement : je cadre, je développe les features moi-même, puis je les présente en démo. Un an d’alternance, un an de développement front avec un peu de Python, et je démarre maintenant sur l’architecture IA.',
+      'Je fais le pont entre le besoin et le code. Concrètement : je cadre, je développe les features moi-même, puis je les présente en démo. Deux ans de développement front, dont un an en alternance, avec un peu de Python, et je démarre maintenant sur l’architecture IA.',
     quote: 'Faire le pont entre le besoin et le code.',
     viewProjects: 'Voir les projets',
     contact: 'Me contacter',
@@ -52,6 +52,7 @@ export const fr: Translation = {
       journey: 'Parcours',
     },
     details: 'Détails ↗',
+    sourceLabel: (label) => `Code source (${label})`,
     skillLevel: (level, max) => `Niveau ${level} sur ${max}`,
     softSkillsLabel: 'Savoir-être',
     experience: 'Expérience',
@@ -67,21 +68,13 @@ export const fr: Translation = {
       detail:
         'Un tableau de bord en 3D pour voir d’un coup d’œil quelles conversations Claude Code attendent une réponse et quelles merge requests GitLab sont à relire ou à merger. Chaque conversation ou MR est un personnage qui change de pièce quand son état change : accueil quand une réponse est attendue, atelier quand un pipeline échoue, salle de réunion quand plusieurs agents tournent. Des hooks Claude Code écrivent l’état des sessions, un serveur local interroge l’API GitLab et pousse les changements en direct (SSE) à une scène Three.js.',
     },
-    'arosaje-api': {
-      kind: 'API · Back-end',
-      title: 'A’rosa-je — API',
-      blurb: 'L’API d’une application où des particuliers confient leurs plantes à d’autres membres et demandent conseil à des botanistes.',
+    arosaje: {
+      kind: 'Application web · Full-stack',
+      title: 'A’rosa-je',
+      blurb: 'Une application où des particuliers confient leurs plantes à d’autres membres pendant leur absence et demandent conseil à des botanistes.',
       cat: 'Application web',
       detail:
-        'API FastAPI et PostgreSQL d’A’rosa-je : comptes, plantes, demandes de garde, offres, messagerie, journal de garde et conseils de botanistes. Les données personnelles sont chiffrées en base, les migrations s’appliquent au démarrage, et toute la pile tourne sous Docker Compose avec son observabilité (Grafana, Prometheus, Loki, Tempo).',
-    },
-    'arosaje-front': {
-      kind: 'Application web · Front-end',
-      title: 'A’rosa-je — Front',
-      blurb: 'L’interface React d’A’rosa-je : gestion de ses plantes, demandes de garde, messagerie et conseils de botanistes.',
-      cat: 'Application web',
-      detail:
-        'Interface React et TypeScript d’A’rosa-je : tableau de bord, gestion de ses plantes avec photos, parcours complet de garde (demande, offres, messagerie privée, journal avec photos, note du gardien), questions aux botanistes et espace d’administration. Disponible en six langues, en mode clair et sombre, avec Chakra UI, React Router, Zustand et des tests Vitest.',
+        'Application full-stack, front et API. Côté interface (React, TypeScript, Chakra UI, Zustand) : tableau de bord, gestion de ses plantes avec photos, parcours complet de garde (demande, offres, messagerie privée, journal avec photos, note du gardien), questions aux botanistes et espace d’administration, en six langues et en mode clair ou sombre. Côté API (FastAPI, PostgreSQL) : données personnelles chiffrées en base, migrations appliquées au démarrage, et toute la pile sous Docker Compose avec son observabilité (Grafana, Prometheus, Loki, Tempo).',
     },
     momentum: {
       kind: 'Application mobile',
@@ -102,7 +95,7 @@ export const fr: Translation = {
     react: {
       name: 'React / TypeScript',
       level: 'Solide',
-      note: 'Un an de développement front en production',
+      note: 'Deux ans de développement front en production',
     },
     'html-css': { name: 'HTML / CSS', level: 'Solide', note: 'Intégration, responsive, accessibilité' },
     'ai-architecture': {

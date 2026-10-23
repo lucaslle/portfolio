@@ -1,4 +1,4 @@
-import type { SectionId, Social, StatIcon } from '../types'
+import type { ProjectSource, SectionId, Social, StatIcon } from '../types'
 
 /* ------------------------------------------------------------------ *
  * Ce fichier ne contient QUE ce qui ne change pas d'une langue à
@@ -34,29 +34,28 @@ type ProjectBase = {
   id: string
   tags: readonly string[]
   demoUrl?: string
-  sourceUrl?: string
+  sources: readonly ProjectSource[]
 }
 
 export const PROJECTS = [
   {
     id: 'office',
     tags: ['Three.js', 'JavaScript', 'Node.js', 'API GitLab'],
-    sourceUrl: 'https://github.com/lucaslle/claude-manage-office',
+    demoUrl: 'https://lucaslle.github.io/claude-manage-office/',
+    sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/claude-manage-office' }],
   },
   {
-    id: 'arosaje-api',
-    tags: ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'Grafana'],
-    sourceUrl: 'https://github.com/lucaslle/Arosaje_Back',
-  },
-  {
-    id: 'arosaje-front',
-    tags: ['React', 'TypeScript', 'Chakra UI', 'Zustand', 'Vitest'],
-    sourceUrl: 'https://github.com/lucaslle/Arosaje_Front',
+    id: 'arosaje',
+    tags: ['React', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Docker'],
+    sources: [
+      { label: 'Front', url: 'https://github.com/lucaslle/Arosaje_Front' },
+      { label: 'API', url: 'https://github.com/lucaslle/Arosaje_Back' },
+    ],
   },
   {
     id: 'momentum',
     tags: ['Flutter', 'Dart', 'SQLite'],
-    sourceUrl: 'https://github.com/lucaslle/TODOapp',
+    sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/TODOapp' }],
   },
 ] as const satisfies readonly ProjectBase[]
 

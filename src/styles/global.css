@@ -717,8 +717,21 @@ button {
   gap: 12px;
 }
 
+.project__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project__index {
+  font: 700 28px/1 var(--display);
+  color: color-mix(in srgb, var(--lilac) 28%, transparent);
+}
+
 .project__kind {
-  font: 400 10px/1 var(--mono);
+  text-align: right;
+  font: 400 10px/1.4 var(--mono);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--violet);
@@ -739,12 +752,98 @@ button {
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.project__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.project__sources {
+  display: flex;
+  gap: 8px;
+}
+
+.project__source {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: 500 11px/1 var(--mono);
+  color: var(--muted);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.project__source:hover {
+  color: var(--ice);
+  border-color: var(--lilac);
+}
+
+.project__source--demo {
+  border-color: color-mix(in srgb, var(--lilac) 45%, transparent);
+  color: var(--lilac);
+}
+
+.project__source:focus-visible,
+.project__more:focus-visible {
+  outline: 2px solid var(--lilac);
+  outline-offset: 2px;
+}
+
+/* toute la carte ouvre le détail ; les liens GitHub restent au-dessus */
+.project__more::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+.project__sources {
+  position: relative;
+  z-index: 1;
+}
+
+.project {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.project:hover,
+.project:focus-within {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--lilac) 55%, transparent),
+    0 18px 40px -18px color-mix(in srgb, var(--violet) 70%, transparent);
 }
 
 .project__more {
-  align-self: flex-start;
-  margin-top: auto;
-  padding: 10px 0 0;
+  transition: color 0.2s ease;
+}
+
+.project:hover .project__more {
+  color: var(--ice);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project:hover,
+  .project:focus-within {
+    transform: none;
+  }
+}
+
+.project__more {
+  padding: 0;
   border: 0;
   background: none;
   cursor: pointer;

@@ -13,7 +13,13 @@ export type Project = {
   cat: string
   detail: string
   demoUrl?: string
-  sourceUrl?: string
+  sources: readonly ProjectSource[]
+}
+
+/** Un dépôt de code ; le libellé distingue les dépôts d'un même projet (Front, API). */
+export type ProjectSource = {
+  label: string
+  url: string
 }
 
 export type Skill = {
