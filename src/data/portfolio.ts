@@ -44,13 +44,14 @@ export const SOCIALS: Social[] = [
 export const PROJECTS: Project[] = [
   {
     id: 'p1',
-    kind: '[Type — ex. Web app]',
-    title: '[Titre du projet]',
-    blurb: '[Une phrase : ce que fait le projet et avec quoi.]',
+    kind: 'Web app',
+    title: 'Momentum',
+    blurb: '[Une phrase : ce que fait Momentum et avec quoi.]',
     tags: ['[Techno]', '[Techno]'],
     cat: '[Catégorie]',
     detail:
       '[Le détail affiché dans la fenêtre : le contexte, ton rôle exact, ce que tu as développé et le résultat.]',
+    demoUrl: 'https://lucaslle.github.io/TODOapp/?frame=iphone',
   },
   {
     id: 'p2',
