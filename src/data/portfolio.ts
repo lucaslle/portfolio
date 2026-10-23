@@ -46,12 +46,13 @@ export const PROJECTS: Project[] = [
     id: 'p1',
     kind: 'Web app',
     title: 'Momentum',
-    blurb: '[Une phrase : ce que fait Momentum et avec quoi.]',
-    tags: ['[Techno]', '[Techno]'],
-    cat: '[Catégorie]',
+    blurb: 'To-do list gamifiée, en noir et blanc et 100 % locale : routines, XP, série et statistiques, avec Flutter.',
+    tags: ['Flutter', 'Dart', 'SQLite', 'Clean architecture'],
+    cat: 'Application mobile',
     detail:
-      '[Le détail affiché dans la fenêtre : le contexte, ton rôle exact, ce que tu as développé et le résultat.]',
+      'Implémentation Flutter d’une maquette de to-do gamifiée. Aucun compte, aucun serveur : tâches, routines, série, XP et statistiques vivent dans une base SQLite sur le téléphone. Les routines se réimpriment chaque jour, chaque liste rapporte son XP, la série tient grâce à deux gels par mois et toutes les statistiques sont calculées depuis les tâches réellement fermées. Le code suit une architecture OSDD en clean architecture, avec un domaine testé sans base de données (60 tests). Une démo web, publiée sur GitHub Pages, tourne dans un cadre d’iPhone avec huit semaines d’historique d’exemple, et l’APK Android est téléchargeable depuis la page.',
     demoUrl: 'https://lucaslle.github.io/TODOapp/?frame=iphone',
+    sourceUrl: 'https://github.com/lucaslle/TODOapp',
   },
   {
     id: 'p2',
