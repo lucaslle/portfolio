@@ -55,6 +55,7 @@ export const PROJECTS = [
   {
     id: 'momentum',
     tags: ['Flutter', 'Dart', 'SQLite'],
+    demoUrl: 'https://lucaslle.github.io/TODOapp/?frame=iphone',
     sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/TODOapp' }],
   },
   {
