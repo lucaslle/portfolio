@@ -695,6 +695,11 @@ button {
   gap: 22px;
 }
 
+/* plus larges : deux colonnes évitent une carte isolée avec un nombre pair de projets */
+.cards--projects {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr));
+}
+
 .cards > li {
   display: flex;
 }

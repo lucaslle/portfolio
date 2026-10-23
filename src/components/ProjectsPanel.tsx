@@ -17,7 +17,7 @@ export const ProjectsPanel = ({ onOpenProject }: ProjectsPanelProps) => {
   const spotlightColor = withAlpha(palette.violet, 0.3)
 
   return (
-    <ul className="cards">
+    <ul className="cards cards--projects">
       {projects.map((project, index) => (
         <li key={project.id}>
           <SpotlightCard spotlightColor={spotlightColor} className="project">

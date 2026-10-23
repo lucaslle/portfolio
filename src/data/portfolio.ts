@@ -57,6 +57,12 @@ export const PROJECTS = [
     tags: ['Flutter', 'Dart', 'SQLite'],
     sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/TODOapp' }],
   },
+  {
+    id: 'kaizen',
+    tags: ['Flutter', 'Dart', 'Bloc', 'Widget Android'],
+    demoUrl: 'https://lucaslle.github.io/Kaizen_365/?frame=iphone',
+    sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/Kaizen_365' }],
+  },
 ] as const satisfies readonly ProjectBase[]
 
 export type ProjectId = (typeof PROJECTS)[number]['id']

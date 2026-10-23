@@ -84,6 +84,14 @@ export const en: Translation = {
       detail:
         'A gamified to-do app in Flutter, with no account and no server: everything lives in a SQLite database on the phone. Closing a task earns XP, routines reappear every day, a streak rewards consistency, a daily quest gives a bonus, and stats compare the last 28 days with the previous 28. A local reminder is sent in the evening if tasks are still open.',
     },
+    kaizen: {
+      kind: 'Mobile app',
+      title: 'Kaizen 365',
+      blurb: 'An app for tracking yearly goals with the OKR method, with check-ins, charts and an end-of-year review.',
+      cat: 'Mobile app',
+      detail:
+        'A Flutter app for tracking yearly goals that runs entirely on the device: no account and no data sent over the internet. Each goal follows the OKR method (2 to 4 key results: a number, a percentage or milestones), gets a status computed from how far the year has gone, and a chart compared with the expected progress. Check-ins with a mood, notification reminders, an Android home-screen widget, six themes, French and English, JSON backup, and a yearly review that carries unfinished goals over to the next year. Built with Bloc and covered by an end-to-end test compared against reference screenshots.',
+    },
   },
 
   skills: {

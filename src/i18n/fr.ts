@@ -84,6 +84,14 @@ export const fr: Translation = {
       detail:
         'Application Flutter de to-do gamifiée, sans compte ni serveur : tout vit dans une base SQLite sur le téléphone. Chaque tâche fermée rapporte de l’XP, les routines se réimpriment chaque jour, une série récompense la régularité, une quête du jour donne un bonus, et des statistiques comparent les 28 derniers jours aux précédents. Un rappel local est envoyé le soir s’il reste des tâches ouvertes.',
     },
+    kaizen: {
+      kind: 'Application mobile',
+      title: 'Kaizen 365',
+      blurb: 'Une application de suivi d’objectifs annuels selon la méthode OKR, avec check-ins, graphiques et bilan de fin d’année.',
+      cat: 'Application mobile',
+      detail:
+        'Application Flutter de suivi d’objectifs annuels, 100 % locale : aucun compte ni donnée envoyée sur Internet. Chaque objectif suit la méthode OKR (2 à 4 résultats clés : valeur chiffrée, pourcentage ou jalons), reçoit un statut calculé selon le temps écoulé dans l’année et un graphique comparé à la progression attendue. Check-ins avec humeur, rappels par notifications, widget Android, six thèmes, français et anglais, sauvegarde en JSON, et un bilan qui reporte les objectifs non atteints sur l’année suivante. Architecture Bloc, couverte par un test de bout en bout comparé à des captures de référence.',
+    },
   },
 
   skills: {
