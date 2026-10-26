@@ -92,6 +92,14 @@ export const fr: Translation = {
       detail:
         'Application Flutter de suivi d’objectifs annuels, 100 % locale : aucun compte ni donnée envoyée sur Internet. Chaque objectif suit la méthode OKR (2 à 4 résultats clés : valeur chiffrée, pourcentage ou jalons), reçoit un statut calculé selon le temps écoulé dans l’année et un graphique comparé à la progression attendue. Check-ins avec humeur, rappels par notifications, widget Android, six thèmes, français et anglais, sauvegarde en JSON, et un bilan qui reporte les objectifs non atteints sur l’année suivante. Architecture Bloc, couverte par un test de bout en bout comparé à des captures de référence.',
     },
+    hargne: {
+      kind: 'Application mobile',
+      title: 'Hargne',
+      blurb: 'Une application pour planifier et suivre ses séances d’entraînement multisport : course, trail, vélo, natation et renforcement.',
+      cat: 'Application mobile',
+      detail:
+        'Application Flutter de planification d’entraînement multisport. Les écrans Aujourd’hui, Plan de la semaine et Détail de séance affichent durée, distance, allure et fréquence cardiaque cibles, RPE et structure par blocs, avec une case « faite ». Les séances se créent dans l’application ou s’importent depuis un fichier CSV, avec détection du séparateur, colonnes dans n’importe quel ordre et alias reconnus, puis se réexportent au même format pour Excel. La connexion à Garmin permet de récupérer ses propres activités. D’autres écrans (calendrier, historique, charge d’entraînement, Strava) sont encore des maquettes.',
+    },
   },
 
   skills: {

@@ -700,6 +700,11 @@ button {
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr));
 }
 
+/* avec un nombre impair de projets, la dernière carte prend toute la ligne */
+.cards--projects > li:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .cards > li {
   display: flex;
 }

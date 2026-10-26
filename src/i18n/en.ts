@@ -92,6 +92,14 @@ export const en: Translation = {
       detail:
         'A Flutter app for tracking yearly goals that runs entirely on the device: no account and no data sent over the internet. Each goal follows the OKR method (2 to 4 key results: a number, a percentage or milestones), gets a status computed from how far the year has gone, and a chart compared with the expected progress. Check-ins with a mood, notification reminders, an Android home-screen widget, six themes, French and English, JSON backup, and a yearly review that carries unfinished goals over to the next year. Built with Bloc and covered by an end-to-end test compared against reference screenshots.',
     },
+    hargne: {
+      kind: 'Mobile app',
+      title: 'Hargne',
+      blurb: 'An app for planning and tracking multisport training sessions: running, trail, cycling, swimming and strength.',
+      cat: 'Mobile app',
+      detail:
+        'A Flutter app for planning multisport training. The Today, Weekly plan and Session detail screens show target duration, distance, pace and heart rate, RPE and a block-by-block structure, with a “done” checkbox. Sessions are created in the app or imported from a CSV file, with separator detection, columns in any order and recognised aliases, then exported back in the same format for Excel. Connecting to Garmin brings in your own activities. Other screens (calendar, history, training load, Strava) are still mockups.',
+    },
   },
 
   skills: {

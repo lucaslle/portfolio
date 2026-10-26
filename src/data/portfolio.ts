@@ -64,6 +64,12 @@ export const PROJECTS = [
     demoUrl: 'https://lucaslle.github.io/Kaizen_365/?frame=iphone',
     sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/Kaizen_365' }],
   },
+  {
+    id: 'hargne',
+    tags: ['Flutter', 'Dart', 'Garmin', 'Import / export CSV'],
+    demoUrl: 'https://lucaslle.github.io/SportApp/?frame=iphone',
+    sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/SportApp' }],
+  },
 ] as const satisfies readonly ProjectBase[]
 
 export type ProjectId = (typeof PROJECTS)[number]['id']
