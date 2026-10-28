@@ -70,6 +70,12 @@ export const PROJECTS = [
     demoUrl: 'https://lucaslle.github.io/SportApp/?frame=iphone',
     sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/SportApp' }],
   },
+  {
+    id: 'ecu',
+    tags: ['Flutter', 'Dart', 'Import CSV'],
+    demoUrl: 'https://lucaslle.github.io/spent_app/?frame=iphone',
+    sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/spent_app' }],
+  },
 ] as const satisfies readonly ProjectBase[]
 
 export type ProjectId = (typeof PROJECTS)[number]['id']

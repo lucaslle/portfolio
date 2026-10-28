@@ -72,6 +72,8 @@ export type Translation = {
     tabsLabel: string
     tabs: Record<PortfolioTab, string>
     details: string
+    previousProjects: string
+    nextProjects: string
     sourceLabel: (label: string) => string
     skillLevel: (level: number, max: number) => string
     softSkillsLabel: string

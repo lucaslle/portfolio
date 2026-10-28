@@ -52,6 +52,8 @@ export const en: Translation = {
       journey: 'Journey',
     },
     details: 'Details ↗',
+    previousProjects: 'Previous projects',
+    nextProjects: 'Next projects',
     sourceLabel: (label) => `Source code (${label})`,
     skillLevel: (level, max) => `Level ${level} out of ${max}`,
     softSkillsLabel: 'Soft skills',
@@ -99,6 +101,14 @@ export const en: Translation = {
       cat: 'Mobile app',
       detail:
         'A Flutter app for planning multisport training. The Today, Weekly plan and Session detail screens show target duration, distance, pace and heart rate, RPE and a block-by-block structure, with a “done” checkbox. Sessions are created in the app or imported from a CSV file, with separator detection, columns in any order and recognised aliases, then exported back in the same format for Excel. Connecting to Garmin brings in your own activities. Other screens (calendar, history, training load, Strava) are still mockups.',
+    },
+    ecu: {
+      kind: 'Mobile app',
+      title: 'écu',
+      blurb: 'A daily spending tracker for young savers, with category budgets and savings tracking.',
+      cat: 'Mobile app',
+      detail:
+        'A Flutter spending tracker that runs entirely on the device: data never leaves the phone. It imports a bank statement as CSV and automatically categorises each transaction by keyword, with bulk re-categorisation from a transaction’s detail. A daily dashboard, a monthly budget per category and chart-based analytics, plus savings and investment accounts with their balance history. Amounts can be hidden on screen.',
     },
   },
 

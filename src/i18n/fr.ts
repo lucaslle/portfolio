@@ -52,6 +52,8 @@ export const fr: Translation = {
       journey: 'Parcours',
     },
     details: 'Détails ↗',
+    previousProjects: 'Projets précédents',
+    nextProjects: 'Projets suivants',
     sourceLabel: (label) => `Code source (${label})`,
     skillLevel: (level, max) => `Niveau ${level} sur ${max}`,
     softSkillsLabel: 'Savoir-être',
@@ -99,6 +101,14 @@ export const fr: Translation = {
       cat: 'Application mobile',
       detail:
         'Application Flutter de planification d’entraînement multisport. Les écrans Aujourd’hui, Plan de la semaine et Détail de séance affichent durée, distance, allure et fréquence cardiaque cibles, RPE et structure par blocs, avec une case « faite ». Les séances se créent dans l’application ou s’importent depuis un fichier CSV, avec détection du séparateur, colonnes dans n’importe quel ordre et alias reconnus, puis se réexportent au même format pour Excel. La connexion à Garmin permet de récupérer ses propres activités. D’autres écrans (calendrier, historique, charge d’entraînement, Strava) sont encore des maquettes.',
+    },
+    ecu: {
+      kind: 'Application mobile',
+      title: 'écu',
+      blurb: 'Une application de suivi des dépenses quotidiennes pour jeunes épargnants, avec budgets par catégorie et suivi de l’épargne.',
+      cat: 'Application mobile',
+      detail:
+        'Application Flutter de suivi des dépenses, 100 % locale : les données restent sur le téléphone. Elle importe un relevé bancaire en CSV et classe automatiquement chaque opération par mots-clés, avec un reclassement en masse depuis le détail d’une opération. Tableau de bord du jour, budget mensuel par catégorie et analyses en graphiques, plus le suivi des comptes d’épargne et de placement avec l’historique de leurs soldes. Les montants peuvent être masqués à l’écran.',
     },
   },
 
