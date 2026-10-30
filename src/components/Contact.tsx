@@ -12,26 +12,45 @@ import StarBorder from './reactbits/StarBorder/StarBorder'
 
 const EMPTY_FORM: ContactForm = { name: '', email: '', msg: '' }
 
-const buildMailto = (form: ContactForm, subjectPrefix: string): string => {
-  const subject = encodeURIComponent(`${subjectPrefix} — ${form.name}`)
-  const body = encodeURIComponent(`${form.msg}\n\n${form.name} · ${form.email}`)
+type SendStatus = 'idle' | 'sending' | 'sent' | 'error'
 
-  return `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
-}
+// shortcut: FormSubmit needs a one-time activation click in the inbox on the first send, then swap for a backend if volume grows.
+const FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`
 
 export const Contact = () => {
   const { t } = useTranslation()
   const { palette } = useTheme()
   const spotlightColor = withAlpha(palette.violet, 0.28)
   const [form, setForm] = useState<ContactForm>(EMPTY_FORM)
+  const [status, setStatus] = useState<SendStatus>('idle')
 
   const updateField = (field: keyof ContactForm, value: string) => {
     setForm((current) => ({ ...current, [field]: value }))
   }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    window.location.href = buildMailto(form, t.contact.mailSubject)
+    setStatus('sending')
+
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: `${t.contact.mailSubject} — ${form.name}`,
+          _replyto: form.email,
+          name: form.name,
+          email: form.email,
+          message: form.msg,
+        }),
+      })
+      if (!response.ok) throw new Error(String(response.status))
+
+      setForm(EMPTY_FORM)
+      setStatus('sent')
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -93,8 +112,14 @@ export const Contact = () => {
               textColor={palette.ink}
               radius={10}
             >
-              {t.contact.send}
+              {status === 'sending' ? t.contact.sending : t.contact.send}
             </StarBorder>
+
+            {(status === 'sent' || status === 'error') && (
+              <p className="contact__status" role="status">
+                {status === 'sent' ? t.contact.sent : t.contact.error}
+              </p>
+            )}
           </form>
         </SpotlightCard>
 

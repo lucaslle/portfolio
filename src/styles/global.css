@@ -1067,6 +1067,11 @@ button {
   justify-items: start;
 }
 
+.contact__status {
+  margin: 0;
+  font: 400 13px/1.4 var(--mono);
+}
+
 .field {
   display: grid;
   gap: 8px;

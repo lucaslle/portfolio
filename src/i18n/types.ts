@@ -102,6 +102,9 @@ export type Translation = {
     message: string
     messagePlaceholder: string
     send: string
+    sending: string
+    sent: string
+    error: string
     findMe: string
     findMeText: string
     mailSubject: string
