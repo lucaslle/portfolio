@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { CONTACT_EMAIL, SOCIALS } from '../data/portfolio'
+import { CONTACT_EMAIL, CV_URL, SOCIALS } from '../data/portfolio'
 import { useTranslation } from '../i18n/useTranslation'
 import { withAlpha } from '../theme/palette'
 import { useTheme } from '../theme/useTheme'
@@ -150,6 +150,10 @@ export const Contact = () => {
 
           <p className="contact__mail">
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            {' · '}
+            <a href={CV_URL} download>
+              {t.cv}
+            </a>
           </p>
         </SpotlightCard>
       </div>

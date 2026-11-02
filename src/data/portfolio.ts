@@ -11,6 +11,7 @@ export const INITIALS = 'LL'
 export const HERO_TECHS = ['React', 'TypeScript', 'Python']
 export const CONTACT_EMAIL = 'lucas.laliche@gmail.com'
 export const FOOTER_YEAR = 2026
+export const CV_URL = `${import.meta.env.BASE_URL}CV_Lucas_LALICHE.pdf`
 
 export const SECTION_IDS: SectionId[] = ['home', 'about', 'portfolio', 'contact']
 

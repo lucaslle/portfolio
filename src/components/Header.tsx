@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { MouseEvent } from 'react'
 import { flushSync } from 'react-dom'
-import { FULL_NAME } from '../data/portfolio'
+import { CV_URL, FULL_NAME } from '../data/portfolio'
 import { useContent } from '../i18n/useContent'
 import { useTranslation } from '../i18n/useTranslation'
 import type { SectionId } from '../types'
@@ -57,6 +57,9 @@ export const Header = ({ activeSection, onNavigate }: HeaderProps) => {
               {activeSection === item.id ? <span className="nav-link__underline" /> : null}
             </a>
           ))}
+          <a href={CV_URL} download className="nav-link">
+            {t.cvShort}
+          </a>
         </nav>
 
         <div className="header__tools">

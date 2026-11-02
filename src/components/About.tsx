@@ -1,4 +1,4 @@
-import { FULL_NAME, INITIALS } from '../data/portfolio'
+import { CV_URL, FULL_NAME, INITIALS } from '../data/portfolio'
 import { useContent } from '../i18n/useContent'
 import { useTranslation } from '../i18n/useTranslation'
 import { withAlpha } from '../theme/palette'
@@ -55,6 +55,18 @@ export const About = () => {
               onClick={() => scrollToSection('contact')}
             >
               {t.about.contact}
+            </StarBorder>
+
+            <StarBorder
+              as="a"
+              href={CV_URL}
+              download
+              color={palette.violet}
+              backgroundColor={palette.cardSurface}
+              textColor={palette.ice}
+              radius={10}
+            >
+              {t.cv}
             </StarBorder>
           </div>
         </div>

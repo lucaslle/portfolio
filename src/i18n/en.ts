@@ -297,3 +297,5 @@ export const en: Translation = {
     closeMenu: 'Close menu',
   },
 }
+  cv: 'Download my résumé (PDF, French)',
+  cvShort: 'Résumé',

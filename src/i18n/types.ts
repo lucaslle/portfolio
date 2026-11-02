@@ -120,6 +120,8 @@ export type Translation = {
   a11y: {
     mainNav: string
     languageSwitch: string
+  cv: string
+  cvShort: string
     background: string
     resetBackground: string
     openMenu: string

@@ -501,6 +501,20 @@ button {
   margin-top: 24px;
 }
 
+.cv-link {
+  display: inline-block;
+  margin-top: 22px;
+  font: 500 12px/1 var(--mono);
+  letter-spacing: 0.06em;
+  color: var(--ice-soft);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.cv-link:hover {
+  color: var(--violet);
+}
+
 .hero__hints {
   display: grid;
   gap: 6px;

@@ -297,3 +297,5 @@ export const fr: Translation = {
     closeMenu: 'Fermer le menu',
   },
 }
+  cv: 'Télécharger mon CV',
+  cvShort: 'CV',

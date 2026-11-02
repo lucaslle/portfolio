@@ -1,5 +1,5 @@
 import { lazy, Suspense, useMemo } from 'react'
-import { HERO_TECHS } from '../data/portfolio'
+import { CV_URL, HERO_TECHS } from '../data/portfolio'
 import { useIsCompact } from '../hooks/useIsCompact'
 import { useTranslation } from '../i18n/useTranslation'
 import { useTheme } from '../theme/useTheme'
@@ -56,6 +56,10 @@ export const Hero = () => {
             </li>
           ))}
         </ul>
+
+        <a href={CV_URL} download className="cv-link">
+          ↓ {t.cv}
+        </a>
 
         <ul className="hero__hints">
           {t.hero.hints.map((hint) => (
