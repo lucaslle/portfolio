@@ -610,6 +610,48 @@ button {
   color: var(--ice);
 }
 
+.about__method-title {
+  margin-top: 56px;
+  font: 500 12px/1 var(--mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--violet);
+}
+
+.about__method {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.method-step {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 18px 20px;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--card-surface) 72%, transparent);
+}
+
+.method-step__index {
+  font: 400 11px/1 var(--mono);
+  letter-spacing: 0.14em;
+  color: var(--faint);
+}
+
+.method-step__title {
+  font: 700 17px/1.2 var(--display);
+}
+
+.method-step__text {
+  font: 400 13.5px/1.55 var(--display);
+  color: var(--muted);
+}
+
 .about__stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1387,6 +1429,10 @@ button {
     width: 180px;
   }
 
+  .about__method {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .about__stats,
   .contact__grid {
     grid-template-columns: 1fr;
@@ -1394,6 +1440,10 @@ button {
 }
 
 @media (max-width: 560px) {
+  .about__method {
+    grid-template-columns: 1fr;
+  }
+
   .header {
     padding: 10px 16px;
   }

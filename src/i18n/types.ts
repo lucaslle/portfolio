@@ -64,6 +64,10 @@ export type Translation = {
     quote: string
     viewProjects: string
     contact: string
+    method: {
+      title: string
+      steps: readonly { title: string; text: string }[]
+    }
     stats: Record<StatId, string>
   }
 

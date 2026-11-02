@@ -31,10 +31,21 @@ export const fr: Translation = {
   about: {
     eyebrow: 'À propos',
     story:
-      'Je fais le pont entre le besoin et le code. Concrètement : je cadre, je développe les features moi-même, puis je les présente en démo. Deux ans de développement front, dont un an en alternance, avec un peu de Python, et je démarre maintenant sur l’architecture IA.',
+      'Développeur React et chef de projet : je fais le pont entre le besoin et le code. Je cadre avec le Product Owner et les designers, je développe les features moi-même, j’anime les cérémonies Scrum d’une équipe de 14 personnes, puis je présente en démo et je déploie. Deux ans de développement front, dont un an en alternance, avec un peu de Python et un vrai intérêt pour l’IA.',
     quote: 'Faire le pont entre le besoin et le code.',
     viewProjects: 'Voir les projets',
     contact: 'Me contacter',
+    method: {
+      title: 'Ma méthode, du besoin à la production',
+      steps: [
+        { title: 'Besoin', text: 'Recueillir et analyser le besoin avec le Product Owner.' },
+        { title: 'Délais', text: 'Estimer et s’engager sur les délais.' },
+        { title: 'Maquettes', text: 'Concevoir les maquettes avec les designers.' },
+        { title: 'Développement', text: 'Développer en React : composants modulaires, API, gestion d’état.' },
+        { title: 'Démo', text: 'Présenter le résultat au client.' },
+        { title: 'Déploiement', text: 'Mettre en production.' },
+      ],
+    },
     stats: {
       years: 'ans d’expérience',
       roles: 'rôles occupés',

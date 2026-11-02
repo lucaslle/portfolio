@@ -76,6 +76,17 @@ export const About = () => {
         </div>
       </div>
 
+      <h3 className="about__method-title">{t.about.method.title}</h3>
+      <ol className="about__method">
+        {t.about.method.steps.map((step, index) => (
+          <li key={step.title} className="method-step">
+            <span className="method-step__index">{String(index + 1).padStart(2, '0')}</span>
+            <span className="method-step__title">{step.title}</span>
+            <span className="method-step__text">{step.text}</span>
+          </li>
+        ))}
+      </ol>
+
       <ul className="about__stats">
         {stats.map((stat, index) => (
           <li key={stat.icon}>

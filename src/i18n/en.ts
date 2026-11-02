@@ -31,10 +31,21 @@ export const en: Translation = {
   about: {
     eyebrow: 'About',
     story:
-      'I bridge the gap between the need and the code. In practice: I scope the work, build the features myself, then present them in demos. Two years of front-end development, including one as an apprentice, with some Python, and I am now starting out in AI architecture.',
+      'React developer and project lead: I bridge the gap between the need and the code. I scope the work with the Product Owner and the designers, build the features myself, run the Scrum ceremonies of a 14-person team, then present them in demos and deploy. Two years of front-end development, including one as an apprentice, with some Python and a genuine interest in AI.',
     quote: 'Bridging the gap between the need and the code.',
     viewProjects: 'View projects',
     contact: 'Get in touch',
+    method: {
+      title: 'My method, from need to production',
+      steps: [
+        { title: 'Need', text: 'Gather and analyse the need with the Product Owner.' },
+        { title: 'Deadlines', text: 'Estimate and commit to deadlines.' },
+        { title: 'Mock-ups', text: 'Design the mock-ups with the designers.' },
+        { title: 'Development', text: 'Build in React: modular components, APIs, state management.' },
+        { title: 'Demo', text: 'Present the result to the client.' },
+        { title: 'Deployment', text: 'Ship to production.' },
+      ],
+    },
     stats: {
       years: 'years of experience',
       roles: 'roles held',
