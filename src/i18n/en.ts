@@ -298,6 +298,8 @@ export const en: Translation = {
   },
 
   footer: 'Built with React Bits',
+  cv: 'Download my résumé (PDF, French)',
+  cvShort: 'Résumé',
 
   a11y: {
     mainNav: 'Main navigation',
@@ -308,5 +310,3 @@ export const en: Translation = {
     closeMenu: 'Close menu',
   },
 }
-  cv: 'Download my résumé (PDF, French)',
-  cvShort: 'Résumé',

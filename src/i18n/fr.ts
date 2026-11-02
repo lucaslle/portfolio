@@ -298,6 +298,8 @@ export const fr: Translation = {
   },
 
   footer: 'Réalisé avec React Bits',
+  cv: 'Télécharger mon CV',
+  cvShort: 'CV',
 
   a11y: {
     mainNav: 'Navigation principale',
@@ -308,5 +310,3 @@ export const fr: Translation = {
     closeMenu: 'Fermer le menu',
   },
 }
-  cv: 'Télécharger mon CV',
-  cvShort: 'CV',
