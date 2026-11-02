@@ -59,6 +59,37 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
 
         <p className="modal__detail">{project.detail}</p>
 
+        {project.study ? (
+          <div className="modal__study">
+            <section>
+              <h4 className="modal__section-title">{t.modal.context}</h4>
+              <p className="modal__detail">{project.study.context}</p>
+            </section>
+            {project.study.role ? (
+              <section>
+                <h4 className="modal__section-title">{t.modal.role}</h4>
+                <p className="modal__detail">{project.study.role}</p>
+              </section>
+            ) : null}
+            <section>
+              <h4 className="modal__section-title">{t.modal.choices}</h4>
+              <ul className="modal__list">
+                {project.study.choices.map((choice) => (
+                  <li key={choice}>{choice}</li>
+                ))}
+              </ul>
+            </section>
+            <section>
+              <h4 className="modal__section-title">{t.modal.results}</h4>
+              <ul className="modal__list">
+                {project.study.results.map((result) => (
+                  <li key={result}>{result}</li>
+                ))}
+              </ul>
+            </section>
+          </div>
+        ) : null}
+
         <div className="modal__tags">
           {project.tags.map((tag, index) => (
             <span key={`${tag}-${index}`} className="tag">

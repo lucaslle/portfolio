@@ -1,5 +1,5 @@
 import type { EducationId, JobId, ProjectId, SkillId, StatId } from '../data/portfolio'
-import type { PortfolioTab, SectionId } from '../types'
+import type { CaseStudy, PortfolioTab, SectionId } from '../types'
 
 export type ProjectCopy = {
   kind: string
@@ -7,6 +7,7 @@ export type ProjectCopy = {
   blurb: string
   cat: string
   detail: string
+  study?: CaseStudy
 }
 
 export type SkillCopy = {
@@ -91,6 +92,10 @@ export type Translation = {
     close: string
     liveDemo: string
     source: string
+    context: string
+    role: string
+    choices: string
+    results: string
   }
 
   contact: {

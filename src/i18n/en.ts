@@ -69,6 +69,20 @@ export const en: Translation = {
       cat: 'Internal tool',
       detail:
         'A 3D dashboard showing at a glance which Claude Code conversations are waiting for a reply and which GitLab merge requests need a review or a merge. Each conversation or MR is a character that changes room when its status changes: reception when a reply is needed, workshop when a pipeline fails, meeting room when several agents are running. Claude Code hooks record session status, a local server polls the GitLab API and streams changes live (SSE) to a Three.js scene.',
+      study: {
+        context:
+          'When several Claude Code conversations and merge requests run in parallel, it’s hard to tell which one is waiting for an answer or blocked. The stake: read the state of all your work at a glance.',
+        choices: [
+          'Claude Code hooks write each session’s state to a JSON file; they print nothing and never make Claude Code fail.',
+          'A local server reads those files every 2 seconds, queries the GitLab API every 60 seconds and pushes changes live (SSE); it only listens on 127.0.0.1.',
+          'A Three.js scene with glTF models whose quality drops by itself if the animation gets choppy, plus a demo mode that needs no server.',
+        ],
+        results: [
+          'One state, one room: you immediately see what is waiting for an answer or a fix, with the cause of failing MRs.',
+          'Continuous integration set up on the repository.',
+          'A live demo you can use without installing anything.',
+        ],
+      },
     },
     arosaje: {
       kind: 'Web app · Full-stack',
@@ -77,6 +91,21 @@ export const en: Translation = {
       cat: 'Web app',
       detail:
         'A full-stack app, front end and API. On the interface side (React, TypeScript, Chakra UI, Zustand): dashboard, plant management with photos, the full plant-sitting flow (request, offers, private messaging, photo journal, sitter rating), questions to botanists and an admin area, in six languages and in light or dark mode. On the API side (FastAPI, PostgreSQL): personal data encrypted at rest, migrations applied on startup, and the whole stack on Docker Compose with its observability tools (Grafana, Prometheus, Loki, Tempo).',
+      study: {
+        context:
+          'People who go away don’t know who to trust with their plants, or who to ask when one of them is struggling. The stake: connect owners, sitters and botanists while keeping personal data protected.',
+        choices: [
+          'Separate front end and API: React, TypeScript and Vite on one side, FastAPI and PostgreSQL on the other, linked by a typed HTTP client.',
+          'Zustand only for shared state (signed-in member, language), React Router for member-only pages, Chakra UI for the light or dark theme.',
+          'Email, name and phone number encrypted in the database, looked up through HMAC fingerprints without ever decrypting them.',
+          'Alembic migrations applied at startup and a Docker Compose stack with observability (Grafana, Prometheus, Loki, Tempo).',
+        ],
+        results: [
+          'Six languages: TypeScript rejects an incomplete language file and tests check the variables in every translation.',
+          'GDPR: export of the member’s data and account deletion along with their plants, photos and exchanges.',
+          'Login rate limiting (429 after 10 failures in 15 minutes); Vitest tests on the front end and API tests that need no PostgreSQL.',
+        ],
+      },
     },
     momentum: {
       kind: 'Mobile app',
@@ -93,6 +122,20 @@ export const en: Translation = {
       cat: 'Mobile app',
       detail:
         'A Flutter app for tracking yearly goals that runs entirely on the device: no account and no data sent over the internet. Each goal follows the OKR method (2 to 4 key results: a number, a percentage or milestones), gets a status computed from how far the year has gone, and a chart compared with the expected progress. Check-ins with a mood, notification reminders, an Android home-screen widget, six themes, French and English, JSON backup, and a yearly review that carries unfinished goals over to the next year. Built with Bloc and covered by an end-to-end test compared against reference screenshots.',
+      study: {
+        context:
+          'Yearly goals get lost without follow-up. The stake: simple OKR tracking that works with no account or connection and tells you whether you are behind relative to the time elapsed.',
+        choices: [
+          '100% local: no API or account, data stays on the phone, backup and restore through a JSON file.',
+          'OSDD architecture with Clean Architecture and flutter_bloc: View, Cubit, use case, then gateway.',
+          'Each goal’s status is computed by comparing its progress to the time elapsed in the year.',
+        ],
+        results: [
+          'An end-to-end test walks through the app and compares every screen to a reference screenshot.',
+          'Android widget, local reminders, six themes, French and English.',
+          'About 20 MB per CPU architecture APK, against 52 MB for a universal one.',
+        ],
+      },
     },
     hargne: {
       kind: 'Mobile app',
@@ -101,6 +144,23 @@ export const en: Translation = {
       cat: 'Mobile app',
       detail:
         'A Flutter app for planning multisport training. The Today, Weekly plan and Session detail screens show target duration, distance, pace and heart rate, RPE and a block-by-block structure, with a “done” checkbox. Sessions are created in the app or imported from a CSV file, with separator detection, columns in any order and recognised aliases, then exported back in the same format for Excel. Connecting to Garmin brings in your own activities. Other screens (calendar, history, training load, Strava) are still mockups.',
+      study: {
+        context:
+          'A multisport training plan often lives in a spreadsheet, far from the day’s workout. The stake: check and tick it off from the phone without losing Excel compatibility.',
+        choices: [
+          '100% local: the plan is stored on the device as a CSV file, with no account or server.',
+          'A documented CSV format: detected separator (semicolon, comma or tab), columns in any order, forgiving column names (case, accents, aliases), quoting per RFC 4180.',
+          'An import that validates the whole file before touching the plan, with two modes: merge (same date and title) or replace.',
+          'An export with a BOM and CRLF line endings so Excel opens it without any setup.',
+          'Garmin activity import through Garmin Connect’s personal API: key kept in the phone’s encrypted storage, a single call for the list (1,000 activities on the first import), then only new activities.',
+        ],
+        results: [
+          'At the first error the import stops and gives the line number: missing column, invalid date, unknown sport, RPE outside 1 to 10.',
+          'The same file round-trips between the app and Excel.',
+          'The whole Garmin history imports, linked to the planned session, and an activity’s detail shows its simplified GPS track, downloaded only when opened to limit calls.',
+          'Screens that are still mock-ups (calendar, training load, Strava) are labelled as such, with fictional data.',
+        ],
+      },
     },
     ecu: {
       kind: 'Mobile app',
@@ -109,6 +169,20 @@ export const en: Translation = {
       cat: 'Mobile app',
       detail:
         'A Flutter spending tracker that runs entirely on the device: data never leaves the phone. It imports a bank statement as CSV and automatically categorises each transaction by keyword, with bulk re-categorisation from a transaction’s detail. A daily dashboard, a monthly budget per category and chart-based analytics, plus savings and investment accounts with their balance history. Amounts can be hidden on screen.',
+      study: {
+        context:
+          'Tracking spending often means handing bank data to a third-party service. The stake: simple tracking for young savers, where everything stays on the phone.',
+        choices: [
+          '100% local: importing a CSV bank statement (date, label, amount) replaces any connection to the bank.',
+          'Automatic keyword-based categorisation, with bulk reclassification from an operation’s detail.',
+          'OSDD architecture: a reusable technical layer (theme, French formats, amount masking, charts) kept apart from the Spending and Savings functional layers.',
+        ],
+        results: [
+          'Daily dashboard, monthly budget per category and chart analytics.',
+          'Savings and investment tracking with balance history.',
+          'Amounts can be hidden on screen, to use the app in public.',
+        ],
+      },
     },
   },
 
@@ -189,6 +263,10 @@ export const en: Translation = {
     close: 'Close',
     liveDemo: 'Live demo',
     source: 'Source',
+    context: 'Context & stakes',
+    role: 'Role & method',
+    choices: 'Technical choices',
+    results: 'Results',
   },
 
   contact: {

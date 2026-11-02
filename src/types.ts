@@ -4,6 +4,14 @@ export type PortfolioTab = 'projects' | 'skills' | 'journey'
 
 export type Locale = 'fr' | 'en'
 
+/** Étude de cas d'un projet ; chaque bloc est facultatif et n'est affiché que s'il est rempli. */
+export type CaseStudy = {
+  context: string
+  role?: string
+  choices: readonly string[]
+  results: readonly string[]
+}
+
 export type Project = {
   id: string
   kind: string
@@ -12,6 +20,7 @@ export type Project = {
   tags: readonly string[]
   cat: string
   detail: string
+  study?: CaseStudy
   demoUrl?: string
   sources: readonly ProjectSource[]
 }
