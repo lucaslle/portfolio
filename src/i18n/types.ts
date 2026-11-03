@@ -98,6 +98,8 @@ export type Translation = {
     role: string
     choices: string
     results: string
+    cvTitle: string
+    download: string
   }
 
   contact: {

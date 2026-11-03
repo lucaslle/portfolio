@@ -1,9 +1,10 @@
 import { lazy, Suspense, useMemo } from 'react'
-import { CV_URL, HERO_TECHS } from '../data/portfolio'
+import { HERO_TECHS } from '../data/portfolio'
 import { useIsCompact } from '../hooks/useIsCompact'
 import { useTranslation } from '../i18n/useTranslation'
 import { useTheme } from '../theme/useTheme'
 import { buildBadgeImage } from '../utils/badgeImage'
+import { CvLink } from './CvLink'
 import ShinyText from './reactbits/ShinyText/ShinyText'
 import TextType from './reactbits/TextType/TextType'
 
@@ -57,9 +58,7 @@ export const Hero = () => {
           ))}
         </ul>
 
-        <a href={CV_URL} target="_blank" rel="noreferrer" className="cv-link">
-          ↗ {t.cv}
-        </a>
+        <CvLink className="cv-link">{t.cv}</CvLink>
 
         <ul className="hero__hints">
           {t.hero.hints.map((hint) => (

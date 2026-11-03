@@ -1,4 +1,5 @@
 import { CV_URL, FULL_NAME, INITIALS } from '../data/portfolio'
+import { useCvPreview } from '../hooks/useCvPreview'
 import { useContent } from '../i18n/useContent'
 import { useTranslation } from '../i18n/useTranslation'
 import { withAlpha } from '../theme/palette'
@@ -15,6 +16,7 @@ export const About = () => {
   const { t } = useTranslation()
   const { stats } = useContent()
   const { palette } = useTheme()
+  const { openPreview, modal } = useCvPreview()
   const spotlightColor = withAlpha(palette.violet, 0.35)
 
   return (
@@ -60,8 +62,7 @@ export const About = () => {
             <StarBorder
               as="a"
               href={CV_URL}
-              target="_blank"
-              rel="noreferrer"
+              onClick={openPreview}
               color={palette.violet}
               backgroundColor={palette.cardSurface}
               textColor={palette.ice}
@@ -103,6 +104,7 @@ export const About = () => {
           </li>
         ))}
       </ul>
+      {modal}
     </section>
   )
 }
