@@ -60,7 +60,8 @@ export const About = () => {
             <StarBorder
               as="a"
               href={CV_URL}
-              download
+              target="_blank"
+              rel="noreferrer"
               color={palette.violet}
               backgroundColor={palette.cardSurface}
               textColor={palette.ice}

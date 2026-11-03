@@ -57,8 +57,8 @@ export const Hero = () => {
           ))}
         </ul>
 
-        <a href={CV_URL} download className="cv-link">
-          ↓ {t.cv}
+        <a href={CV_URL} target="_blank" rel="noreferrer" className="cv-link">
+          ↗ {t.cv}
         </a>
 
         <ul className="hero__hints">

@@ -175,7 +175,7 @@ export const Contact = () => {
           <p className="contact__mail">
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             {' · '}
-            <a href={CV_URL} download>
+            <a href={CV_URL} target="_blank" rel="noreferrer">
               {t.cv}
             </a>
           </p>
