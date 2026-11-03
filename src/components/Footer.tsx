@@ -9,7 +9,7 @@ export const Footer = () => {
       <span>
         © {FOOTER_YEAR} {FULL_NAME}
       </span>
-      <a href={CV_URL} download>
+      <a href={CV_URL} target="_blank" rel="noreferrer">
         {t.cv}
       </a>
       <span>{t.footer}</span>

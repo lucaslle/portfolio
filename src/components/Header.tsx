@@ -57,7 +57,7 @@ export const Header = ({ activeSection, onNavigate }: HeaderProps) => {
               {activeSection === item.id ? <span className="nav-link__underline" /> : null}
             </a>
           ))}
-          <a href={CV_URL} download className="nav-link">
+          <a href={CV_URL} target="_blank" rel="noreferrer" className="nav-link">
             {t.cvShort}
           </a>
         </nav>
