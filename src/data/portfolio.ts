@@ -127,7 +127,7 @@ const SKILL_COUNT = SKILL_GROUPS.reduce((total, group) => total + group.items.le
  * ------------------------------------------------------------------ */
 
 export const JOBS = [
-  { id: 'j1', company: 'XEFI', stack: ['React', 'TypeScript', 'Scrum'] },
+  { id: 'j1', company: 'XEFI', stack: ['React', 'TypeScript', 'Chakra UI', 'GraphQL', 'Vitest', 'Python', 'Flutter', 'Scrum'] },
   { id: 'j2', company: 'XEFI', stack: ['React', 'TypeScript'] },
   { id: 'j3', company: 'Hospices Civils de Lyon (HCL)', stack: [] },
 ] as const satisfies readonly { id: string; company: string; stack: readonly string[] }[]
