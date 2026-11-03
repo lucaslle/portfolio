@@ -4,40 +4,29 @@ import { withAlpha } from '../theme/palette'
 import { useTheme } from '../theme/useTheme'
 import SpotlightCard from './reactbits/SpotlightCard/SpotlightCard'
 
-const MAX_LEVEL = 5
-const LEVEL_STEPS = Array.from({ length: MAX_LEVEL }, (_, index) => index + 1)
-
 export const SkillsPanel = () => {
   const { t } = useTranslation()
-  const { skills } = useContent()
+  const { skillGroups } = useContent()
   const { palette } = useTheme()
   const spotlightColor = withAlpha(palette.cyan, 0.22)
 
   return (
     <>
       <ul className="cards">
-        {skills.map((skill) => (
-          <li key={skill.id}>
+        {skillGroups.map((group) => (
+          <li key={group.id}>
             <SpotlightCard spotlightColor={spotlightColor} className="skill">
-              <div className="skill__head">
-                <h3 className="skill__name">{skill.name}</h3>
-                <span className="skill__level">{skill.level}</span>
-              </div>
+              <h3 className="skill__name">{group.name}</h3>
 
-              <div
-                className="skill__meter"
-                role="img"
-                aria-label={t.portfolio.skillLevel(skill.lvl, MAX_LEVEL)}
-              >
-                {LEVEL_STEPS.map((step) => (
-                  <span
-                    key={step}
-                    className={step <= skill.lvl ? 'skill__step skill__step--on' : 'skill__step'}
-                  />
+              <ul className="skill__tags">
+                {group.items.map((item) => (
+                  <li key={item} className="chip">
+                    {item}
+                  </li>
                 ))}
-              </div>
+              </ul>
 
-              <p className="skill__note">{skill.note}</p>
+              <p className="skill__note">{group.proof}</p>
             </SpotlightCard>
           </li>
         ))}

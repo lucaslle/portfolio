@@ -102,20 +102,24 @@ export const PROJECTS = [
 export type ProjectId = (typeof PROJECTS)[number]['id']
 
 /* ------------------------------------------------------------------ *
- * Compétences — les niveaux (1 à 5) sont ma lecture de ce que tu
- * m'as décrit, ajuste-les.
+ * Compétences — technologies par catégorie. Le nom de la catégorie et
+ * sa ligne de preuve vivent dans fr.ts et en.ts.
  * ------------------------------------------------------------------ */
 
-export const SKILLS = [
-  { id: 'project-management', lvl: 4 },
-  { id: 'react', lvl: 3 },
-  { id: 'html-css', lvl: 3 },
-  { id: 'ai-architecture', lvl: 2 },
-  { id: 'python', lvl: 2 },
-  { id: 'git-ci', lvl: 3 },
-] as const satisfies readonly { id: string; lvl: number }[]
+export const SKILL_GROUPS = [
+  {
+    id: 'frontend',
+    items: ['React', 'TypeScript', 'Chakra UI', 'Zustand', 'Apollo / GraphQL', 'react-hook-form + Zod', 'i18next', 'HTML / CSS', 'Three.js'],
+  },
+  { id: 'quality', items: ['Vitest', 'Testing Library', 'Biome', 'Git', 'GitLab CI', 'Docker', 'Claude Code'] },
+  { id: 'mobile', items: ['Flutter', 'Dart', 'Bloc'] },
+  { id: 'backend', items: ['Python', 'FastAPI', 'PostgreSQL'] },
+  { id: 'management', items: ['Scrum'] },
+] as const satisfies readonly { id: string; items: readonly string[] }[]
 
-export type SkillId = (typeof SKILLS)[number]['id']
+export type SkillGroupId = (typeof SKILL_GROUPS)[number]['id']
+
+const SKILL_COUNT = SKILL_GROUPS.reduce((total, group) => total + group.items.length, 0)
 
 /* ------------------------------------------------------------------ *
  * Parcours
@@ -152,7 +156,7 @@ export const getExperience = (now: Date = new Date()) => {
 export const STATS = [
   { id: 'years', to: getExperience().years, icon: 'clock' },
   { id: 'roles', to: JOBS.length, icon: 'briefcase' },
-  { id: 'skills', to: SKILLS.length, icon: 'spark' },
+  { id: 'skills', to: SKILL_COUNT, icon: 'spark' },
 ] as const satisfies readonly { id: string; to: number; icon: StatIcon }[]
 
 export type StatId = (typeof STATS)[number]['id']

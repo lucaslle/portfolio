@@ -50,7 +50,7 @@ export const fr: Translation = {
       years: 'ans d’expérience',
       yearsAndMonths: 'ans et {months} d’expérience',
       roles: 'rôles occupés',
-      skills: 'compétences clés',
+      skills: 'technologies utilisées',
     },
   },
 
@@ -67,7 +67,6 @@ export const fr: Translation = {
     previousProjects: 'Projets précédents',
     nextProjects: 'Projets suivants',
     sourceLabel: (label) => `Code source (${label})`,
-    skillLevel: (level, max) => `Niveau ${level} sur ${max}`,
     softSkillsLabel: 'Savoir-être',
     experience: 'Expérience',
     education: 'Formation',
@@ -262,25 +261,24 @@ export const fr: Translation = {
     },
   },
 
-  skills: {
-    'project-management': {
+  skillGroups: {
+    frontend: { name: 'Front-end', proof: 'GED SaaS : environ 2 ans de développement front en production, scène 3D sur Claude Manage Office.' },
+    quality: {
+      name: 'Qualité & outils',
+      proof: 'Tests en deux suites, contrôle des traductions à chaque commit, déploiement via GitLab CI.',
+    },
+    mobile: {
+      name: 'Mobile',
+      proof: 'Application mobile de la GED et quatre applications personnelles : Kaizen 365, Hargne, écu, Momentum.',
+    },
+    backend: {
+      name: 'Back-end',
+      proof: 'API FastAPI et PostgreSQL sur Arosaje, Python sur la GED.',
+    },
+    management: {
       name: 'Gestion de projet',
-      level: 'Quotidien',
-      note: 'Cadrage, suivi, démos et relation métier',
+      proof: 'Cérémonies Scrum d’une équipe de 14 personnes, cadrage avec le Product Owner, démos client.',
     },
-    react: {
-      name: 'React / TypeScript',
-      level: 'Solide',
-      note: 'Deux ans de développement front en production',
-    },
-    'html-css': { name: 'HTML / CSS', level: 'Solide', note: 'Intégration, responsive, accessibilité' },
-    'ai-architecture': {
-      name: 'Architecture IA',
-      level: 'En cours',
-      note: 'Poste actuel — montée en compétence',
-    },
-    python: { name: 'Python', level: 'Notions', note: 'Scripts, automatisation, manipulation de données' },
-    'git-ci': { name: 'Git / CI', level: 'Solide', note: 'Branches, revues, déploiements' },
   },
 
   softSkills: [
