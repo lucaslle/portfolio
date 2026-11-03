@@ -73,6 +73,70 @@ export const fr: Translation = {
   },
 
   projects: {
+    'ged-mobile': {
+      kind: 'Projet professionnel',
+      title: 'Application mobile de la GED',
+      blurb: 'L’application Flutter qui prolonge la GED web.',
+      cat: 'Application mobile',
+      detail:
+        'Application Flutter associée à la GED web : elle donne accès à la gestion électronique de documents depuis un appareil mobile.',
+    },
+    'hp-printer': {
+      kind: 'Projet professionnel',
+      title: 'Application embarquée sur imprimante HP',
+      blurb: 'Une application qui tourne directement sur l’écran d’une imprimante HP.',
+      cat: 'Application embarquée',
+      detail:
+        'Application embarquée sur imprimante HP : elle s’exécute directement sur l’appareil, sans passer par un ordinateur.',
+    },
+    ged: {
+      kind: 'Projet professionnel',
+      title: 'GED en SaaS',
+      blurb: 'Le front React d’une gestion documentaire en SaaS : arborescence, circuits de validation, factures, tâches et portail invités.',
+      cat: 'Application web',
+      detail:
+        'Front React d’une application SaaS de gestion électronique de documents et de workflows de validation, éditée pour des entreprises et utilisée par plus de 600 personnes. On y trouve l’arborescence des documents, les circuits de validation, les factures, les tâches, les statistiques, un portail pour les invités externes et l’administration des utilisateurs, des équipes et des absences. L’interface existe en 7 langues.',
+      study: {
+        context:
+          'Des centaines d’utilisateurs doivent retrouver leurs documents, les faire valider et suivre leurs dossiers, avec des droits d’accès fins et des invités externes qui n’ont accès qu’à leur périmètre.',
+        role: 'Développeur front pendant environ 2 ans, premier contributeur du dépôt (environ 20 % des commits) dans une équipe d’une dizaine de développeurs. Un peu de cadrage des besoins, et du Scrum au sein de l’équipe.',
+        choices: [
+          'Un contrôle des traductions bloquant au commit : il détecte, dans les 7 langues, les clés manquantes et les clés en trop par rapport à la langue de référence.',
+          'Une configuration chargée au runtime, sans service tiers de feature flags : une seule image Docker sert tous les environnements.',
+          'Un rechargement automatique vers la nouvelle version déployée, sans action de l’utilisateur.',
+          'Une validation des requêtes GraphQL contre le schéma de l’API, avec deux schémas (interne et portail) choisis selon l’emplacement du code.',
+          'Des tests découpés en deux suites, l’une isolée et rapide, avec une couverture fusionnée à la fin.',
+          'Une suppression d’utilisateurs avec analyse d’impact : on désigne des successeurs, on voit ce qui bloque et on suit l’exécution.',
+        ],
+        results: [
+          'Environ 2 ans sur le projet, au sein d’une équipe d’une dizaine de développeurs.',
+          'Une application utilisée par plus de 600 personnes.',
+          'Une interface en 7 langues, dont la cohérence est vérifiée à chaque commit.',
+        ],
+      },
+    },
+    signature: {
+      kind: 'Projet professionnel',
+      title: 'Signature électronique',
+      blurb: 'Une application pour envoyer des documents en signature via YouTrust et suivre l’état de chaque signature.',
+      cat: 'Application web',
+      detail:
+        'Application web de signature électronique connectée à YouTrust. On y ajoute des documents, on les envoie en signature, puis on suit le statut de chaque signature. Même stack que la GED : React avec Chakra UI, tests avec Vitest, une part de Python.',
+      study: {
+        context:
+          'Faire signer un document oblige à jongler entre plusieurs outils. L’enjeu : tout faire au même endroit, de l’ajout du document au suivi de la signature.',
+        role: 'Développeur front, avec une part de cadrage des besoins. Travail en équipe Scrum.',
+        choices: [
+          'Une intégration avec YouTrust pour l’envoi en signature.',
+          'Un suivi du statut de chaque signature directement dans l’application.',
+          'La même stack que la GED (React, Chakra UI, Vitest, Python).',
+        ],
+        results: [
+          'Ajout des documents, envoi en signature et suivi de statut réunis dans une seule application.',
+          'Des tests automatisés avec Vitest, comme sur la GED.',
+        ],
+      },
+    },
     office: {
       kind: 'Outil de suivi · 3D',
       title: 'Claude Manage Office',

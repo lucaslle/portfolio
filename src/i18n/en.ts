@@ -73,6 +73,70 @@ export const en: Translation = {
   },
 
   projects: {
+    'ged-mobile': {
+      kind: 'Professional project',
+      title: 'DMS mobile app',
+      blurb: 'The Flutter app that extends the web DMS.',
+      cat: 'Mobile application',
+      detail:
+        'A Flutter application paired with the web DMS: it gives access to document management from a mobile device.',
+    },
+    'hp-printer': {
+      kind: 'Professional project',
+      title: 'HP printer embedded app',
+      blurb: 'An application that runs directly on the screen of an HP printer.',
+      cat: 'Embedded application',
+      detail:
+        'An application embedded on an HP printer: it runs directly on the device, without going through a computer.',
+    },
+    ged: {
+      kind: 'Professional project',
+      title: 'SaaS DMS',
+      blurb: 'The React front end of a SaaS document management system: folder tree, validation circuits, invoices, tasks and a guest portal.',
+      cat: 'Web application',
+      detail:
+        'React front end of a SaaS document management and validation workflow application, sold to companies and used by over 600 people. It covers the document tree, validation circuits, invoices, tasks, statistics, a portal for external guests and the administration of users, teams and absences. The interface exists in 7 languages.',
+      study: {
+        context:
+          'Hundreds of users need to find their documents, get them validated and follow their files, with fine-grained access rights and external guests who only reach their own scope.',
+        role: 'Front-end developer for about 2 years, first contributor to the repository (about 20% of commits) in a team of around ten developers. Some requirements scoping, and Scrum within the team.',
+        choices: [
+          'A translation check that blocks the commit: across the 7 languages, it detects missing and extra keys compared with the reference language.',
+          'Configuration loaded at runtime, with no third-party feature-flag service: a single Docker image serves every environment.',
+          'An automatic reload to the newly deployed version, with no action from the user.',
+          'GraphQL queries validated against the API schema, with two schemas (internal and portal) chosen by where the code lives.',
+          'Tests split into two suites, one isolated and fast, with coverage merged at the end.',
+          'User deletion with impact analysis: you name successors, see what blocks and follow the execution.',
+        ],
+        results: [
+          'About 2 years on the project, within a team of around ten developers.',
+          'An application used by over 600 people.',
+          'An interface in 7 languages, kept consistent by a check on every commit.',
+        ],
+      },
+    },
+    signature: {
+      kind: 'Professional project',
+      title: 'E-signature',
+      blurb: 'An app to send documents for signature through YouTrust and track the status of each signature.',
+      cat: 'Web application',
+      detail:
+        'A web e-signature application connected to YouTrust. You add documents, send them for signature, then track the status of each signature. Same stack as the DMS: React with Chakra UI, tested with Vitest, with some Python.',
+      study: {
+        context:
+          'Getting a document signed means juggling several tools. The goal: do everything in one place, from adding the document to tracking the signature.',
+        role: 'Front-end developer, with some requirements scoping. Worked in a Scrum team.',
+        choices: [
+          'An integration with YouTrust to send documents for signature.',
+          'Signature status tracking directly in the application.',
+          'The same stack as the DMS (React, Chakra UI, Vitest, Python).',
+        ],
+        results: [
+          'Adding documents, sending for signature and status tracking in a single application.',
+          'Automated tests with Vitest, as on the DMS.',
+        ],
+      },
+    },
     office: {
       kind: 'Monitoring tool · 3D',
       title: 'Claude Manage Office',

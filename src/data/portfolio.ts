@@ -40,6 +40,26 @@ type ProjectBase = {
 
 export const PROJECTS = [
   {
+    id: 'ged-mobile',
+    tags: ['Flutter', 'Dart'],
+    sources: [],
+  },
+  {
+    id: 'hp-printer',
+    tags: ['HP', 'Embarqué'],
+    sources: [],
+  },
+  {
+    id: 'ged',
+    tags: ['React', 'TypeScript', 'Chakra UI', 'GraphQL', 'Vitest', 'Scrum'],
+    sources: [],
+  },
+  {
+    id: 'signature',
+    tags: ['React', 'Chakra UI', 'Vitest', 'Python', 'YouTrust'],
+    sources: [],
+  },
+  {
     id: 'office',
     tags: ['Three.js', 'JavaScript', 'Node.js', 'API GitLab'],
     demoUrl: 'https://lucaslle.github.io/claude-manage-office/',
