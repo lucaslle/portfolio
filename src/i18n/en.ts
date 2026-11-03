@@ -299,7 +299,7 @@ export const en: Translation = {
         'I run projects end to end: from gathering the need to going live, while staying hands-on with the code.',
       bullets: [
         'End-to-end project management: needs analysis, estimates and delivery commitments, mockups, development, client demo, then deployment.',
-        'Internal DMS in React: a document management platform (search, preview, fine-grained rights and permissions) used by more than 700 people.',
+        'SaaS DMS, React front end: a document management platform (search, preview, fine-grained rights and permissions) used by more than 600 people.',
         'Front-end architecture: responsive, modular and maintainable interfaces (component architecture, API integration, state management).',
         'Scrum Master: running agile ceremonies and clearing blockers for a team of 14.',
         'Close work with the Product Owner, designers and back-end developers, proposing technical and UX choices.',
@@ -312,7 +312,7 @@ export const en: Translation = {
       summary:
         'A year as an apprentice (CDA, bachelor’s level) in the same team, before moving to a permanent role.',
       bullets: [
-        'Design and development of the internal DMS in React.',
+        'Development of the React front end of the SaaS DMS.',
         'Involved in scoping, client demos and production releases.',
       ],
     },

@@ -299,7 +299,7 @@ export const fr: Translation = {
         'Je pilote des projets de bout en bout : du recueil du besoin jusqu’à la mise en production, en restant sur le code.',
       bullets: [
         'Pilotage de projet de A à Z : analyse du besoin, estimation et engagement sur les délais, maquettes, développement, démo client puis déploiement.',
-        'GED interne en React : plateforme de gestion électronique de documents (recherche, prévisualisation, droits et autorisations fins), utilisée par plus de 700 utilisateurs.',
+        'GED en SaaS, côté front React : plateforme de gestion électronique de documents (recherche, prévisualisation, droits et autorisations fins), utilisée par plus de 600 utilisateurs.',
         'Architecture frontend : interfaces réactives, modulaires et maintenables (architecture composants, intégration d’API, gestion d’état).',
         'Scrum Master : animation des cérémonies agiles et levée des blocages pour une équipe de 14 personnes.',
         'Travail étroit avec le Product Owner, les designers et les développeurs backend, avec une force de proposition sur les choix techniques et UX.',
@@ -312,7 +312,7 @@ export const fr: Translation = {
       summary:
         'Une année en alternance (CDA, Bac+3) au sein de la même équipe, avant le passage en CDI.',
       bullets: [
-        'Conception et développement de la GED interne en React.',
+        'Développement du front React de la GED en SaaS.',
         'Participation au cadrage, aux démos client et aux mises en production.',
       ],
     },
