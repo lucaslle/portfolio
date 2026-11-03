@@ -48,6 +48,7 @@ export const en: Translation = {
     },
     stats: {
       years: 'years of experience',
+      yearsAndMonths: 'years and {months} of experience',
       roles: 'roles held',
       skills: 'key skills',
     },

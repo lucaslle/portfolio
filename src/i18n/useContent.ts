@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { EDUCATION, JOBS, PROJECTS, SECTION_IDS, SKILLS, STATS } from '../data/portfolio'
+import { EDUCATION, getExperience, JOBS, PROJECTS, SECTION_IDS, SKILLS, STATS } from '../data/portfolio'
 import type { Education, Job, NavItem, Project, Skill, Stat } from '../types'
 import { useTranslation } from './useTranslation'
 
@@ -18,7 +18,10 @@ type Content = {
  * afficher et ignorent tout de l'internationalisation.
  */
 export const useContent = (): Content => {
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation()
+  const { months } = getExperience()
+  const monthsLabel = new Intl.NumberFormat(locale, { style: 'unit', unit: 'month', unitDisplay: 'long' }).format(months)
+  const experienceLabel = months > 0 ? t.about.stats.yearsAndMonths.replace('{months}', monthsLabel) : t.about.stats.years
 
   return useMemo(
     () => ({
@@ -27,8 +30,8 @@ export const useContent = (): Content => {
       skills: SKILLS.map((skill) => ({ ...skill, ...t.skills[skill.id] })),
       jobs: JOBS.map((job) => ({ ...job, ...t.jobs[job.id] })),
       education: EDUCATION.map((diploma) => ({ ...diploma, ...t.education[diploma.id] })),
-      stats: STATS.map(({ id, to, icon }) => ({ to, icon, label: t.about.stats[id] })),
+      stats: STATS.map(({ id, to, icon }) => ({ to, icon, label: id === 'years' ? experienceLabel : t.about.stats[id] })),
     }),
-    [t],
+    [t, experienceLabel],
   )
 }

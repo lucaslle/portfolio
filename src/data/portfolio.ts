@@ -138,8 +138,19 @@ export const EDUCATION = [
 
 export type EducationId = (typeof EDUCATION)[number]['id']
 
+/** Début de l'alternance (15 août 2024) : l'expérience affichée s'en déduit. */
+const CAREER_START = { year: 2024, month: 8, day: 15 }
+
+export const getExperience = (now: Date = new Date()) => {
+  const elapsed = (now.getFullYear() - CAREER_START.year) * 12 + (now.getMonth() + 1 - CAREER_START.month)
+  // Le mois en cours n'est complet qu'à partir du jour anniversaire.
+  const total = now.getDate() < CAREER_START.day ? elapsed - 1 : elapsed
+
+  return { years: Math.floor(total / 12), months: total % 12 }
+}
+
 export const STATS = [
-  { id: 'years', to: 2, icon: 'clock' },
+  { id: 'years', to: getExperience().years, icon: 'clock' },
   { id: 'roles', to: JOBS.length, icon: 'briefcase' },
   { id: 'skills', to: SKILLS.length, icon: 'spark' },
 ] as const satisfies readonly { id: string; to: number; icon: StatIcon }[]

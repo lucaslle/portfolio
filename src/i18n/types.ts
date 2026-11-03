@@ -68,7 +68,7 @@ export type Translation = {
       title: string
       steps: readonly { title: string; text: string }[]
     }
-    stats: Record<StatId, string>
+    stats: Record<StatId, string> & { yearsAndMonths: string }
   }
 
   portfolio: {
