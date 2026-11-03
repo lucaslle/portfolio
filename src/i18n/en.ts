@@ -4,11 +4,11 @@ export const en: Translation = {
   tag: 'EN',
   switchTo: 'View this site in English',
 
-  documentTitle: 'Lucas Laliche — AI Architect & Project Lead',
+  documentTitle: 'Lucas Laliche — React Product Engineer & Project Lead',
   documentDescription:
-    'Portfolio of Lucas Laliche — AI architect and project lead. I scope the need, build the features and run the demos.',
+    'Portfolio of Lucas Laliche — React Product Engineer and project lead. I scope the need, build the features and run the demos.',
 
-  role: 'AI Architect · Project Lead',
+  role: 'Product Engineer · Project Lead',
 
   nav: {
     home: 'Home',
@@ -20,10 +20,10 @@ export const en: Translation = {
   loader: 'Loading',
 
   hero: {
-    badge: '2 years of experience · Front-end & AI',
-    headline: ['AI', 'Architect.'],
-    roles: ['A project lead who codes', 'React front-end developer', 'AI architect'],
-    lead: 'A project lead who codes: I scope the need, build the features myself, then run the demos. Two years of React front-end development, including one as an apprentice, and now an AI architect role.',
+    badge: '2 years of experience · Front-end & project lead',
+    headline: ['Product Engineer', 'React.'],
+    roles: ['A project lead who codes', 'React Product Engineer', 'From the need to the demo'],
+    lead: 'A project lead who codes: I scope the need, build the features myself, then run the demos. Two years of React front-end development, including one as an apprentice.',
     techs: 'Technologies',
     hints: ['↓ my projects are further down', '↗ open to conversations and collaborations'],
   },
@@ -31,7 +31,7 @@ export const en: Translation = {
   about: {
     eyebrow: 'About',
     story:
-      'React developer and project lead: I bridge the gap between the need and the code. I scope the work with the Product Owner and the designers, build the features myself, run the Scrum ceremonies of a 14-person team, then present them in demos and deploy. Two years of front-end development, including one as an apprentice, with some Python and a genuine interest in AI.',
+      'React Product Engineer and project lead: I bridge the gap between the need and the code. I scope the work with the Product Owner and the designers, build the features myself, run the Scrum ceremonies of a 14-person team, then present them in demos and deploy. Two years of front-end development, including one as an apprentice, with some Python and a genuine interest in AI.',
     quote: 'Bridging the gap between the need and the code.',
     viewProjects: 'View projects',
     contact: 'Get in touch',
