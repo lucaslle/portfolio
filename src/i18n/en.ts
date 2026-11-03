@@ -350,6 +350,7 @@ export const en: Translation = {
     namePlaceholder: 'First Last',
     email: 'Email',
     emailPlaceholder: 'you@example.com',
+    emailInvalid: 'Invalid email address: check the format (name@domain.com).',
     message: 'Message',
     messagePlaceholder: 'Tell me about your project…',
     send: 'Send by email',

@@ -108,6 +108,7 @@ export type Translation = {
     namePlaceholder: string
     email: string
     emailPlaceholder: string
+    emailInvalid: string
     message: string
     messagePlaceholder: string
     send: string

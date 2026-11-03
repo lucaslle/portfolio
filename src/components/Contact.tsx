@@ -12,6 +12,9 @@ import StarBorder from './reactbits/StarBorder/StarBorder'
 
 const EMPTY_FORM: ContactForm = { name: '', email: '', msg: '' }
 
+// type=email accepte « nom@domaine » sans point : on exige un domaine complet.
+const EMAIL_PATTERN = '[^\\s@]+@[^\\s@]+\\.[^\\s@]+'
+
 type SendStatus = 'idle' | 'sending' | 'sent' | 'error'
 
 // shortcut: FormSubmit needs a one-time activation click in the inbox on the first send, then swap for a backend if volume grows.
@@ -23,6 +26,7 @@ export const Contact = () => {
   const spotlightColor = withAlpha(palette.violet, 0.28)
   const [form, setForm] = useState<ContactForm>(EMPTY_FORM)
   const [status, setStatus] = useState<SendStatus>('idle')
+  const [emailError, setEmailError] = useState(false)
 
   const updateField = (field: keyof ContactForm, value: string) => {
     setForm((current) => ({ ...current, [field]: value }))
@@ -85,10 +89,30 @@ export const Contact = () => {
                 name="email"
                 autoComplete="email"
                 required
+                pattern={EMAIL_PATTERN}
                 placeholder={t.contact.emailPlaceholder}
                 value={form.email}
-                onChange={(event) => updateField('email', event.target.value)}
+                aria-invalid={emailError}
+                onChange={(event) => {
+                  event.target.setCustomValidity('')
+                  updateField('email', event.target.value)
+                  if (emailError) setEmailError(!event.target.validity.valid)
+                }}
+                onBlur={(event) => {
+                  const { value, validity } = event.target
+                  setEmailError(value !== '' && (validity.typeMismatch || validity.patternMismatch))
+                }}
+                onInvalid={(event) =>
+                  event.currentTarget.setCustomValidity(
+                    event.currentTarget.validity.valueMissing ? '' : t.contact.emailInvalid,
+                  )
+                }
               />
+              {emailError && (
+                <span className="field__error" role="alert">
+                  {t.contact.emailInvalid}
+                </span>
+              )}
             </label>
 
             <label className="field">

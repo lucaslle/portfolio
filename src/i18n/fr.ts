@@ -350,6 +350,7 @@ export const fr: Translation = {
     namePlaceholder: 'Prénom Nom',
     email: 'Email',
     emailPlaceholder: 'vous@exemple.fr',
+    emailInvalid: 'Adresse e-mail invalide : vérifiez le format (nom@domaine.fr).',
     message: 'Message',
     messagePlaceholder: 'Parlons de votre projet…',
     send: 'Envoyer par e-mail',
