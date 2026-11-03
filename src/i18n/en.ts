@@ -137,6 +137,14 @@ export const en: Translation = {
         ],
       },
     },
+    piseo: {
+      kind: 'Vocational degree project',
+      title: 'Piséo',
+      blurb: 'A Python application built for a real client as part of my vocational degree.',
+      cat: 'Application',
+      detail:
+        'A Python application developed for the company Piséo as part of my BTS SNIR degree: an end-of-course project delivered for a real client.',
+    },
     office: {
       kind: 'Monitoring tool · 3D',
       title: 'Claude Manage Office',
