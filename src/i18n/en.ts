@@ -349,6 +349,8 @@ export const en: Translation = {
     role: 'Role & method',
     choices: 'Technical choices',
     results: 'Results',
+    cvTitle: 'My résumé',
+    download: 'Download',
   },
 
   contact: {
@@ -370,7 +372,7 @@ export const en: Translation = {
   },
 
   footer: 'Built with React Bits',
-  cv: 'Download my résumé (PDF, French)',
+  cv: 'View my résumé (PDF, French)',
   cvShort: 'Résumé',
 
   a11y: {

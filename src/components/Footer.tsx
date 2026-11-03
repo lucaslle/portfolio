@@ -1,5 +1,6 @@
-import { CV_URL, FOOTER_YEAR, FULL_NAME } from '../data/portfolio'
+import { FOOTER_YEAR, FULL_NAME } from '../data/portfolio'
 import { useTranslation } from '../i18n/useTranslation'
+import { CvLink } from './CvLink'
 
 export const Footer = () => {
   const { t } = useTranslation()
@@ -9,9 +10,7 @@ export const Footer = () => {
       <span>
         © {FOOTER_YEAR} {FULL_NAME}
       </span>
-      <a href={CV_URL} target="_blank" rel="noreferrer">
-        {t.cv}
-      </a>
+      <CvLink>{t.cv}</CvLink>
       <span>{t.footer}</span>
     </footer>
   )

@@ -1464,3 +1464,68 @@ button {
     animation: none;
   }
 }
+
+/* ---------- Aperçu du CV (drawer) ---------- */
+
+.modal-overlay--drawer {
+  padding: 0;
+  animation: fade 0.2s ease both;
+}
+
+.modal-overlay--drawer[open] {
+  place-items: stretch end;
+}
+
+.drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: min(680px, 100%);
+  height: 100%;
+  padding: 20px;
+  border-left: 1px solid color-mix(in srgb, var(--glow) 32%, transparent);
+  background: linear-gradient(150deg, color-mix(in srgb, var(--deep-strong) 96%, transparent), color-mix(in srgb, var(--card-surface) 98%, transparent));
+  box-shadow: -40px 0 100px -40px color-mix(in srgb, var(--violet) 90%, transparent);
+  animation: drawer-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.drawer__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal__pdf {
+  display: block;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border-radius: 10px;
+  background: #fff;
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay--drawer,
+  .drawer {
+    animation: none;
+  }
+}
