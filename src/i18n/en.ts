@@ -50,7 +50,7 @@ export const en: Translation = {
       years: 'years of experience',
       yearsAndMonths: 'years and {months} of experience',
       roles: 'roles held',
-      skills: 'key skills',
+      skills: 'technologies used',
     },
   },
 
@@ -67,7 +67,6 @@ export const en: Translation = {
     previousProjects: 'Previous projects',
     nextProjects: 'Next projects',
     sourceLabel: (label) => `Source code (${label})`,
-    skillLevel: (level, max) => `Level ${level} out of ${max}`,
     softSkillsLabel: 'Soft skills',
     experience: 'Experience',
     education: 'Education',
@@ -262,25 +261,24 @@ export const en: Translation = {
     },
   },
 
-  skills: {
-    'project-management': {
+  skillGroups: {
+    frontend: { name: 'Front-end', proof: 'SaaS DMS: about 2 years of front-end development in production, 3D scene on Claude Manage Office.' },
+    quality: {
+      name: 'Quality & tooling',
+      proof: 'Tests split into two suites, translation check on every commit, deployment through GitLab CI.',
+    },
+    mobile: {
+      name: 'Mobile',
+      proof: 'The DMS mobile app and four personal apps: Kaizen 365, Hargne, écu, Momentum.',
+    },
+    backend: {
+      name: 'Back-end',
+      proof: 'FastAPI and PostgreSQL API on Arosaje, Python on the DMS.',
+    },
+    management: {
       name: 'Project management',
-      level: 'Daily',
-      note: 'Scoping, follow-up, demos and business relations',
+      proof: 'Scrum ceremonies for a 14-person team, scoping with the Product Owner, client demos.',
     },
-    react: {
-      name: 'React / TypeScript',
-      level: 'Solid',
-      note: 'Two years of front-end development in production',
-    },
-    'html-css': { name: 'HTML / CSS', level: 'Solid', note: 'Integration, responsive, accessibility' },
-    'ai-architecture': {
-      name: 'AI architecture',
-      level: 'Learning',
-      note: 'Current role — ramping up',
-    },
-    python: { name: 'Python', level: 'Basics', note: 'Scripts, automation, data wrangling' },
-    'git-ci': { name: 'Git / CI', level: 'Solid', note: 'Branches, reviews, deployments' },
   },
 
   softSkills: [

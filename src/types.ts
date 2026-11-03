@@ -31,12 +31,11 @@ export type ProjectSource = {
   url: string
 }
 
-export type Skill = {
+export type SkillGroup = {
   id: string
+  items: readonly string[]
   name: string
-  lvl: number
-  level: string
-  note: string
+  proof: string
 }
 
 export type Job = {

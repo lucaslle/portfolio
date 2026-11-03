@@ -980,38 +980,17 @@ button {
   align-content: start;
 }
 
-.skill__head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
-}
-
 .skill__name {
   font: 700 18px/1.2 var(--display);
 }
 
-.skill__level {
-  font: 400 10px/1 var(--mono);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--cyan);
-}
-
-.skill__meter {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 6px;
-}
-
-.skill__step {
-  height: 5px;
-  border-radius: 99px;
-  background: color-mix(in srgb, var(--glow) 14%, transparent);
-}
-
-.skill__step--on {
-  background: linear-gradient(90deg, var(--violet), var(--cyan));
+.skill__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .skill__note {
