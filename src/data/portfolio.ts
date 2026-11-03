@@ -118,7 +118,7 @@ export const SKILL_GROUPS = [
   },
   { id: 'quality', items: ['Vitest', 'Testing Library', 'Biome', 'Git', 'GitLab CI', 'Docker', 'Claude Code'] },
   { id: 'mobile', items: ['Flutter', 'Dart', 'Bloc'] },
-  { id: 'backend', items: ['Python', 'FastAPI', 'PostgreSQL'] },
+  { id: 'backend', items: ['Python', 'FastAPI', 'GraphQL', 'PostgreSQL'] },
   { id: 'management', items: ['Scrum'] },
 ] as const satisfies readonly { id: string; items: readonly string[] }[]
 
