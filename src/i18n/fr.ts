@@ -137,6 +137,14 @@ export const fr: Translation = {
         ],
       },
     },
+    piseo: {
+      kind: 'Projet de BTS',
+      title: 'Piséo',
+      blurb: 'Une application en Python réalisée pour un client réel, dans le cadre de mon BTS.',
+      cat: 'Application',
+      detail:
+        'Application développée en Python pour l’entreprise Piséo, dans le cadre de mon BTS SNIR : un projet de fin de formation réalisé pour un client réel.',
+    },
     office: {
       kind: 'Outil de suivi · 3D',
       title: 'Claude Manage Office',
