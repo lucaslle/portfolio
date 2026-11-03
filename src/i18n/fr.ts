@@ -4,11 +4,11 @@ export const fr: Translation = {
   tag: 'FR',
   switchTo: 'Afficher le site en français',
 
-  documentTitle: 'Lucas Laliche — Architecte IA & Chef de projet',
+  documentTitle: 'Lucas Laliche — Product Engineer React & Chef de projet',
   documentDescription:
-    'Portfolio de Lucas Laliche — architecte IA et chef de projet. Je cadre, je développe les features et je fais les démos.',
+    'Portfolio de Lucas Laliche — Product Engineer React et chef de projet. Je cadre, je développe les features et je fais les démos.',
 
-  role: 'Architecte IA · Chef de projet',
+  role: 'Product Engineer · Chef de projet',
 
   nav: {
     home: 'Accueil',
@@ -20,10 +20,10 @@ export const fr: Translation = {
   loader: 'Chargement',
 
   hero: {
-    badge: '2 ans d’expérience · Front & IA',
-    headline: ['Architecte', 'IA.'],
-    roles: ['Chef de projet qui code', 'Développeur front React', 'Architecte IA'],
-    lead: 'Chef de projet qui code : je cadre les besoins, je développe les features et je présente les démos. Deux ans de développement front en React, dont un an en alternance, et aujourd’hui un poste d’architecte IA.',
+    badge: '2 ans d’expérience · Front-end & chef de projet',
+    headline: ['Product Engineer', 'React.'],
+    roles: ['Chef de projet qui code', 'Product Engineer React', 'Du besoin à la démo'],
+    lead: 'Chef de projet qui code : je cadre les besoins, je développe les features et je présente les démos. Deux ans de développement front en React, dont un an en alternance.',
     techs: 'Technologies',
     hints: ['↓ découvrez mes projets plus bas', '↗ ouvert aux échanges et aux collaborations'],
   },
@@ -31,7 +31,7 @@ export const fr: Translation = {
   about: {
     eyebrow: 'À propos',
     story:
-      'Développeur React et chef de projet : je fais le pont entre le besoin et le code. Je cadre avec le Product Owner et les designers, je développe les features moi-même, j’anime les cérémonies Scrum d’une équipe de 14 personnes, puis je présente en démo et je déploie. Deux ans de développement front, dont un an en alternance, avec un peu de Python et un vrai intérêt pour l’IA.',
+      'Product Engineer React et chef de projet : je fais le pont entre le besoin et le code. Je cadre avec le Product Owner et les designers, je développe les features moi-même, j’anime les cérémonies Scrum d’une équipe de 14 personnes, puis je présente en démo et je déploie. Deux ans de développement front, dont un an en alternance, avec un peu de Python et un vrai intérêt pour l’IA.',
     quote: 'Faire le pont entre le besoin et le code.',
     viewProjects: 'Voir les projets',
     contact: 'Me contacter',
