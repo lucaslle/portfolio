@@ -65,6 +65,13 @@ export const PROJECTS = [
     sources: [],
   },
   {
+    id: 'autour',
+    group: 'personal',
+    tags: ['Next.js', 'React', 'TypeScript', 'TanStack Query', 'Leaflet', 'Vitest'],
+    demoUrl: 'https://lucaslle.github.io/Demo/',
+    sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/Demo' }],
+  },
+  {
     id: 'office',
     group: 'personal',
     tags: ['Three.js', 'JavaScript', 'Node.js', 'API GitLab'],

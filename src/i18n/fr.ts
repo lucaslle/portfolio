@@ -145,6 +145,28 @@ export const fr: Translation = {
       detail:
         'Application développée en Python pour l’entreprise Piséo, dans le cadre de mon BTS SNIR : un projet de fin de formation réalisé pour un client réel.',
     },
+    autour: {
+      kind: 'Application web · Données ouvertes',
+      title: 'Autour de moi',
+      blurb: 'Les données ouvertes de l’État rendues utiles autour de chez soi : carburants, bornes de recharge, entreprises, immobilier, énergie.',
+      cat: 'Application web',
+      detail:
+        'Un site qui rassemble neuf modules sur les données ouvertes de l’État, à partir d’un lieu choisi : prix des carburants, bornes de recharge, recherche d’entreprises, commerces bio, emploi et salaires, ventes immobilières, diagnostics énergétiques et consommation électrique, avec un comparateur carburants et bornes. Le site est 100 % statique : pas de serveur, pas de compte, pas de clé d’API. Projet en cours : deux modules (équipements sportifs, risques) restent à venir.',
+      study: {
+        context:
+          'Les données ouvertes de l’État sont nombreuses, mais dispersées entre autant d’API et de portails. L’enjeu : les rendre utiles à l’échelle de chez soi, dans un seul site, sans rien installer ni compte à créer.',
+        choices: [
+          'Next.js en export statique, publié sur GitHub Pages, sans backend : les API retenues sont gratuites, sans clé et ouvertes aux appels depuis le navigateur.',
+          'TanStack Query pour les appels et leur cache, Zustand pour les préférences, Zod pour la validation, Leaflet et Recharts pour les cartes et les graphiques.',
+          'Un registre unique de modules génère le menu et le répertoire de l’accueil : ajouter un module revient à ajouter une entrée et une page.',
+        ],
+        results: [
+          'Neuf modules en ligne, alimentés par des données ouvertes (économie, énergie, emploi, immobilier).',
+          'Intégration continue et déploiement automatique à chaque push sur main.',
+          'Des tests avec Vitest et Testing Library.',
+        ],
+      },
+    },
     office: {
       kind: 'Outil de suivi · 3D',
       title: 'Claude Manage Office',
