@@ -64,8 +64,8 @@ export const en: Translation = {
       journey: 'Journey',
     },
     details: 'Details ↗',
-    previousProjects: 'Previous projects',
-    nextProjects: 'Next projects',
+    filtersLabel: 'Filter projects',
+    filters: { all: 'All', pro: 'Professional', personal: 'Personal & school' },
     sourceLabel: (label) => `Source code (${label})`,
     softSkillsLabel: 'Soft skills',
     experience: 'Experience',
@@ -144,6 +144,28 @@ export const en: Translation = {
       cat: 'Application',
       detail:
         'A Python application developed for the company Piséo as part of my BTS SNIR degree: an end-of-course project delivered for a real client.',
+    },
+    autour: {
+      kind: 'Web app · Open data',
+      title: 'Autour de moi',
+      blurb: 'French government open data made useful near you: fuel, charging points, companies, real estate, energy.',
+      cat: 'Web app',
+      detail:
+        'A site that brings together nine modules on French government open data, around a chosen place: fuel prices, charging points, company search, organic shops, jobs and salaries, property sales, energy performance certificates and electricity consumption, plus a fuel and charging comparison. The site is 100% static: no server, no account, no API key. Work in progress: two modules (sports facilities, risks) are still to come.',
+      study: {
+        context:
+          'Government open data is plentiful but scattered across as many APIs and portals. The challenge: make it useful at the scale of where you live, in a single site, with nothing to install and no account to create.',
+        choices: [
+          'Next.js static export, published on GitHub Pages, with no backend: the chosen APIs are free, keyless and callable from the browser.',
+          'TanStack Query for requests and caching, Zustand for preferences, Zod for validation, Leaflet and Recharts for maps and charts.',
+          'A single module registry generates the menu and the home directory: adding a module means adding one entry and one page.',
+        ],
+        results: [
+          'Nine modules live, fed by open data (economy, energy, jobs, real estate).',
+          'Continuous integration and automatic deployment on every push to main.',
+          'Tests with Vitest and Testing Library.',
+        ],
+      },
     },
     office: {
       kind: 'Monitoring tool · 3D',
