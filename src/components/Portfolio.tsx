@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import type { KeyboardEvent } from 'react'
 import { useTranslation } from '../i18n/useTranslation'
-import type { PortfolioTab, Project } from '../types'
+import type { PortfolioTab } from '../types'
 import { JourneyPanel } from './JourneyPanel'
 import { ProjectsPanel } from './ProjectsPanel'
 import BlurText from './reactbits/BlurText/BlurText'
@@ -9,11 +9,7 @@ import { SkillsPanel } from './SkillsPanel'
 
 const TABS: PortfolioTab[] = ['projects', 'skills', 'journey']
 
-type PortfolioProps = {
-  onOpenProject: (project: Project) => void
-}
-
-export const Portfolio = ({ onOpenProject }: PortfolioProps) => {
+export const Portfolio = () => {
   const { t } = useTranslation()
   const [activeTab, setActiveTab] = useState<PortfolioTab>('projects')
   const tabRefs = useRef<Record<PortfolioTab, HTMLButtonElement | null>>({
@@ -81,7 +77,7 @@ export const Portfolio = ({ onOpenProject }: PortfolioProps) => {
         tabIndex={0}
         className="portfolio__panel"
       >
-        {activeTab === 'projects' ? <ProjectsPanel onOpenProject={onOpenProject} /> : null}
+        {activeTab === 'projects' ? <ProjectsPanel /> : null}
         {activeTab === 'skills' ? <SkillsPanel /> : null}
         {activeTab === 'journey' ? <JourneyPanel /> : null}
       </div>

@@ -7,18 +7,15 @@ import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { Loader } from './components/Loader'
 import { Portfolio } from './components/Portfolio'
-import { ProjectModal } from './components/ProjectModal'
 import ClickSpark from './components/reactbits/ClickSpark/ClickSpark'
 import { SECTION_IDS } from './data/portfolio'
 import { useScrollSpy } from './hooks/useScrollSpy'
 import { useTheme } from './theme/useTheme'
-import type { Project } from './types'
 import { markIntroSeen, shouldPlayIntro } from './utils/introSeen'
 import { scrollToSection } from './utils/scrollToSection'
 
 export const App = () => {
   const section = useScrollSpy(SECTION_IDS)
-  const [activeProject, setActiveProject] = useState<Project | null>(null)
   const [isLoading, setIsLoading] = useState(shouldPlayIntro)
   const { palette } = useTheme()
 
@@ -39,15 +36,11 @@ export const App = () => {
         <main className="shell">
           <Hero />
           <About />
-          <Portfolio onOpenProject={setActiveProject} />
+          <Portfolio />
           <Contact />
         </main>
 
         <Footer />
-
-        {activeProject ? (
-          <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
-        ) : null}
       </div>
 
       {isLoading ? <Loader onDone={finishLoading} /> : null}
