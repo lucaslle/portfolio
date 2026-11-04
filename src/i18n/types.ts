@@ -1,5 +1,5 @@
 import type { EducationId, JobId, ProjectId, SkillGroupId, StatId } from '../data/portfolio'
-import type { CaseStudy, PortfolioTab, SectionId } from '../types'
+import type { CaseStudy, PortfolioTab, ProjectFilter, SectionId } from '../types'
 
 export type ProjectCopy = {
   kind: string
@@ -76,8 +76,8 @@ export type Translation = {
     tabsLabel: string
     tabs: Record<PortfolioTab, string>
     details: string
-    previousProjects: string
-    nextProjects: string
+    filtersLabel: string
+    filters: Record<ProjectFilter, string>
     sourceLabel: (label: string) => string
     softSkillsLabel: string
     experience: string

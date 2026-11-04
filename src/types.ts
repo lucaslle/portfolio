@@ -12,8 +12,14 @@ export type CaseStudy = {
   results: readonly string[]
 }
 
+/** Origine d'un projet : en entreprise, ou personnel / scolaire. */
+export type ProjectGroup = 'pro' | 'personal'
+
+export type ProjectFilter = 'all' | ProjectGroup
+
 export type Project = {
   id: string
+  group: ProjectGroup
   kind: string
   title: string
   blurb: string

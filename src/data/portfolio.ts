@@ -1,4 +1,4 @@
-import type { ProjectSource, SectionId, Social, StatIcon } from '../types'
+import type { ProjectGroup, ProjectSource, SectionId, Social, StatIcon } from '../types'
 
 /* ------------------------------------------------------------------ *
  * Ce fichier ne contient QUE ce qui ne change pas d'une langue à
@@ -33,6 +33,7 @@ export const SOCIALS: Social[] = [
 
 type ProjectBase = {
   id: string
+  group: ProjectGroup
   tags: readonly string[]
   demoUrl?: string
   sources: readonly ProjectSource[]
@@ -40,33 +41,39 @@ type ProjectBase = {
 
 export const PROJECTS = [
   {
+    id: 'ged',
+    group: 'pro',
+    tags: ['React', 'TypeScript', 'Chakra UI', 'GraphQL', 'Vitest', 'Scrum'],
+    sources: [],
+  },
+  {
     id: 'ged-mobile',
+    group: 'pro',
     tags: ['Flutter', 'Dart'],
     sources: [],
   },
   {
     id: 'hp-printer',
+    group: 'pro',
     tags: ['HP', 'Embarqué'],
     sources: [],
   },
   {
-    id: 'ged',
-    tags: ['React', 'TypeScript', 'Chakra UI', 'GraphQL', 'Vitest', 'Scrum'],
-    sources: [],
-  },
-  {
     id: 'signature',
+    group: 'pro',
     tags: ['React', 'Chakra UI', 'Vitest', 'Python', 'YouTrust'],
     sources: [],
   },
   {
     id: 'office',
+    group: 'personal',
     tags: ['Three.js', 'JavaScript', 'Node.js', 'API GitLab'],
     demoUrl: 'https://lucaslle.github.io/claude-manage-office/',
     sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/claude-manage-office' }],
   },
   {
     id: 'arosaje',
+    group: 'personal',
     tags: ['React', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Docker'],
     sources: [
       { label: 'Front', url: 'https://github.com/lucaslle/Arosaje_Front' },
@@ -75,30 +82,35 @@ export const PROJECTS = [
   },
   {
     id: 'momentum',
+    group: 'personal',
     tags: ['Flutter', 'Dart', 'SQLite'],
     demoUrl: 'https://lucaslle.github.io/TODOapp/?frame=iphone',
     sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/TODOapp' }],
   },
   {
     id: 'kaizen',
+    group: 'personal',
     tags: ['Flutter', 'Dart', 'Bloc', 'Widget Android'],
     demoUrl: 'https://lucaslle.github.io/Kaizen_365/?frame=iphone',
     sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/Kaizen_365' }],
   },
   {
     id: 'hargne',
+    group: 'personal',
     tags: ['Flutter', 'Dart', 'Garmin', 'Import / export CSV'],
     demoUrl: 'https://lucaslle.github.io/SportApp/?frame=iphone',
     sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/SportApp' }],
   },
   {
     id: 'ecu',
+    group: 'personal',
     tags: ['Flutter', 'Dart', 'Import CSV'],
     demoUrl: 'https://lucaslle.github.io/spent_app/?frame=iphone',
     sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/spent_app' }],
   },
   {
     id: 'piseo',
+    group: 'personal',
     tags: ['Python'],
     sources: [],
   },
