@@ -145,6 +145,29 @@ export const en: Translation = {
       detail:
         'A Python application developed for the company Piséo as part of my BTS SNIR degree: an end-of-course project delivered for a real client.',
     },
+    cristal: {
+      kind: 'Component library',
+      title: 'Cristal',
+      blurb: 'A Web Components library you can use in React and Next.js.',
+      cat: 'Library',
+      detail:
+        'A UI component library built with Stencil, usable in React as well as Next.js. It offers a button, form fields (text, select, checkbox), a dialog, a side drawer and a card, with colours, sizes and spacing in a separate tokens package.',
+      study: {
+        context:
+          'A component library has to serve several applications without being tied to a single framework. The challenge: standard components that work in React as well as Next.js, with server-side rendering and no flash on load.',
+        choices: [
+          'Stencil to compile Web Components (cr- prefix), wrapped in a React package, with a dedicated entry point for Next.js server rendering.',
+          'Form fields that take part in the parent form like native fields: value submitted, validation, reset.',
+          'Dialog and drawer built on the native dialog element: trapped focus, Escape to close, focus returned to the opener. Required labels and errors announced to screen readers.',
+          'Colours, sizes and spacing as CSS tokens, in a separate package.',
+        ],
+        results: [
+          'Seven components: button, text input, select, checkbox, dialog, drawer and card.',
+          'A Next.js playground with end-to-end tests.',
+          'Continuous integration on the repository, and versions managed with Changesets.',
+        ],
+      },
+    },
     autour: {
       kind: 'Web app · Open data',
       title: 'Autour de moi',

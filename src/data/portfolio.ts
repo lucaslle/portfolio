@@ -65,6 +65,12 @@ export const PROJECTS = [
     sources: [],
   },
   {
+    id: 'cristal',
+    group: 'personal',
+    tags: ['Stencil', 'Web Components', 'TypeScript', 'React', 'Next.js'],
+    sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/Cristal' }],
+  },
+  {
     id: 'autour',
     group: 'personal',
     tags: ['Next.js', 'React', 'TypeScript', 'TanStack Query', 'Leaflet', 'Vitest'],
