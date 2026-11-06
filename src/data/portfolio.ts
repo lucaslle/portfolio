@@ -68,6 +68,7 @@ export const PROJECTS = [
     id: 'cristal',
     group: 'personal',
     tags: ['Stencil', 'Web Components', 'TypeScript', 'React', 'Next.js'],
+    demoUrl: 'https://lucaslle.github.io/Cristal-UI/',
     sources: [{ label: 'GitHub', url: 'https://github.com/lucaslle/Cristal' }],
   },
   {
