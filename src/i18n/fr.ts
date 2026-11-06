@@ -145,6 +145,29 @@ export const fr: Translation = {
       detail:
         'Application développée en Python pour l’entreprise Piséo, dans le cadre de mon BTS SNIR : un projet de fin de formation réalisé pour un client réel.',
     },
+    cristal: {
+      kind: 'Bibliothèque de composants',
+      title: 'Cristal',
+      blurb: 'Une bibliothèque de composants en Web Components, utilisable dans React et dans Next.js.',
+      cat: 'Bibliothèque',
+      detail:
+        'Une bibliothèque de composants d’interface construite avec Stencil, utilisable dans React comme dans Next.js. Elle propose un bouton, des champs de formulaire (texte, liste déroulante, case à cocher), une modale, un panneau latéral et une carte, avec les couleurs, tailles et espacements dans un paquet de tokens séparé.',
+      study: {
+        context:
+          'Une bibliothèque de composants doit servir plusieurs applications sans être liée à un seul framework. Le défi : des composants standard, utilisables aussi bien dans React que dans Next.js, avec un rendu côté serveur sans flash au chargement.',
+        choices: [
+          'Stencil pour compiler des Web Components (préfixe cr-), enveloppés dans un paquet React, avec un point d’entrée dédié au rendu côté serveur de Next.js.',
+          'Des champs de formulaire qui participent au formulaire parent comme des champs natifs : valeur envoyée, validation, réinitialisation.',
+          'Modale et panneau latéral basés sur l’élément natif dialog : focus piégé, fermeture avec Échap, focus rendu au bouton d’ouverture. Libellés obligatoires et erreurs lues par les lecteurs d’écran.',
+          'Couleurs, tailles et espacements sous forme de tokens CSS, dans un paquet séparé.',
+        ],
+        results: [
+          'Sept composants : bouton, champ texte, liste déroulante, case à cocher, modale, panneau latéral et carte.',
+          'Un playground Next.js avec des tests de bout en bout.',
+          'Intégration continue sur le dépôt, et versions gérées avec Changesets.',
+        ],
+      },
+    },
     autour: {
       kind: 'Application web · Données ouvertes',
       title: 'Autour de moi',
