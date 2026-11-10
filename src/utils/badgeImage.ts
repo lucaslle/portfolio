@@ -1,3 +1,4 @@
+import photo from '../assets/photo.webp?inline'
 import { FULL_NAME, INITIALS } from '../data/portfolio'
 import type { Palette } from '../theme/palette'
 
@@ -26,14 +27,16 @@ const buildFront = (role: string, palette: Palette): string => `
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M40 0H0V40" fill="none" stroke="${palette.lilac}" stroke-opacity="0.08"/>
     </pattern>
+    <clipPath id="face"><circle cx="400" cy="520" r="176"/></clipPath>
   </defs>
   <rect width="${CARD_WIDTH}" height="${CARD_HEIGHT}" fill="url(#bg)"/>
   <rect width="${CARD_WIDTH}" height="${CARD_HEIGHT}" fill="url(#grid)"/>
   <rect width="${CARD_WIDTH}" height="${CARD_HEIGHT}" fill="url(#glow)"/>
   <text x="64" y="150" fill="${palette.lilac}" font-family="monospace" font-size="26" letter-spacing="6">ID · PORTFOLIO</text>
   <circle cx="400" cy="520" r="210" fill="none" stroke="${palette.lilac}" stroke-opacity="0.35" stroke-width="2"/>
-  <circle cx="400" cy="520" r="176" fill="${palette.cardSurface}" stroke="${palette.violet}" stroke-width="3"/>
-  <text x="400" y="578" text-anchor="middle" fill="url(#ink)" font-family="sans-serif" font-weight="800" font-size="170">${INITIALS}</text>
+  <circle cx="400" cy="520" r="176" fill="${palette.cardSurface}"/>
+  <image href="${photo}" x="224" y="344" width="352" height="352" preserveAspectRatio="xMidYMid slice" clip-path="url(#face)"/>
+  <circle cx="400" cy="520" r="176" fill="none" stroke="${palette.violet}" stroke-width="3"/>
   <text x="64" y="860" fill="${palette.text}" font-family="sans-serif" font-weight="800" font-size="64">${FULL_NAME}</text>
   <text x="64" y="916" fill="${palette.lilac}" font-family="monospace" font-size="28">${role}</text>
   <rect x="64" y="960" width="672" height="2" fill="${palette.lilac}" fill-opacity="0.25"/>

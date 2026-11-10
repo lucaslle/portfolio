@@ -1,4 +1,5 @@
-import { CV_URL, FULL_NAME, INITIALS } from '../data/portfolio'
+import { CV_URL, FULL_NAME } from '../data/portfolio'
+import photo from '../assets/photo.webp'
 import { useCvPreview } from '../hooks/useCvPreview'
 import { useContent } from '../i18n/useContent'
 import { useTranslation } from '../i18n/useTranslation'
@@ -73,8 +74,8 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="about__portrait" aria-hidden="true">
-          <div className="about__monogram">{INITIALS}</div>
+        <div className="about__portrait">
+          <img className="about__photo" src={photo} alt={FULL_NAME} width={640} height={640} />
         </div>
       </div>
 
